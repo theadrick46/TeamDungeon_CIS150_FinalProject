@@ -1,3 +1,1 @@
-﻿  stdafx.cpp
-  TeamDungeon_CIS150_FinalProject.cpp
-c:\users\h.seccia\documents\github\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(18): error C3861: 'system': identifier not found
+﻿C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb : fatal error LNK1318: Unexpected PDB error; CORRUPT (13) 'C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb'
