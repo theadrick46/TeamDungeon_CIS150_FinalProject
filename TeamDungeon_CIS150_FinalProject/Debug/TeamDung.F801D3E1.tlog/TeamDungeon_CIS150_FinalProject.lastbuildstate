@@ -1,2 +1,12 @@
+<<<<<<< HEAD
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+Debug|Win32|C:\Users\kpolley\Documents\GitHub\TeamDungeon_CIS150_FinalProject\|
+=======
+<<<<<<< HEAD
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+Debug|Win32|E:\CIS 150\TeamDungeon_CIS150_FinalProject\|
+=======
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.15063.0
 Debug|Win32|C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\|
+>>>>>>> 25972d6431474f7809cb65806efdf4c6ccacc3de
+>>>>>>> 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
