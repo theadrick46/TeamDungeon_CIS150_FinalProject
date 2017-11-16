@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 ﻿  TeamDungeon_CIS150_FinalProject.cpp
 e:\cis 150\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(42): error C4700: uninitialized local variable 'choice' used
 e:\cis 150\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(23): error C4716: 'mainMenu': must return a value
+=======
+﻿C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb : fatal error LNK1318: Unexpected PDB error; CORRUPT (13) 'C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb'
+>>>>>>> 25972d6431474f7809cb65806efdf4c6ccacc3de
