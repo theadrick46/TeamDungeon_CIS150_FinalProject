@@ -1,1 +1,2 @@
-﻿C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb : fatal error LNK1318: Unexpected PDB error; CORRUPT (13) 'C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb'
+﻿  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\kpolley\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.exe
+  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\kpolley\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb (Full PDB)
