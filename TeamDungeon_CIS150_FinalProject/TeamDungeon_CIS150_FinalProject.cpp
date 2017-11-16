@@ -6,14 +6,17 @@
 // error test
 
 
-<<<<<<< HEAD
+
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <Windows.h>
 using namespace std;
 
-int mainMenu(int choice)
-{
+
+																												/////////////////////////////
+int mainMenu(int choice)																						//Coded by Tanness Headrick//
+{																												/////////////////////////////
 	string name;
 	cout << "Enter your name: ";
 	cin >> name;
@@ -34,18 +37,8 @@ int mainMenu(int choice)
 
 
 
-=======
-<< << << < HEAD
-	====== =
-	>>>>>> > f3fb0445cffaf372ee8ed9af4c035b599a254841
 
-#include "stdafx.h"
-#include <iostream>
-#include <string>
-#include <Windows.h>
->>>>>>> 25972d6431474f7809cb65806efdf4c6ccacc3de
 
-using namespace std;
 																						///////////////////////////////
 																						// Hannah started coding here//
 																						///////////////////////////////
