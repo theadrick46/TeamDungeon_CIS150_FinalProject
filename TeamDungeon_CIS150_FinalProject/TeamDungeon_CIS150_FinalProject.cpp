@@ -3,19 +3,18 @@
 // Kassie Polley
 // Tanness Headrick
 // Hannah Seccia
-// error test
 
-
+<<<<<<< HEAD
+	====== =
+	>>>>>>> 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
 
 #include "stdafx.h"
 #include <iostream>
 #include <string>
-<<<<<<< HEAD
 #include "Windows.h"
 
-=======
-#include <Windows.h>
->>>>>>> 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
+
+
 using namespace std;
 
 
@@ -63,12 +62,11 @@ void basicGraphicSetUp()
 
 void basicPrintGraphic(string person[], string floorCeiling)
 {
-<<<<<<< HEAD
+
 	int choice; //menu choice
 	
 
 	mainMenu(choice);
-=======
 	cout << floorCeiling;																// prints the ceiling
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);						// changes the color on the command prompt to yellow for the person
@@ -96,7 +94,7 @@ int main()
 																						// Hannah stopped coding here//
 																						///////////////////////////////
 																						
->>>>>>> 25972d6431474f7809cb65806efdf4c6ccacc3de
+
 
 	system("pause");
     return 0;
