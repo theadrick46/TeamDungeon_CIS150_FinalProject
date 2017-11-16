@@ -1,0 +1,3 @@
+﻿  TeamDungeon_CIS150_FinalProject.cpp
+e:\cis 150\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(42): error C4700: uninitialized local variable 'choice' used
+e:\cis 150\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(23): error C4716: 'mainMenu': must return a value
