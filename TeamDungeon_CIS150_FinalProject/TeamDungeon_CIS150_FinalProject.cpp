@@ -100,7 +100,6 @@ void darkMagicianPrint(string darkMagician[], string person[])
 
 	for (int i = 2; i < 8; i++)																// since the first 2 parts were already printed, the int starts at 2
 	{
-
 		if (i == 2 || i == 3)																// if the 3rd and 4th parts of the array (the face) is printing
 		{
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow, print part of person				
@@ -199,14 +198,39 @@ int main()
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
 
+	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
+																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
+																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
+																							//          || == || == || == || == || ==|| == ||
+																							//			||xxx || xxx|| == || xxx|| ==||xxxx||
+																							//			||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||
+																							//						    ^
+																							//						  START
+	double coord = 0.0;
 	
 	int monsterIndicate = 0;															// will help the system accord depending on which monster appears
 																						// this will be used when setting up the random coordinate system
 																						// 1 = slime, 2 = goblin, 3 = dark magician
 
+	double scale = 0.1;																	// helps correct coordinate rounding errors							
+
 	
 
-
+	//	Hannah here! this is for the person who's going to make the coordinate system. I have already made the first level array above.
+	//  I have decided to use decimals for the coordinates, and the coordiantes read as (Xpos.Ypos). it seems complicated, but it makes coding
+	//  the logic for it much easier. The level array will contain coordinates that the player CAN go on. 
+	//
+	//	The coord variable at each start of the level will be reseted to the start point of the leave. When the player wants to go up or down,
+	//  you will change the variable by a tenth (.1). When they want to go right or left, you will change it by an integer (1).
+	//  It may seem jarring to code, but think of it is that we're simply making sure the player is on path. If the player tries to go off
+	//  it would be wise to negate their "move" that they tried to make. You might want to do this with a copy variable.
+	//
+	//	If you have trouble with certain coordinates not rounding up correctly, use this code to fix those parts of the array:
+	//	coordinatelevel[thenumbernotworking] = floor(coordinatelevel[#] / scale + 0.5) * scale; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+	//  
+	//  For now, just make a basic level function, where if the player reaches the end, it only prints something like "good job".
+	//  If you have any questions about what to do, ask me either in email or person. When you get this done, we can move onto dead ends,
+	//  monster placement, and multiple levels. Also, don't forget to mark in the comments when you code that it's your code.
 
 	basicGraphicSetUp();
 	basicPrintGraphic(person, floorCeiling);
