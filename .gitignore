@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+.vs/TeamDungeon_CIS150_FinalProject/v15/.suo
+.vs/TeamDungeon_CIS150_FinalProject/v15/.suo
+*.db
+.vs/TeamDungeon_CIS150_FinalProject/v15/.suo
+*.db
