@@ -14,10 +14,10 @@
 #include "Windows.h"
 using namespace std;
 
-//test
 
 ///////////////////////////////////////////////////////////////////////
 //////The following functions were codeded by Tanness Headrick////////
+
 
 void greeting(string name) //function to start game- greets user (TH)                                                                              
 {
@@ -26,35 +26,20 @@ void greeting(string name) //function to start game- greets user (TH)
 	system("CLS");
 	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
 	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;
-	cout << "********************************************************************************" << endl;
-	cout << endl;
-	cout << endl;
+	cout << "" << endl;
 }
 
-void move(int movement) //function to get user input for movement (TH)																			
+void askMove(int movement)									//function to get user input for movement (TH)																			
 {
-	system("CLS");
 	cout << "Which direction would you like to go?" << endl; //this is possibly where we can add on the more intricate parts??
 	cout << "1. Right" << endl;
 	cout << "2. Left" << endl;
 	cout << "3. Up" << endl;
 	cout << "4. Down" << endl;
-	cout << "Enter 1-4: ";
-
 	cin >> movement;
 
-	if (movement == 1 || movement == 2 || movement == 3 || movement == 4)
-	{
-		system("CLS");
-		cout << "You moved." << endl;
-	}
+	move(movement, coordCopy);
 
-	else
-	{
-		system("CLS");
-		cout << "Please enter a number 1-4: ";
-		cout << endl;
-	}
 }
 
 void checkInv(string inv) //function to allow user to see what they have collected (TH)
@@ -66,7 +51,7 @@ void checkInv(string inv) //function to allow user to see what they have collect
 void healthStatus(int health) //function to allow user to see their current health status (TH)
 {
 	system("CLS");
-	cout << "You are currently at " << health << " out of 100." << endl;
+	cout << "You are currently at " << health << " out of 20." << endl;		// I changed the health to 20 //// Hannah
 }
 
 void exit(string goodbye) //function that allows user to exit (TH)
@@ -94,6 +79,45 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	}
 }
 
+void mainGameMenu(int choice, int movement, string inv, int health, string goodbye, string password)
+{
+	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
+	cout << "1. Move" << endl;
+	cout << "2. Check Inventory" << endl;
+	cout << "3. Check Health" << endl;
+	cout << "4. Exit Game" << endl;
+	cout << "9. Administrator Controls" << endl;
+	cout << endl;
+	cout << "Enter selection: ";
+	cin >> choice;
+
+	if (choice == 1)
+	{
+		askMove(movement); //allows user to move
+	}
+
+	else if (choice == 2)
+	{
+		checkInv(inv); //allows user to check inventory
+	}
+
+	else if (choice == 3)
+	{
+		healthStatus(health); //allows user to check health
+	}
+
+	else if (choice == 4)
+	{
+		exit(goodbye); //allows user to exit
+	}
+
+	else if (choice == 9)
+	{
+		admin(password); //allows admin to access maps *with password
+	}
+}
+
+
 //////The previous functions were codeded by Tanness Headrick////////
 ///////////////////////////////////////////////////////////////////////
 
@@ -105,7 +129,30 @@ void admin(string password) //function that allows admin to pull up map *passwor
 // Hannah started coding here//
 ///////////////////////////////
 
-void basicGraphicSetUp()
+void move(int movement, double &coord)
+{
+	if (movement == 1)
+	{
+		coord -= 1;
+	}
+
+	if (movement == 2)
+	{
+		coord += 1;
+	}
+
+	if (movement == 3)
+	{
+		coord += 0.1;
+	}
+
+	if (movement == 4)
+	{
+		coord -= 0.1;
+	}
+}
+
+void basicGraphicSetUp(string name)
 {																						// cursor hiding and title setting from these sources:
 																						// https://stackoverflow.com/questions/20020746/failed-to-hide-the-cursor-in-console, https://docs.microsoft.com/en-us/windows/console/setconsoletitle, https://stackoverflow.com/questions/743697/what-is-the-exact-definition-of-instance-variable, https://stackoverflow.com/questions/13219182/set-console-title-in-c-using-a-string
 	CONSOLE_CURSOR_INFO CURSORINFO;														// create a pointer-like name to access the console_cursor_info struct
@@ -116,6 +163,8 @@ void basicGraphicSetUp()
 
 	SetConsoleTitle(_T("Dungeons and Goblins"));										// this functions changes the name of the console box
 																						// (_T macro makes character set neutral with Unicode or ANSI or ASCII)
+
+	greeting(name); //function that greets user
 }
 
 //////////////////////////////////////////////////////////////
@@ -125,12 +174,7 @@ void basicGraphicSetUp()
 void basicPrintGraphic(string person[], string floorCeiling)
 {
 
-	int choice = 0;																		// menu choice; (Hannah edited: make sure you initialize a variable before you send it to a function.)
-																						/////////////////////////////////////
-																						// This block was coded by Tanness//
-	mainMenu(choice);																	////////////////////////////////////
-
-
+														
 	cout << floorCeiling;																// prints the ceiling
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);						// changes the color on the command prompt to yellow for the person
@@ -264,7 +308,9 @@ int main()
 
 	string name; //the string for the name of the player (TH)
 	int choice = 0; //the choice the player makes for the main menu (TH)
-	int movement = 0; //where the player decides to move (TH)
+	int movement = 0; //represents where the player decides to move (TH)
+					  //1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
+
 	string inv; //when the player chooses to view the inventory (TH)
 	int health = 0; //when the player chooses to view the health meter (TH)
 	string goodbye; //when the player chooses to end the game (TH)
@@ -273,12 +319,13 @@ int main()
 	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
 																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
-																							//          || == || == || == || == || ==|| == ||
+																							//          || != || == || == || == || ==|| =! ||
 																							//			||xxx || xxx|| == || xxx|| ==||xxxx||
 																							//			||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||
 																							//						    ^
 																							//						  START
 	double coord = 0.0;
+	double coordCopy = 0.0;
 
 	int monsterIndicate = 0;															// will help the system accord depending on which monster appears
 																						// this will be used when setting up the random coordinate system
@@ -304,7 +351,7 @@ int main()
 																						//  If you have any questions about what to do, ask me either in email or person. When you get this done, we can move onto dead ends,
 																						//  monster placement, and multiple levels. Also, don't forget to mark in the comments when you code that it's your code.
 
-	basicGraphicSetUp();
+	basicGraphicSetUp(name);
 	basicPrintGraphic(person, floorCeiling);
 
 
@@ -316,7 +363,7 @@ int main()
 	///////////////////////////////////////////////////////////////////////
 	//////The following menu was codeded by Tanness Headrick////////
 
-	greeting(name); //function that greets user
+	
 	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
 	cout << "1. Move" << endl;
 	cout << "2. Check Inventory" << endl;
@@ -329,7 +376,7 @@ int main()
 
 	if (choice == 1)
 	{
-		move(movement); //allows user to move
+		askMove(movement); //allows user to move
 	}
 
 	else if (choice == 2)
