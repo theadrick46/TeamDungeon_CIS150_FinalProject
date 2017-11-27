@@ -401,6 +401,14 @@ int main()
 
 	//////The previous menu was codeded by Tanness Headrick////////
 	///////////////////////////////////////////////////////////////////////
+if (choice == 1)
+			cout << "You moved Forward." << endl;
+		else if (choice == 2)
+			cout << "You moved Left." << endl;
+		else if (choice == 3)
+			cout << "You moved Right." << endl;
+		else if (choice == 4)
+			cout << "You moved Down." << endl;
 
 
 	system("pause");
