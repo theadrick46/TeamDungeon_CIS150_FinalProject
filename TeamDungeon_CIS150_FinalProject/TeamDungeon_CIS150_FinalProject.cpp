@@ -4,48 +4,112 @@
 // Tanness Headrick
 // Hannah Seccia
 
-<<<<<<< HEAD
-	====== =
-	>>>>>>> 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
+<< << << < HEAD
+	== == == =
+	>> >> >> > 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
 
 #include "stdafx.h"
 #include <iostream>
 #include <string>
 #include "Windows.h"
+	using namespace std;
 
 
 
-using namespace std;
-																												/////////////////////////////////
-																												//Tanness Headrick started here//
-																												/////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+//////The following functions were codeded by Tanness Headrick////////
 
-																												
-void mainMenu(int choice)																						// (Hannah edited)																		
-{																												// changed "int MainMenu" to void, since it doesn't return a value.
-	string name;
+void greeting(string name) //function to start game- greets user (TH)                                                                              
+{
 	cout << "Enter your name: ";
 	cin >> name;
-	system("cls");																								// (Hannah edited: added a system clear for better readability)
-	cout << "Welcome, " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
-	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!\n";				// (Hannah edited)
-																												// added a null at the end so that it doesn't collide with the ceiling
-
-																												/////////////////////////////////
-																												//Tanness Headrick ended here//
-																												/////////////////////////////////
+	system("CLS");
+	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
+	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;
+	cout << "********************************************************************************" << endl;
+	cout << endl;
+	cout << endl;
 }
 
+void move(int movement) //function to get user input for movement (TH)																			
+{
+	system("CLS");
+	cout << "Which direction would you like to go?" << endl; //this is possibly where we can add on the more intricate parts??
+	cout << "1. Right" << endl;
+	cout << "2. Left" << endl;
+	cout << "3. Up" << endl;
+	cout << "4. Down" << endl;
+	cout << "Enter 1-4: ";
 
-																						///////////////////////////////
-																						// Hannah started coding here//
-																						///////////////////////////////
+	cin >> movement;
+
+	if (movement == 1 || movement == 2 || movement == 3 || movement == 4)
+	{
+		system("CLS");
+		cout << "You moved." << endl;
+	}
+
+	else
+	{
+		system("CLS");
+		cout << "Please enter a number 1-4: ";
+		cout << endl;
+	}
+}
+
+void checkInv(string inv) //function to allow user to see what they have collected (TH)
+{
+	system("CLS");
+	cout << "You currently have: " << endl;
+}
+
+void healthStatus(int health) //function to allow user to see their current health status (TH)
+{
+	system("CLS");
+	cout << "You are currently at " << health << " out of 100." << endl;
+}
+
+void exit(string goodbye) //function that allows user to exit (TH)
+{
+	system("CLS");
+	cout << "Thanks for playing. Goodbye!" << endl;
+}
+
+void admin(string password) //function that allows admin to pull up map *password protected- passoword: dungeon (TH)
+{
+	system("CLS");
+	cout << "Enter password (case sensitive): ";
+	cin >> password;
+
+	if (password == "dungeon")
+	{
+		system("CLS");
+		cout << "Welcome, administrator." << endl;
+	}
+
+	else
+	{
+		system("CLS");
+		cout << "Please enter correct password: ";
+	}
+}
+
+//////The previous functions were codeded by Tanness Headrick////////
+///////////////////////////////////////////////////////////////////////
+
+
+
+
+
+///////////////////////////////
+// Hannah started coding here//
+///////////////////////////////
 
 void basicGraphicSetUp()
 {																						// cursor hiding and title setting from these sources:
 																						// https://stackoverflow.com/questions/20020746/failed-to-hide-the-cursor-in-console, https://docs.microsoft.com/en-us/windows/console/setconsoletitle, https://stackoverflow.com/questions/743697/what-is-the-exact-definition-of-instance-variable, https://stackoverflow.com/questions/13219182/set-console-title-in-c-using-a-string
 	CONSOLE_CURSOR_INFO CURSORINFO;														// create a pointer-like name to access the console_cursor_info struct
-	CURSORINFO.dwSize = 1;																
+	CURSORINFO.dwSize = 1;
 	CURSORINFO.bVisible = FALSE;														// changes the visibility instance of the cursor to false
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CURSORINFO);					// sends the modified instance in a function to modify the struct
 																						// this, therefore, makes the cursor invisible.
@@ -60,7 +124,7 @@ void basicGraphicSetUp()
 
 void basicPrintGraphic(string person[], string floorCeiling)
 {
-																						
+
 	int choice = 0;																		// menu choice; (Hannah edited: make sure you initialize a variable before you send it to a function.)
 																						/////////////////////////////////////
 																						// This block was coded by Tanness//
@@ -84,7 +148,7 @@ void basicPrintGraphic(string person[], string floorCeiling)
 
 void darkMagicianPrint(string darkMagician[], string person[])
 {																						////////////////////////
-	                                                                                    // The process to print the dark magician is different from the others.
+																						// The process to print the dark magician is different from the others.
 																						// Since the magician is 8 parts long, while the person is 6, the first 2 parts
 																						// must be printed seperately.
 																						///////////////////////
@@ -108,7 +172,7 @@ void darkMagicianPrint(string darkMagician[], string person[])
 			cout << "\t\t\t" << "||";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow again, print magician's face
 			cout << darkMagician[i] << endl;
-			
+
 			personCounter++;
 		}
 		else																				// when printing the rest of the magician (the robe)
@@ -166,7 +230,7 @@ void slimePrint(string slime[], string person[])										/////////////////////
 }
 
 
-void monsterPrintGraphic(string floorCeiling, int monsterIndicate, string person[], string slime[], string goblin[], string dM[]) 			
+void monsterPrintGraphic(string floorCeiling, int monsterIndicate, string person[], string slime[], string goblin[], string dM[])
 {// the organized function to print a monster encounter situation
 
 	cout << floorCeiling;
@@ -191,12 +255,20 @@ void monsterPrintGraphic(string floorCeiling, int monsterIndicate, string person
 ////////////////////////////////////////////////////////////
 
 int main()
-{																																									
+{
 	string person[] = { "   @","   |","---|---","   |"," // \\\\","//   \\\\" };		// the array for the person character on the screen
 	string slime[] = { "","  /\\  "," /. .\\ ","| \\_/ |","|     |","\\_____/ " };			// the array for a low level slime
 	string goblin[] = { "-------","|-. .-|","| --- |","-|   |-"," |___|", " |   | " };  // the array for a mid level goblin
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
+
+	string name; //the string for the name of the player (TH)
+	int choice = 0; //the choice the player makes for the main menu (TH)
+	int movement = 0; //where the player decides to move (TH)
+	string inv; //when the player chooses to view the inventory (TH)
+	int health = 0; //when the player chooses to view the health meter (TH)
+	string goodbye; //when the player chooses to end the game (TH)
+	string password; //when the administrator option is chosen- they will be asked to enter a password (TH)
 
 	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
@@ -207,43 +279,84 @@ int main()
 																							//						    ^
 																							//						  START
 	double coord = 0.0;
-	
+
 	int monsterIndicate = 0;															// will help the system accord depending on which monster appears
 																						// this will be used when setting up the random coordinate system
 																						// 1 = slime, 2 = goblin, 3 = dark magician
 
 	double scale = 0.1;																	// helps correct coordinate rounding errors							
 
-	
 
-	//	Hannah here! this is for the person who's going to make the coordinate system. I have already made the first level array above.
-	//  I have decided to use decimals for the coordinates, and the coordiantes read as (Xpos.Ypos). it seems complicated, but it makes coding
-	//  the logic for it much easier. The level array will contain coordinates that the player CAN go on. 
-	//
-	//	The coord variable at each start of the level will be reseted to the start point of the leave. When the player wants to go up or down,
-	//  you will change the variable by a tenth (.1). When they want to go right or left, you will change it by an integer (1).
-	//  It may seem jarring to code, but think of it is that we're simply making sure the player is on path. If the player tries to go off
-	//  it would be wise to negate their "move" that they tried to make. You might want to do this with a copy variable.
-	//
-	//	If you have trouble with certain coordinates not rounding up correctly, use this code to fix those parts of the array:
-	//	coordinatelevel[thenumbernotworking] = floor(coordinatelevel[#] / scale + 0.5) * scale; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
-	//  
-	//  For now, just make a basic level function, where if the player reaches the end, it only prints something like "good job".
-	//  If you have any questions about what to do, ask me either in email or person. When you get this done, we can move onto dead ends,
-	//  monster placement, and multiple levels. Also, don't forget to mark in the comments when you code that it's your code.
+
+																						//	Hannah here! this is for the person who's going to make the coordinate system. I have already made the first level array above.
+																						//  I have decided to use decimals for the coordinates, and the coordiantes read as (Xpos.Ypos). it seems complicated, but it makes coding
+																						//  the logic for it much easier. The level array will contain coordinates that the player CAN go on. 
+																						//
+																						//	The coord variable at each start of the level will be reseted to the start point of the leave. When the player wants to go up or down,
+																						//  you will change the variable by a tenth (.1). When they want to go right or left, you will change it by an integer (1).
+																						//  It may seem jarring to code, but think of it is that we're simply making sure the player is on path. If the player tries to go off
+																						//  it would be wise to negate their "move" that they tried to make. You might want to do this with a copy variable.
+																						//
+																						//	If you have trouble with certain coordinates not rounding up correctly, use this code to fix those parts of the array:
+																						//	coordinatelevel[thenumbernotworking] = floor(coordinatelevel[#] / scale + 0.5) * scale; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+																						//  
+																						//  For now, just make a basic level function, where if the player reaches the end, it only prints something like "good job".
+																						//  If you have any questions about what to do, ask me either in email or person. When you get this done, we can move onto dead ends,
+																						//  monster placement, and multiple levels. Also, don't forget to mark in the comments when you code that it's your code.
 
 	basicGraphicSetUp();
 	basicPrintGraphic(person, floorCeiling);
-	
 
-	
-																						///////////////////////////////
-																						// Hannah stopped coding here//
-																						///////////////////////////////
-																						
+
+
+	///////////////////////////////
+	// Hannah stopped coding here//
+	///////////////////////////////
+
+	///////////////////////////////////////////////////////////////////////
+	//////The following menu was codeded by Tanness Headrick////////
+
+	greeting(name); //function that greets user
+	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
+	cout << "1. Move" << endl;
+	cout << "2. Check Inventory" << endl;
+	cout << "3. Check Health" << endl;
+	cout << "4. Exit Game" << endl;
+	cout << "9. Administrator Controls" << endl;
+	cout << endl;
+	cout << "Enter selection: ";
+	cin >> choice;
+
+	if (choice == 1)
+	{
+		move(movement); //allows user to move
+	}
+
+	else if (choice == 2)
+	{
+		checkInv(inv); //allows user to check inventory
+	}
+
+	else if (choice == 3)
+	{
+		healthStatus(health); //allows user to check health
+	}
+
+	else if (choice == 4)
+	{
+		exit(goodbye); //allows user to exit
+	}
+
+	else if (choice == 9)
+	{
+		admin(password); //allows admin to access maps *with password
+	}
+
+	//////The previous menu was codeded by Tanness Headrick////////
+	///////////////////////////////////////////////////////////////////////
 
 
 	system("pause");
-    return 0;
+	return 0;
 }
 
