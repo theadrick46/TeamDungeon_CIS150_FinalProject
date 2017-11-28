@@ -437,7 +437,16 @@ int main()
 	// Hannah stopped coding here//
 	///////////////////////////////
 
-	
+	//turn main menu into switch
+	//health / person / monsters variables
+	//attack / person / monsters variables
+	//attack through loops
+	//finish inventory loops and variables
+	//work on the admin loops and variables
+	//hardcoded enemies
+	//hardcoded dead ends
+	//end game message
+	//small graphic funcs
 
 	system("pause");
 	return 0;
