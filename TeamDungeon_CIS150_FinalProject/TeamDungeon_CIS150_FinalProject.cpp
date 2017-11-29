@@ -228,7 +228,7 @@ void move()															///////////////////////////////
 
 
 
-void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by TH)																		
+void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by KP)																		
 {
 	cout << "\n";
 	cout << "Which direction would you like to go?" << endl; 
@@ -539,6 +539,9 @@ int main()
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
 	
+	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
+
+
 	int levelSizes[5] = { 11, 36, 22, 0, 0 };												// the number of coordinates in each level
 	int levelCounter = 0;																	// which level the player is on
 	
@@ -546,10 +549,26 @@ int main()
 								  11, 11,
 								  11, 11 };
 
+	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (not finished)
+								3.3, 0.6, -1
+								- 1, -1, -1,
+								-1, -1, -1,
+								-1, -1, -1 };
+
+	double goblinCoords[5][3] = { -1, -1, -1,												// not finished
+								  -1, -1, -1,
+								  -1, -1, -1,
+								  -1, -1, -1,
+								  -1, -1, -1 };
+
+	double darkMagicianCoords[3][2] =  {-1, -1,												
+										-1, -1,
+										-1, -1 };
+
 	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //	Level  1			  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
 																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
-																							//          || != || == || == || == || ==|| =! ||
+																							//          || != || == || == || == ||[] || =! ||
 																							//			||xxx || xxx|| == || xxx|| ==||xxxx||
 																							//			||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||
 																							//						    ^
@@ -558,17 +577,21 @@ int main()
 	double coordinatelevel2[36] = { 0.0,1.0,2.0,3.0,4.0,0.1,1.1,2.1,3.1,4.1,				//	Level 2   START
 									0.2,1.2,2.2,3.2,4.2,0.3,1.3,2.3,3.3,4.3,				//		    	||
 									0.4,1.4,2.4,3.4,4.4,0.5,1.5,2.5,3.5,4.7,				//			 || 0.0|| == || == || == || == ||
-									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || == ||
-																							//			 || == || == || == || == || == ||	
-																							//			 || == || == || == || == || == ||
-																							//			 || == || == || == || == || == ||
+									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || P ||
+																							//			 ||-[]-|| == || == || == || == ||	
+																							//			 || == || == || == || [] || == ||
+																							//			 || == || == || W  || == || == ||
 																							//			 || == || == || == || == || 4.5|| < FIN
-																							//			 || == ||xxxx|| == ||xxxx||xxxx||
-																							//			 || != ||xxxx|| == || == || =! ||
+																							//			 || [] ||xxxx|| == ||xxxx||xxxx||
+																							//			 || != ||xxxx|| == || A  || =! ||
 																							//
 	double coordinatelevel3[22] = { 0.0,1.0,2.0,1.1,2.1,3.1,2.2,3.2,2.3,3.3,				// Level 3	 START
 								   1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,					//			  ||
 								   2.8,0.4 };												//			|| 0.0|| == || == ||xxxx||
+																							//          ||xxxx||
+																							//
+																							//
+																							//
 																							//
 																							//
 	basicGraphicSetUp();
