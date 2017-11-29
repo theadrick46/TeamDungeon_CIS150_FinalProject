@@ -9,6 +9,7 @@
 //		Hannah Seccia (HS)
 //		Tanness Headrick (TH)
 //		Kassie Polley (KP)
+//////////////////////////////////////////////
 
 << << << < HEAD
 	== == == =
@@ -28,11 +29,17 @@ int choice = 0;																		//the choice the player makes for the main menu
 double coord = 0.0;																	// which coordinate of the level the player is on (HS)
 double coordCopy = 0.0;
 
-int monsterIndicate = 1;															// will help the system accord depending on which monster appears
+int monsterIndicate = 3;															// will help the system accord depending on which monster appears  (HS)
 																					// this will be used when setting up the random coordinate system
 																					// 1 = slime, 2 = goblin, 3 = dark magician
 
+bool rightway = false;																// if user is going the right way 
 
+int positionDetermine = 0;															// makes sure the starting coordinate resets properly at the start of each level (HS)
+
+
+bool gameLoop = true;																// created by HS
+string fillerCin = "";																// a filler char to "pause" the screen until keyboard input is entered
 
 ///////////////////////////////////////////////////////////////////////
 //////The following functions were codeded by Tanness Headrick////////
@@ -48,53 +55,117 @@ void greeting(string name) //function to start game- greets user (TH)
 	cout << "" << endl;
 }
 
+/////////////////////////////////////////////////////
+////////// Coded by Hannah /////////////////////////
+////////////////////////////////////////////////////
+
+void screenPseudoPause()
+{
+	cout << "Press enter to continue...\n";
+	cin.ignore();
+	getline(cin, fillerCin);
+}
+
+
+void basicPrintGraphic(string person[], string floorCeiling)
+{
+
+
+	cout << floorCeiling;																// prints the ceiling
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);						// changes the color on the command prompt to yellow for the person
+																						// parameters are a handle to the console screen buffer, and an attribute value
+																						// (sources: http://www.cplusplus.com/forum/beginner/77879/,  https://docs.microsoft.com/en-us/windows/console/setconsoletextattribute)
+
+	for (int i = 0; i < 6; i++)															// print the whole array vertically
+	{
+		cout << person[i] << endl;
+	}
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);						// changes the color back to default
+
+	cout << floorCeiling;
+}
+
 ///////////////////////////////////////////////////////////////////
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void moveFinalize(int movement, double coordinatelevel[])						//// Determines whether the movement is valid and proceeds (HS)
-{
-	bool rightway = false;
+void correctCoordRoundup(double coordinatelevel[])										// Hannah coded this function		
 
-	for (int count = 0; count < 11; count++)									// loops through the valid coordinates on the level							
+																						//since lots of doubles in the array weren't rounding up correctly, I figured
+																						//out a way to fix it. It's long, but wihtout it the game won't work.
+{
+	coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+	coordinatelevel[10] = floor(coordinatelevel[10] / 0.1 + 0.5) * 0.1; // 
+	coordinatelevel[2] = floor(coordinatelevel[2] / 0.1 + 0.5) * 0.1; // 
+	coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; // 
+	coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
+}
+
+void startPositionDetermineCheck(double coordinatelevel[])
+{
+	if (positionDetermine == 0)
+	{
+		coord = coordinatelevel[0];
+	}
+}
+void moveDisplay(int movement)
+{
+																				///////////////////////////////
+																				//This block coded by Kassie///
+																				///////////////////////////////
+	gameLoop = false;
+
+	if (movement == 1 && rightway)												// rightway was added by HS	
+	{
+		cout << "You haved moved right." << endl;
+	}
+	else if (movement == 2 && rightway)
+	{
+		cout << "You moved left." << endl;
+	}
+	else if (movement == 3 && rightway)
+	{
+		cout << "You moved forward." << endl;
+	}
+	else if (movement == 4 && rightway)
+	{
+		cout << "You moved down." << endl;										///////////////////////
+	}																			///////////////////////
+
+	if (rightway == false)										// NOT DYNAMIC; FIXING LATER
+	{
+		cout << "Your direction is blocked by a wall.\n";
+	}
+
+	gameLoop = true;
+}
+
+void moveFinalize(int movement, double coordinatelevel[], int levelSizes[], int &levelCounter) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
+{
+	gameLoop = false;
+
+	
+	coordCopy = coord;
+
+	for (int count = 0; count < 11; count++)				// loops through the valid coordinates on the level							
 	{
 		if (coordCopy == coordinatelevel[count])
 		{
 			coord = coordCopy;													// if coordinate is valid, paste the copy into the original		
 			rightway = true;
+			positionDetermine++;
 		}
 	}
-																				///////////////////////////////
-																				//This block coded by Kassie///
-																				///////////////////////////////
-	if (choice == 1 && rightway)												// rightway was added by HS	
-	{
-		cout << "You haved moved forward." << endl;
-	}
-	else if (choice == 2 && rightway)
-	{ 
-		cout << "You moved left." << endl;
-	}
-	else if (choice == 3 && rightway)
-	{
-		cout << "You moved right." << endl;
-	}
-	else if (choice == 4 && rightway)
-	{
-		cout << "You moved down." << endl;										///////////////////////
-	}																			///////////////////////
+	
+	
 
-
-	if (rightway == false && coord != 2.4)								// NOT DYNAMIC; FIXING LATER
-	{
-		cout << "You have hit a wall\n";
-	}
-
-	if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
+	//if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
 	{
 		//nextLevel();
 	}
 
+	gameLoop = true;
 
 }
 
@@ -103,30 +174,31 @@ void move(int movement)												///////////////////////////////
 {																	// Hannah coded This Function//
 	if (movement == 1)												//////////////////////////////
 	{
-		coord -= 1;
+		coordCopy -= 1;
 	}
 
 	if (movement == 2)
 	{
-		coord += 1;
+		coordCopy += 1;
 	}
 
 	if (movement == 3)
 	{
-		coord += 0.1;
+		coordCopy += 0.1;
 	}
 
 	if (movement == 4)
 	{
-		coord -= 0.1;
+		coordCopy -= 0.1;
 	}
 }
 
 
 
 
-void askMove(int movement, double coordinatelevel[])		//function to get user input for movement (Most of the func coded by TH)																		
+void askMove(int movement, double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by TH)																		
 {
+	cout << "\n";
 	cout << "Which direction would you like to go?" << endl; 
 	cout << "1. Right" << endl;
 	cout << "2. Left" << endl;
@@ -134,10 +206,13 @@ void askMove(int movement, double coordinatelevel[])		//function to get user inp
 	cout << "4. Down" << endl;
 	cin >> movement;
 
-	move(movement);								//this sends the coordinate copy to be moved //// (HS)
-	moveFinalize(movement, coordinatelevel);
+	correctCoordRoundup(coordinatelevel);
+	startPositionDetermineCheck(coordinatelevel);
+	move(movement);									//this sends the coordinate copy to be moved //// (HS)
+	moveFinalize(movement, coordinatelevel, levelSizes, levelCounter);
 
 }
+
 
 
 //////////////////////////////////////
@@ -145,25 +220,34 @@ void askMove(int movement, double coordinatelevel[])		//function to get user inp
 //////////////////////////////////////
 
 void checkInv(string inv) //function to allow user to see what they have collected (TH)
-{
-	system("CLS");
+{																				
+																			//////////////////////////////////////
+	gameLoop = false;														// gameloops and pseudo added by HS //
+	system("CLS");															//////////////////////////////////////
 	cout << "You currently have: " << endl;
+	screenPseudoPause();
+	gameLoop = true;
 }
 
 void healthStatus(int health) //function to allow user to see their current health status (TH)
 {
+	gameLoop = false;
 	system("CLS");
 	cout << "You are currently at " << health << " out of 20." << endl;		// I changed the health to 20 //// Hannah
+	screenPseudoPause();
+	gameLoop = true;
 }
 
-void exit(string goodbye) //function that allows user to exit (TH)
+void exit() //function that allows user to exit (TH)	////HS removed the string parameter
 {
+	gameLoop = false;
 	system("CLS");
 	cout << "Thanks for playing. Goodbye!" << endl;
 }
 
 void admin(string password) //function that allows admin to pull up map *password protected- passoword: dungeon (TH)
 {
+	gameLoop = false;
 	system("CLS");
 	cout << "Enter password (case sensitive): ";
 	cin >> password;
@@ -180,10 +264,11 @@ void admin(string password) //function that allows admin to pull up map *passwor
 		cout << "Please enter correct password: ";
 	}
 }
-
-void mainGameMenu(int choice, int movement, string inv, int health, string goodbye, string password, double coordinatelevel[])
+																											
+void mainGameMenu(int movement, string inv, int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter) 
 {
-	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
+
+	cout << "What would you like to do?" << endl;//main menu         
 	cout << "1. Move" << endl;
 	cout << "2. Check Inventory" << endl;
 	cout << "3. Check Health" << endl;
@@ -196,7 +281,7 @@ void mainGameMenu(int choice, int movement, string inv, int health, string goodb
 
 	if (choice == 1)
 	{
-		askMove(movement, coordinatelevel); //allows user to move
+		askMove(movement, coordinatelevel, levelSizes, levelCounter); //allows user to move
 	}
 
 	else if (choice == 2)
@@ -211,7 +296,7 @@ void mainGameMenu(int choice, int movement, string inv, int health, string goodb
 
 	else if (choice == 4)
 	{
-		exit(goodbye); //allows user to exit
+		exit();
 	}
 
 	else if (choice == 9)
@@ -234,7 +319,7 @@ void mainGameMenu(int choice, int movement, string inv, int health, string goodb
 
 
 
-void basicGraphicSetUp(string name)
+void basicGraphicSetUp()
 {																						// cursor hiding and title setting from these sources:
 																						// https://stackoverflow.com/questions/20020746/failed-to-hide-the-cursor-in-console, https://docs.microsoft.com/en-us/windows/console/setconsoletitle, https://stackoverflow.com/questions/743697/what-is-the-exact-definition-of-instance-variable, https://stackoverflow.com/questions/13219182/set-console-title-in-c-using-a-string
 	CONSOLE_CURSOR_INFO CURSORINFO;														// create a pointer-like name to access the console_cursor_info struct
@@ -246,31 +331,14 @@ void basicGraphicSetUp(string name)
 	SetConsoleTitle(_T("Dungeons and Goblins"));										// this functions changes the name of the console box
 																						// (_T macro makes character set neutral with Unicode or ANSI or ASCII)
 
-	greeting(name); //function that greets user
+	
 }
 
 //////////////////////////////////////////////////////////////
 /// START OF GRAPHIC FUNCTIONS///////////////////////////////
 ////////////////////////////////////////////////////////////
 
-void basicPrintGraphic(string person[], string floorCeiling)
-{
 
-														
-	cout << floorCeiling;																// prints the ceiling
-
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);						// changes the color on the command prompt to yellow for the person
-																						// parameters are a handle to the console screen buffer, and an attribute value
-																						// (sources: http://www.cplusplus.com/forum/beginner/77879/,  https://docs.microsoft.com/en-us/windows/console/setconsoletextattribute)
-
-	for (int i = 0; i < 6; i++)															// print the whole array vertically
-	{
-		cout << person[i] << endl;
-	}
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);						// changes the color back to default
-
-	cout << floorCeiling;
-}
 
 void darkMagicianPrint(string darkMagician[], string person[])
 {																						////////////////////////
@@ -376,6 +444,19 @@ void monsterPrintGraphic(string floorCeiling, string person[], string slime[], s
 
 	cout << floorCeiling;
 }
+
+void printDetermine(string floorCeiling, string person[], string slime[], string goblin[], string darkMagician[])
+{
+	if (monsterIndicate != 0)
+	{
+		monsterPrintGraphic(floorCeiling, person, slime, goblin, darkMagician);
+	}
+	else
+	{
+		basicPrintGraphic(person, floorCeiling);
+	}
+}
+
 //////////////////////////////////////////////////////////////
 /// END OF GRAPHIC FUNCTIONS/////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -387,17 +468,27 @@ void monsterPrintGraphic(string floorCeiling, string person[], string slime[], s
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling )
+void greetingScreen(string name, string person[], string floorCeiling)
 {
-	if (monsterIndicate != 0)
-	{
-		monsterPrintGraphic(floorCeiling, person, slime, goblin, darkMagician);
-	}
-	else
-	{
-		basicPrintGraphic(person, floorCeiling);
-	}
+	greeting(name);								//function that greets user
+	basicPrintGraphic(person, floorCeiling);
+	screenPseudoPause();						// the gretting screen will "pause" until the user presses a key
+}
 
+
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int movement, int health, string password, string inv, double coordinatelevel[], int levelSizes[], int &levelCounter)
+{
+	while (gameLoop)
+	{
+		system("cls");
+		if (positionDetermine != 0)
+		{
+			moveDisplay(movement);
+		}
+		printDetermine(floorCeiling, person, slime, goblin, darkMagician);
+		mainGameMenu(movement, inv, health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter);
+	}
+	
 }
 
 int main()
@@ -408,13 +499,17 @@ int main()
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
 
-	string name; //the string for the name of the player (TH)
-	string inv; //when the player chooses to view the inventory (TH)
-	int health = 0; //when the player chooses to view the health meter (TH)
-	int movement = 0; //represents where the player decides to move (TH)
-					  //1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
-	string goodbye; //when the player chooses to end the game (TH)
-	string password; //when the administrator option is chosen- they will be asked to enter a password (TH)
+	string name;		//the string for the name of the player (TH)
+	string inv;			//when the player chooses to view the inventory (TH)
+	int health = 0;		//when the player chooses to view the health meter (TH)
+	int movement = 0;	//represents where the player decides to move (TH)
+					    //1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
+	string goodbye;		//when the player chooses to end the game (TH)
+	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
+	
+	int levelSizes[5] = { 11, 0, 0, 0, 0 };													// the number of coordinates in each level
+	int levelCounter = 0;																	// which level the player is on
+	
 
 	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
@@ -425,11 +520,12 @@ int main()
 																							//						    ^
 																							//						  START
 
-	double scale = 0.1;																	// helps correct coordinate rounding errors							
+							
 
 
-	basicGraphicSetUp(name);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling);
+	basicGraphicSetUp();
+	greetingScreen(name, person, floorCeiling);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, movement, health, password, inv, coordinatelevel, levelSizes, levelCounter);
 
 
 
@@ -446,7 +542,7 @@ int main()
 	//hardcoded enemies
 	//hardcoded dead ends
 	//end game message
-	//small graphic funcs
+	//small graphic funcs3
 
 	system("pause");
 	return 0;
