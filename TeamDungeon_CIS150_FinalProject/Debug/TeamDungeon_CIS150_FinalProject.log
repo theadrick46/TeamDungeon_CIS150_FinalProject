@@ -1,3 +1,2 @@
 ﻿  TeamDungeon_CIS150_FinalProject.cpp
-  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.exe
-  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\h.seccia\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb (Partial PDB)
+c:\users\h.seccia\documents\github\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(559): error C2059: syntax error: ';'

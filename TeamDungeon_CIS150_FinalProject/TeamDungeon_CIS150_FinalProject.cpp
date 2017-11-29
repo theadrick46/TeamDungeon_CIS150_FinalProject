@@ -9,6 +9,23 @@
 //		Hannah Seccia (HS)
 //		Tanness Headrick (TH)
 //		Kassie Polley (KP)
+//
+//MAP KEY:
+//		|| == || = allowed/open space
+//		||xxxx|| = forbidden space/a wall
+//		|| != || = dead end
+//
+//		|| W  || = weapon in this space (open)
+//		|| A  || = armor in this space (open)
+//		|| P  || = potion in this space (open)
+//
+//		|| [] || = slime in this space (open)
+//		||-[]-|| = goblin in this space (open)
+//		||****|| = dark magician in this space (open)
+//
+//		|| :) || = the treasure/end of the game 
+// (might add a boss later)
+//
 //////////////////////////////////////////////
 
 << << << < HEAD
@@ -40,6 +57,9 @@ int positionDetermine = 0;															// makes sure the starting coordinate r
 
 bool gameLoop = true;																// created by HS
 string fillerCin = "";																// a filler char to "pause" the screen until keyboard input is entered
+
+int movement = 0;																	//represents where the player decides to move (TH)
+																					//1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
 
 ///////////////////////////////////////////////////////////////////////
 //////The following functions were codeded by Tanness Headrick////////
@@ -107,9 +127,10 @@ void startPositionDetermineCheck(double coordinatelevel[])
 	if (positionDetermine == 0)
 	{
 		coord = coordinatelevel[0];
+		cout << coord << endl;
 	}
 }
-void moveDisplay(int movement)
+void moveDisplay()
 {
 																				///////////////////////////////
 																				//This block coded by Kassie///
@@ -118,47 +139,55 @@ void moveDisplay(int movement)
 
 	if (movement == 1 && rightway)												// rightway was added by HS	
 	{
-		cout << "You haved moved right." << endl;
+		cout << "You have moved right." << endl;
+		cout << "\n";
 	}
 	else if (movement == 2 && rightway)
 	{
-		cout << "You moved left." << endl;
+		cout << "You have moved left." << endl;
+		cout << "\n";
 	}
 	else if (movement == 3 && rightway)
 	{
-		cout << "You moved forward." << endl;
+		cout << "You have moved forward." << endl;
+		cout << "\n";
 	}
 	else if (movement == 4 && rightway)
 	{
-		cout << "You moved down." << endl;										///////////////////////
+		cout << "You have moved down." << endl;	
+		cout << "\n";															///////////////////////
 	}																			///////////////////////
 
 	if (rightway == false)										// NOT DYNAMIC; FIXING LATER
 	{
 		cout << "Your direction is blocked by a wall.\n";
+		cout << "\n";
 	}
 
 	gameLoop = true;
 }
 
-void moveFinalize(int movement, double coordinatelevel[], int levelSizes[], int &levelCounter) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
+void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
 {
 	gameLoop = false;
 
-	
-	coordCopy = coord;
 
-	for (int count = 0; count < 11; count++)				// loops through the valid coordinates on the level							
+	for (int count = 0; count < levelSizes[levelCounter]; count++)				// loops through the valid coordinates on the level							
 	{
 		if (coordCopy == coordinatelevel[count])
 		{
 			coord = coordCopy;													// if coordinate is valid, paste the copy into the original		
 			rightway = true;
 			positionDetermine++;
+			break;
+		}
+		else
+		{
+			rightway = false;
+			positionDetermine++;
 		}
 	}
-	
-	
+											
 
 	//if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
 	{
@@ -170,16 +199,19 @@ void moveFinalize(int movement, double coordinatelevel[], int levelSizes[], int 
 }
 
 
-void move(int movement)												///////////////////////////////
+void move()															///////////////////////////////
 {																	// Hannah coded This Function//
-	if (movement == 1)												//////////////////////////////
+																	///////////////////////////////
+	coordCopy = coord;
+
+	if (movement == 1)											
 	{
-		coordCopy -= 1;
+		coordCopy += 1;
 	}
 
 	if (movement == 2)
 	{
-		coordCopy += 1;
+		coordCopy -= 1;
 	}
 
 	if (movement == 3)
@@ -196,7 +228,7 @@ void move(int movement)												///////////////////////////////
 
 
 
-void askMove(int movement, double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by TH)																		
+void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by TH)																		
 {
 	cout << "\n";
 	cout << "Which direction would you like to go?" << endl; 
@@ -208,8 +240,8 @@ void askMove(int movement, double coordinatelevel[], int levelSizes[], int &leve
 
 	correctCoordRoundup(coordinatelevel);
 	startPositionDetermineCheck(coordinatelevel);
-	move(movement);									//this sends the coordinate copy to be moved //// (HS)
-	moveFinalize(movement, coordinatelevel, levelSizes, levelCounter);
+	move();													//this sends the coordinate copy to be added/subtracted to //// (HS)
+	moveFinalize(coordinatelevel, levelSizes, levelCounter);
 
 }
 
@@ -265,7 +297,7 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	}
 }
 																											
-void mainGameMenu(int movement, string inv, int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter) 
+void mainGameMenu(string inv, int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter) 
 {
 
 	cout << "What would you like to do?" << endl;//main menu         
@@ -281,7 +313,7 @@ void mainGameMenu(int movement, string inv, int health, string password, double 
 
 	if (choice == 1)
 	{
-		askMove(movement, coordinatelevel, levelSizes, levelCounter); //allows user to move
+		askMove(coordinatelevel, levelSizes, levelCounter); //allows user to move
 	}
 
 	else if (choice == 2)
@@ -476,17 +508,18 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int movement, int health, string password, string inv, double coordinatelevel[], int levelSizes[], int &levelCounter)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, string inv, double coordinatelevel[], int levelSizes[], int &levelCounter)
 {
 	while (gameLoop)
 	{
 		system("cls");
+		printDetermine(floorCeiling, person, slime, goblin, darkMagician);
 		if (positionDetermine != 0)
 		{
-			moveDisplay(movement);
+			moveDisplay();
 		}
-		printDetermine(floorCeiling, person, slime, goblin, darkMagician);
-		mainGameMenu(movement, inv, health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter);
+		mainGameMenu(inv, health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter);
+		
 	}
 	
 }
@@ -502,16 +535,18 @@ int main()
 	string name;		//the string for the name of the player (TH)
 	string inv;			//when the player chooses to view the inventory (TH)
 	int health = 0;		//when the player chooses to view the health meter (TH)
-	int movement = 0;	//represents where the player decides to move (TH)
-					    //1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
+	
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
 	
-	int levelSizes[5] = { 11, 0, 0, 0, 0 };													// the number of coordinates in each level
+	int levelSizes[5] = { 11, 36, 22, 0, 0 };												// the number of coordinates in each level
 	int levelCounter = 0;																	// which level the player is on
 	
+	double deadEndCoords[3][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
+								  11, 11,
+								  11, 11 };
 
-	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
+	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //	Level  1			  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
 																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
 																							//          || != || == || == || == || ==|| =! ||
@@ -519,13 +554,26 @@ int main()
 																							//			||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||
 																							//						    ^
 																							//						  START
-
-							
-
-
+																							//
+	double coordinatelevel2[36] = { 0.0,1.0,2.0,3.0,4.0,0.1,1.1,2.1,3.1,4.1,				//	Level 2   START
+									0.2,1.2,2.2,3.2,4.2,0.3,1.3,2.3,3.3,4.3,				//		    	||
+									0.4,1.4,2.4,3.4,4.4,0.5,1.5,2.5,3.5,4.7,				//			 || 0.0|| == || == || == || == ||
+									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || == ||
+																							//			 || == || == || == || == || == ||	
+																							//			 || == || == || == || == || == ||
+																							//			 || == || == || == || == || == ||
+																							//			 || == || == || == || == || 4.5|| < FIN
+																							//			 || == ||xxxx|| == ||xxxx||xxxx||
+																							//			 || != ||xxxx|| == || == || =! ||
+																							//
+	double coordinatelevel3[22] = { 0.0,1.0,2.0,1.1,2.1,3.1,2.2,3.2,2.3,3.3,				// Level 3	 START
+								   1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,					//			  ||
+								   2.8,0.4 };												//			|| 0.0|| == || == ||xxxx||
+																							//
+																							//
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, movement, health, password, inv, coordinatelevel, levelSizes, levelCounter);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, inv, coordinatelevel, levelSizes, levelCounter);
 
 
 
@@ -533,15 +581,19 @@ int main()
 	// Hannah stopped coding here//
 	///////////////////////////////
 
-	//turn main menu into switch
-	//health / person / monsters variables
-	//attack / person / monsters variables
+	//health / person / monsters variables --
+	//attack / person / monsters variables -- 
+
 	//attack through loops
-	//finish inventory loops and variables
-	//work on the admin loops and variables
+
+	//finish inventory loops and variables --
+
+	//work on the admin loops and variables --
 	//hardcoded enemies
-	//hardcoded dead ends
-	//end game message
+
+	//hardcoded dead ends -- 
+	//end game message --
+
 	//small graphic funcs3
 
 	system("pause");
