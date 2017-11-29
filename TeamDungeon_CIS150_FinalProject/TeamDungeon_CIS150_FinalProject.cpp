@@ -599,6 +599,18 @@ int main()
 	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, inv, coordinatelevel, levelSizes, levelCounter);
 
 
+	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor"};  // coded by KP
+
+	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword"};  // coded by KP
+
+	int potion = 0; // coded by KP
+	int weaponCounter = 0;  // coded by KP
+	int armorCounter = 0;  // coded by KP
+	
+	
+	cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
+	cout << "Thank you for playing Dungeons & Goblins!" << endl; // end game message KP
+
 
 	///////////////////////////////
 	// Hannah stopped coding here//
