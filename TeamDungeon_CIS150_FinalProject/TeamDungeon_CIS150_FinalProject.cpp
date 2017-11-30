@@ -263,14 +263,29 @@ void checkInv(int weaponCounter, string weapon[])							//function to allow user
 	system("CLS");															//////////////////////////////////////
 	cout << "You currently have: " << endl;   
 	
+<<<<<<< HEAD
 	if (weaponCounter == -1)												/////////////////////////////////////////
 	{																		//////  This block was coded by Kassie
+=======
+	if (weaponCounter == -1)   // Weapon Counter & Armor Counters coded by KP
+	{
+>>>>>>> 6e2cd003d98932070d33fe0663e25eb512cd7ef5
 		cout <<"You have no weapons." << endl;
 	}
 	else cout << "The" << weapon[weaponCounter] << endl;
 	
+	if (armorCounter == -1)
+	{
+		cout << "You have no armor." << endl;
+	}
+	else cout << "You have " << armor[armorCounter] << endl;  
+	}
+	cout << “You have  ” << potion << “ potions” << endl;
+
 	screenPseudoPause();
 	gameLoop = true;
+	
+	
 }
 
 void healthStatus(int health) //function to allow user to see their current health status (TH)
@@ -354,13 +369,9 @@ void mainGameMenu(int health, string password, double coordinatelevel[], string 
 ///////////////////////////////////////////////////////////////////////
 
 
-
-
-
 ///////////////////////////////
 // Hannah started coding here//
 ///////////////////////////////
-
 
 
 void basicGraphicSetUp()
@@ -375,7 +386,6 @@ void basicGraphicSetUp()
 	SetConsoleTitle(_T("Dungeons and Goblins"));										// this functions changes the name of the console box
 																						// (_T macro makes character set neutral with Unicode or ANSI or ASCII)
 
-	
 }
 
 //////////////////////////////////////////////////////////////
