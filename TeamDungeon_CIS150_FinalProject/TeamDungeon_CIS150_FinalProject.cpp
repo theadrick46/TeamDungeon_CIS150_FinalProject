@@ -268,8 +268,16 @@ void checkInv(int weaponCounter, string weapon[])							//function to allow user
 		cout <<"You have no weapons." << endl;
 	}
 	else cout << "The" << weapon[weaponCounter] << endl;
-	
-	screenPseudoPause();
+
+	if (armorCounter == -1)
+	{
+		cout << "You have no armor." << endl;
+	}
+	else cout << "You have " << armor[armorCounter] << endl;
+
+	cout << "You have " << potion << " potion(s)" << endl;
+																		//////////////////////////////////
+	screenPseudoPause();	
 	gameLoop = true;
 }
 
@@ -550,14 +558,14 @@ int main()
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
 
-	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor" };  ///////// These blocks of variables were made by Kassie
+	string armor[] = { "Studded Leather Armor", "Rune Armor", "Dragonbone Armor" };	///////// These blocks of variables were made by Kassie
 
 	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword" };
 
 	int potion = 0;
-	int weaponCounter = -1;													// these variables are -1 because 0 would equal the first weapon in the array
+	int weaponCounter = -1;														   // these variables are -1 because 0 would equal the first weapon in the array
 
-	int armorCounter = -1;													///////////
+	int armorCounter = -1;														  ///////////
 	
 
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
