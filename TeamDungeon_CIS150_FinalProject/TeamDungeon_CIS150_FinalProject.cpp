@@ -251,12 +251,19 @@ void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//f
 //Tanness started coding again here	//
 //////////////////////////////////////
 
-void checkInv(string inv) //function to allow user to see what they have collected (TH)
+void checkInv() //function to allow user to see what they have collected (TH)
 {																				
 																			//////////////////////////////////////
 	gameLoop = false;														// gameloops and pseudo added by HS //
 	system("CLS");															//////////////////////////////////////
-	cout << "You currently have: " << endl;
+	cout << "You currently have: " << endl;   
+	
+	if (weaponCounter == -1)
+	{
+		cout <<"You have no weapons." << endl;
+	}
+	else cout << "You have " << weapon[weaponCounter] << endl;
+	
 	screenPseudoPause();
 	gameLoop = true;
 }
@@ -533,7 +540,6 @@ int main()
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
 
 	string name;		//the string for the name of the player (TH)
-	string inv;			//when the player chooses to view the inventory (TH)
 	int health = 0;		//when the player chooses to view the health meter (TH)
 	
 	string goodbye;		//when the player chooses to end the game (TH)
@@ -609,8 +615,8 @@ int main()
 	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword"};  
 
 	int potion = 0; 
-	int weaponCounter = 0; 
-	int armorCounter = 0;													///////////
+	int weaponCounter = -1; 
+	int armorCounter = -1;													///////////
 	
 	
 	//cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
