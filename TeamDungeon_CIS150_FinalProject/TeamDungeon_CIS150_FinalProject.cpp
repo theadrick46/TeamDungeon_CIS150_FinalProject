@@ -21,7 +21,7 @@
 //
 //		|| [] || = slime in this space (open)
 //		||-[]-|| = goblin in this space (open)
-//		||****|| = dark magician in this space (open)
+//		|| ** || = dark magician in this space (open)
 //
 //		|| :) || = the treasure/end of the game 
 // (might add a boss later)
@@ -50,7 +50,7 @@ int monsterIndicate = 3;															// will help the system accord depending 
 																					// this will be used when setting up the random coordinate system
 																					// 1 = slime, 2 = goblin, 3 = dark magician
 
-bool rightway = false;																// if user is going the right way 
+bool rightway = false;																// if user is going the right way (HS)
 
 int positionDetermine = 0;															// makes sure the starting coordinate resets properly at the start of each level (HS)
 
@@ -130,6 +130,11 @@ void startPositionDetermineCheck(double coordinatelevel[])
 		cout << coord << endl;
 	}
 }
+
+///////////////////////////////////////////////////////////////////
+/////////////// END OF CODED BY HANNAH ///////////////////////////
+//////////////////////////////////////////////////////////////////
+
 void moveDisplay()
 {
 																				///////////////////////////////
@@ -251,18 +256,18 @@ void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//f
 //Tanness started coding again here	//
 //////////////////////////////////////
 
-void checkInv() //function to allow user to see what they have collected (TH)
+void checkInv(int weaponCounter, string weapon[])							//function to allow user to see what they have collected (TH)
 {																				
 																			//////////////////////////////////////
 	gameLoop = false;														// gameloops and pseudo added by HS //
 	system("CLS");															//////////////////////////////////////
 	cout << "You currently have: " << endl;   
 	
-	if (weaponCounter == -1)
-	{
+	if (weaponCounter == -1)												/////////////////////////////////////////
+	{																		//////  This block was coded by Kassie
 		cout <<"You have no weapons." << endl;
 	}
-	else cout << "You have " << weapon[weaponCounter] << endl;
+	else cout << "The" << weapon[weaponCounter] << endl;
 	
 	screenPseudoPause();
 	gameLoop = true;
@@ -304,7 +309,7 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	}
 }
 																											
-void mainGameMenu(string inv, int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter) 
+void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
 {
 
 	cout << "What would you like to do?" << endl;//main menu         
@@ -325,7 +330,7 @@ void mainGameMenu(string inv, int health, string password, double coordinateleve
 
 	else if (choice == 2)
 	{
-		checkInv(inv); //allows user to check inventory
+		checkInv(weaponCounter, weapon); //allows user to check inventory
 	}
 
 	else if (choice == 3)
@@ -515,7 +520,7 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, string inv, double coordinatelevel[], int levelSizes[], int &levelCounter)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter)
 {
 	while (gameLoop)
 	{
@@ -525,7 +530,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
-		mainGameMenu(inv, health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter);
+		mainGameMenu(health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter);
 		
 	}
 	
@@ -533,7 +538,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 
 int main()
 {
-	string person[] = { "   @","   |","---|---","   |"," // \\\\","//   \\\\" };		// the array for the person character on the screen
+	string person[] = { "   @","   |","---|---","   |"," // \\\\","//   \\\\" };		// the array for the person character on the screen	/////////// All strings for characters coded by HS
 	string slime[] = { "","  /\\  "," /. .\\ ","| \\_/ |","|     |","\\_____/ " };			// the array for a low level slime
 	string goblin[] = { "-------","|-. .-|","| --- |","-|   |-"," |___|", " |   | " };  // the array for a mid level goblin
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
@@ -544,32 +549,51 @@ int main()
 	
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
+
+	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor" };  ///////// These blocks of variables were made by Kassie
+
+	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword" };
+
+	int potion = 0;
+	int weaponCounter = -1;													// these variables are -1 because 0 would equal the first weapon in the array
+
+	int armorCounter = -1;													///////////
 	
+
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
 
 
-	int levelSizes[5] = { 11, 36, 22, 0, 0 };												// the number of coordinates in each level
+	int levelSizes[5] = { 11, 36, 22, 48, 44 };												// the number of coordinates in each level
 	int levelCounter = 0;																	// which level the player is on
 	
-	double deadEndCoords[3][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
+	double deadEndCoords[5][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
 								  11, 11,
 								  11, 11 };
 
-	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (not finished)
-								3.3, 0.6, -1
-								- 1, -1, -1,
-								-1, -1, -1,
-								-1, -1, -1 };
+	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (-1's when there is no coord for that specific monster)
+								3.3, 0.6, -1,
+								3.5, 2.7, -1,
+								5.1, 3.3, 6.8,
+								6.2, 3.2, 4.3 };
 
-	double goblinCoords[5][3] = { -1, -1, -1,												// not finished
-								  -1, -1, -1,
-								  -1, -1, -1,
-								  -1, -1, -1,
-								  -1, -1, -1 };
+	double goblinCoords[4][3] = { -1, -1, -1,											// arrays with less than 5 rows mean they are not present
+								  -1, -1, -1,											// on all levels (goblinCoords[4] means that goblins only
+								  -1, -1, -1 };											// start appearing on the last 4 levels)
 
 	double darkMagicianCoords[3][2] =  {-1, -1,												
 										-1, -1,
 										-1, -1 };
+
+	double weaponCoords[4][2] = { 2.4, -1,
+								 -1, -1,
+								 4.0,6.5,
+								 4.8, -1 };
+
+	double armorCoords[4] =	  { 3.7,1.1,2.3,2.8 };									  // armor and potions are only one per level, so they
+																					  // don't need to be 2D
+
+	double potionCoords[4] = { 4.1,2.5,-1,5.8 };
+
 
 	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //	Level  1			  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
@@ -583,7 +607,7 @@ int main()
 	double coordinatelevel2[36] = { 0.0,1.0,2.0,3.0,4.0,0.1,1.1,2.1,3.1,4.1,				//	Level 2   START
 									0.2,1.2,2.2,3.2,4.2,0.3,1.3,2.3,3.3,4.3,				//		    	||
 									0.4,1.4,2.4,3.4,4.4,0.5,1.5,2.5,3.5,4.7,				//			 || 0.0|| == || == || == || == ||
-									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || P ||
+									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || P  ||
 																							//			 ||-[]-|| == || == || == || == ||	
 																							//			 || == || == || == || [] || == ||
 																							//			 || == || == || W  || == || == ||
@@ -591,32 +615,52 @@ int main()
 																							//			 || [] ||xxxx|| == ||xxxx||xxxx||
 																							//			 || != ||xxxx|| == || A  || =! ||
 																							//
+																							//
 	double coordinatelevel3[22] = { 0.0,1.0,2.0,1.1,2.1,3.1,2.2,3.2,2.3,3.3,				// Level 3	 START
 								   1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,					//			  ||
 								   2.8,0.4 };												//			|| 0.0|| == || == ||xxxx||
-																							//          ||xxxx|| A  || == || == ||
+																							//          ||xxxx|| A  ||-[]-|| == ||
 																							//			||xxxx||xxxx|| == || == ||
+																							//			||xxxx||xxxx|| == ||-[]-||
+																							//	FIN	 >  || 0.4|| == || ** || == ||
+																							//			||xxxx||xxxx|| P  || [] ||
 																							//			||xxxx||xxxx|| == || == ||
-																							//	FIN	 >  || 0.4|| == || == || == ||
+																							//			||xxxx||xxxx|| [] || == ||
 																							//			||xxxx||xxxx|| == || == ||
-																							//			||xxxx||xxxx|| == || == ||
-																							//			||xxxx||xxxx|| == || == ||
-																							//			||xxxx||xxxx|| == || == ||
-	double coordinatelevel4[48] = { 4.0,5.0,6.0, };
-
+																							//
+																							// Level 4 
+	double coordinatelevel4[48] = { 4.0,5.0,6.0,4.1,5.1,6.1,4.2,5.2,6.2,					//			||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||
+									0.3,1.3,2.3,3.3,4.3,5.3,6.3,7.3,8.3,9.3,				//			||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||
+									1.4,2.4,3.4,4.4,5.4,6.4,7.4,8.4,9.4,					//			||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||
+									1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,					//			|| != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START
+									4.6,5.6,6.6,7.6,4.7,5.7,6.7,4.8,5.8,6.8,0.5};			//			||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||
+																							//	FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||
+																							//			||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||
+																							//			||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||
+																							//			||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||
+																							//
+																							//
+	double coordinatelevel5[44] = { 0.0,1.0,2.0,3.0,4.0,5.0,6.0,							// Level 5/Final Level			START
+																							//								 ||
+								   0.1,1.1,2.1,3.1,4.1,5.1,6.1,								//			|| == || == || == || 3.0|| == || == || == ||xxxxx||xxxxx||
+								   0.2,1.2,2.2,3.2,4.2,5.2,6.2,								//			|| == ||-[]-|| == || == || == || ** || == ||xxxxx||xxxxx||
+								   2.3,3.3,2.4,3.4,2.5,3.5,2.6,3.6,							//			|| == || == || == || == || == || == || [] ||xxxxx||xxxxx||
+								   2.7,3.7,2.8,3.8,4.8,5.8,6.8,7.8,8.8,						//			||xxxx||xxxx|| [] ||-[]-||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+								   2.9,3.9,4.9,6.9,7.9,8.9 };								//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+																							//			||xxxx||xxxx|| == || [] ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+																							//			||xxxx||xxxx|| A  || == || W  || == || P  ||  ** ||  == ||
+																							//			||xxxx||xxxx|| == ||-[]-|| == || :) || == ||  == ||  == ||
+																							//
+																							//
 
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, inv, coordinatelevel, levelSizes, levelCounter);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter);
 
 
-	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor"};  ///////// These blocks of variables were made by Kassie
-
-	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword"};  
-
-	int potion = 0; 
-	int weaponCounter = -1; 
-	int armorCounter = -1;													///////////
+	
 	
 	
 	//cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
