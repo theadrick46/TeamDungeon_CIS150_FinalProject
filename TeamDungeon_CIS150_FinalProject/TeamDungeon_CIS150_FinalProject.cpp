@@ -588,28 +588,33 @@ int main()
 	double coordinatelevel3[22] = { 0.0,1.0,2.0,1.1,2.1,3.1,2.2,3.2,2.3,3.3,				// Level 3	 START
 								   1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,					//			  ||
 								   2.8,0.4 };												//			|| 0.0|| == || == ||xxxx||
-																							//          ||xxxx||
-																							//
-																							//
-																							//
-																							//
-																							//
+																							//          ||xxxx|| A  || == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+																							//	FIN	 >  || 0.4|| == || == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+																							//			||xxxx||xxxx|| == || == ||
+	double coordinatelevel4[48] = { 4.0,5.0,6.0, };
+
+
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
 	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, inv, coordinatelevel, levelSizes, levelCounter);
 
 
-	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor"};  // coded by KP
+	string armor[] = { "Leather Armor", "Rune Armor", "Dragonbone Armor"};  ///////// These blocks of variables were made by Kassie
 
-	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword"};  // coded by KP
+	string weapon[] = { "Dwarven Shortsword", "Adamant Axe", "Power Sword"};  
 
-	int potion = 0; // coded by KP
-	int weaponCounter = 0;  // coded by KP
-	int armorCounter = 0;  // coded by KP
+	int potion = 0; 
+	int weaponCounter = 0; 
+	int armorCounter = 0;													///////////
 	
 	
-	cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
-	cout << "Thank you for playing Dungeons & Goblins!" << endl; // end game message KP
+	//cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
+	//cout << "Thank you for playing Dungeons & Goblins!" << endl; // end game message KP
 
 
 	///////////////////////////////
