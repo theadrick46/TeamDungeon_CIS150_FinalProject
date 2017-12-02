@@ -319,8 +319,9 @@ void admin(string password) //function that allows admin to pull up map *passwor
 																											
 void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
 {
+	const int MOVE = 1, INV = 2, HLTH = 3, EX = 4, ADMIN = 9; //adds the different options for the main menu (TH)
 
-	cout << "What would you like to do?" << endl;//main menu         
+	cout << "What would you like to do?" << endl;//main menu (TH)        
 	cout << "1. Move" << endl;
 	cout << "2. Check Inventory" << endl;
 	cout << "3. Check Health" << endl;
@@ -330,32 +331,39 @@ void mainGameMenu(int health, string password, double coordinatelevel[], string 
 	cout << "Enter selection: ";
 	cin >> choice;
 
+	switch (choice) //menu is in format of a switch (TH)
+	{ 
+		case MOVE: //move option
 
-	if (choice == 1)
-	{
 		askMove(coordinatelevel, levelSizes, levelCounter); //allows user to move
-	}
+		break;
 
-	else if (choice == 2)
-	{
+		case INV: //view inventory option
+
 		checkInv(weaponCounter, weapon); //allows user to check inventory
-	}
+		break;
+	
+		case HLTH: //view health option
 
-	else if (choice == 3)
-	{
 		healthStatus(health); //allows user to check health
-	}
+		break;
+	
+		case EX: //exit program option
 
-	else if (choice == 4)
-	{
-		exit();
-	}
+		exit(); //allows user to exit program
+		break;
+	
+		case ADMIN: //go to admin options
 
-	else if (choice == 9)
-	{
 		admin(password); //allows admin to access maps *with password
+		break;
+
+		default: //if user does not enter a valid choice (#s 1-4 or 9)
+			cout << endl;
+			cout << "Please enter a valid choice." << endl;
+			cout << endl;
+
 	}
-}
 
 
 //////The previous functions were codeded by Tanness Headrick////////
