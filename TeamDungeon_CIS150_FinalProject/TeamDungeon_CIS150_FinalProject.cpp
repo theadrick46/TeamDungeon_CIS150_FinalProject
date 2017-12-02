@@ -184,10 +184,18 @@ void admin(string password) //function that allows admin to pull up map *passwor
 		cout << "Please enter correct password: ";
 	}
 }
+<<<<<<< HEAD
 
 void mainGameMenu(int choice, int movement, string inv, int health, string goodbye, string password, double coordinatelevel[])
 {
 	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
+=======
+																											
+void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
+{
+
+	cout << "What would you like to do?" << endl;//main menu         
+>>>>>>> parent of 9b19a68... Menu changed to Switch
 	cout << "1. Move" << endl;
 	cout << "2. Check Inventory" << endl;
 	cout << "3. Check Health" << endl;
@@ -200,12 +208,20 @@ void mainGameMenu(int choice, int movement, string inv, int health, string goodb
 
 	if (choice == 1)
 	{
+<<<<<<< HEAD
 		askMove(movement, coordinatelevel); //allows user to move
+=======
+		askMove(coordinatelevel, levelSizes, levelCounter); //allows user to move
+>>>>>>> parent of 9b19a68... Menu changed to Switch
 	}
 
 	else if (choice == 2)
 	{
+<<<<<<< HEAD
 		checkInv(inv); //allows user to check inventory
+=======
+		checkInv(weaponCounter, weapon); //allows user to check inventory
+>>>>>>> parent of 9b19a68... Menu changed to Switch
 	}
 
 	else if (choice == 3)
@@ -215,7 +231,11 @@ void mainGameMenu(int choice, int movement, string inv, int health, string goodb
 
 	else if (choice == 4)
 	{
+<<<<<<< HEAD
 		exit(goodbye); //allows user to exit
+=======
+		exit();
+>>>>>>> parent of 9b19a68... Menu changed to Switch
 	}
 
 	else if (choice == 9)
