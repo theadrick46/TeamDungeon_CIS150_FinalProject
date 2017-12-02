@@ -196,7 +196,9 @@ void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter)
 
 	//if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
 	{
-		//nextLevel();
+		cout << "=======" << endl;
+		cout << "LEVEL " levelNumber << endl; //nextLevel();
+		cout << "=======" << endl;
 	}
 
 	gameLoop = true;
@@ -308,6 +310,7 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	{
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
+		//function for maps??
 	}
 
 	else
@@ -316,7 +319,13 @@ void admin(string password) //function that allows admin to pull up map *passwor
 		cout << "Please enter correct password: ";
 	}
 }
-																											
+		
+//void displayMaps()
+//{
+//}
+
+
+
 void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
 {
 	const int MOVE = 1, INV = 2, HLTH = 3, EX = 4, ADMIN = 9; //adds the different options for the main menu (TH)
@@ -551,6 +560,12 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 	}
 	
 }
+
+int playerHealth 
+{
+	int playerHealth = 20
+
+	if 
 
 int main()
 {
