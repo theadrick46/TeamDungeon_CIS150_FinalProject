@@ -172,6 +172,10 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	{
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
+<<<<<<< HEAD
+=======
+		//function for maps??
+>>>>>>> parent of d84a31a... More to Admin Menu/placement for function
 	}
 
 	else
@@ -437,7 +441,24 @@ int main()
 	// Hannah stopped coding here//
 	///////////////////////////////
 
+<<<<<<< HEAD
 	
+=======
+	//health / person / monsters variables --
+	//attack / person / monsters variables -- 
+
+	//attack through loops
+
+	//finish inventory loops and variables --
+
+	//work on the admin loops and variables --
+	//hardcoded enemies
+
+	//hardcoded dead ends -- 
+	//end game message --
+
+	//small graphic funcs3
+>>>>>>> parent of d84a31a... More to Admin Menu/placement for function
 
 	system("pause");
 	return 0;
