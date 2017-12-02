@@ -299,7 +299,7 @@ void exit() //function that allows user to exit (TH)	////HS removed the string p
 	cout << "Thanks for playing. Goodbye!" << endl;
 }
 
-void admin(string password) //function that allows admin to pull up map *password protected- passoword: dungeon (TH)
+void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- passoword: dungeon (TH)
 {
 	gameLoop = false;
 	system("CLS");
@@ -310,7 +310,34 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	{
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
-		//function for maps??
+		//function for maps???????????????????????????????????????????????????????????
+
+		cout << endl;
+		cout << "What would you like to do?" << endl;
+		cout << "1. View Game Maps" << endl;
+		cout << "2. Teleport" << endl;
+		cout << "3. Return to Main Menu" << endl;
+		cin >> adminChoice;
+
+		if (adminChoice == 1)
+		{
+			//gamemap display function
+		}
+
+		if (adminChoice == 2)
+		{
+			//teleportation function
+		}
+
+		if (adminChoice == 3)
+		{
+			mainGameMenu; //does anything go after this to call the function successfully????????????????????????????????????????????????????????
+		}
+
+		else
+		{
+			cout << "Please enter a valid option: ";
+		}
 	}
 
 	else
@@ -709,7 +736,7 @@ int main()
 
 	//finish inventory loops and variables --
 
-	//work on the admin loops and variables --
+	//work on the admin loops and variables (including option to teleport) --
 	//hardcoded enemies
 
 	//hardcoded dead ends -- 
