@@ -3,21 +3,25 @@
 // Kassie Polley
 // Tanness Headrick
 // Hannah Seccia
+<<<<<<< HEAD
 //
 //////////////////////////////////////////////
 //KEY : 
 //		Hannah Seccia (HS)
 //		Tanness Headrick (TH)
 //		Kassie Polley (KP)
+=======
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 
-<< << << < HEAD
-	== == == =
-	>> >> >> > 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
+<<<<<<< HEAD
+	====== =
+	>>>>>>> 47c6c07a3a4b0baf07ea5cc9082e4169b4426d0d
 
 #include "stdafx.h"
 #include <iostream>
 #include <string>
 #include "Windows.h"
+<<<<<<< HEAD
 using namespace std;
 
 ////////////////////////////////////////////
@@ -33,21 +37,33 @@ int monsterIndicate = 1;															// will help the system accord depending 
 																					// 1 = slime, 2 = goblin, 3 = dark magician
 
 
+=======
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 
-///////////////////////////////////////////////////////////////////////
-//////The following functions were codeded by Tanness Headrick////////
 
 
-void greeting(string name) //function to start game- greets user (TH)                                                                              
-{
+using namespace std;
+																												/////////////////////////////////
+																												//Tanness Headrick started here//
+																												/////////////////////////////////
+
+																												
+void mainMenu(int choice)																						// (Hannah edited)																		
+{																												// changed "int MainMenu" to void, since it doesn't return a value.
+	string name;
 	cout << "Enter your name: ";
 	cin >> name;
-	system("CLS");
-	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
-	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;
-	cout << "" << endl;
+	system("cls");																								// (Hannah edited: added a system clear for better readability)
+	cout << "Welcome, " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
+	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!\n";				// (Hannah edited)
+																												// added a null at the end so that it doesn't collide with the ceiling
+
+																												/////////////////////////////////
+																												//Tanness Headrick ended here//
+																												/////////////////////////////////
 }
 
+<<<<<<< HEAD
 ///////////////////////////////////////////////////////////////////
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -263,14 +279,29 @@ void basicGraphicSetUp(string name)
 																						// https://stackoverflow.com/questions/20020746/failed-to-hide-the-cursor-in-console, https://docs.microsoft.com/en-us/windows/console/setconsoletitle, https://stackoverflow.com/questions/743697/what-is-the-exact-definition-of-instance-variable, https://stackoverflow.com/questions/13219182/set-console-title-in-c-using-a-string
 	CONSOLE_CURSOR_INFO CURSORINFO;														// create a pointer-like name to access the console_cursor_info struct
 	CURSORINFO.dwSize = 1;
+=======
+
+																						///////////////////////////////
+																						// Hannah started coding here//
+																						///////////////////////////////
+
+void basicGraphicSetUp()
+{																						// cursor hiding and title setting from these sources:
+																						// https://stackoverflow.com/questions/20020746/failed-to-hide-the-cursor-in-console, https://docs.microsoft.com/en-us/windows/console/setconsoletitle, https://stackoverflow.com/questions/743697/what-is-the-exact-definition-of-instance-variable, https://stackoverflow.com/questions/13219182/set-console-title-in-c-using-a-string
+	CONSOLE_CURSOR_INFO CURSORINFO;														// create a pointer-like name to access the console_cursor_info struct
+	CURSORINFO.dwSize = 1;																
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 	CURSORINFO.bVisible = FALSE;														// changes the visibility instance of the cursor to false
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CURSORINFO);					// sends the modified instance in a function to modify the struct
 																						// this, therefore, makes the cursor invisible.
 
 	SetConsoleTitle(_T("Dungeons and Goblins"));										// this functions changes the name of the console box
 																						// (_T macro makes character set neutral with Unicode or ANSI or ASCII)
+<<<<<<< HEAD
 
 	greeting(name); //function that greets user
+=======
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 }
 
 //////////////////////////////////////////////////////////////
@@ -279,8 +310,18 @@ void basicGraphicSetUp(string name)
 
 void basicPrintGraphic(string person[], string floorCeiling)
 {
+<<<<<<< HEAD
 
 														
+=======
+																						
+	int choice = 0;																		// menu choice; (Hannah edited: make sure you initialize a variable before you send it to a function.)
+																						/////////////////////////////////////
+																						// This block was coded by Tanness//
+	mainMenu(choice);																	////////////////////////////////////
+
+
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 	cout << floorCeiling;																// prints the ceiling
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);						// changes the color on the command prompt to yellow for the person
@@ -298,7 +339,7 @@ void basicPrintGraphic(string person[], string floorCeiling)
 
 void darkMagicianPrint(string darkMagician[], string person[])
 {																						////////////////////////
-																						// The process to print the dark magician is different from the others.
+	                                                                                    // The process to print the dark magician is different from the others.
 																						// Since the magician is 8 parts long, while the person is 6, the first 2 parts
 																						// must be printed seperately.
 																						///////////////////////
@@ -322,7 +363,7 @@ void darkMagicianPrint(string darkMagician[], string person[])
 			cout << "\t\t\t" << "||";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow again, print magician's face
 			cout << darkMagician[i] << endl;
-
+			
 			personCounter++;
 		}
 		else																				// when printing the rest of the magician (the robe)
@@ -380,7 +421,7 @@ void slimePrint(string slime[], string person[])										/////////////////////
 }
 
 
-void monsterPrintGraphic(string floorCeiling, string person[], string slime[], string goblin[], string dM[])
+void monsterPrintGraphic(string floorCeiling, int monsterIndicate, string person[], string slime[], string goblin[], string dM[]) 			
 {// the organized function to print a monster encounter situation
 
 	cout << floorCeiling;
@@ -404,6 +445,7 @@ void monsterPrintGraphic(string floorCeiling, string person[], string slime[], s
 /// END OF GRAPHIC FUNCTIONS/////////////////////////////////
 ////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -426,12 +468,17 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 
 int main()
 {
+=======
+int main()
+{																																									
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 	string person[] = { "   @","   |","---|---","   |"," // \\\\","//   \\\\" };		// the array for the person character on the screen
 	string slime[] = { "","  /\\  "," /. .\\ ","| \\_/ |","|     |","\\_____/ " };			// the array for a low level slime
 	string goblin[] = { "-------","|-. .-|","| --- |","-|   |-"," |___|", " |   | " };  // the array for a mid level goblin
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
 
+<<<<<<< HEAD
 	string name; //the string for the name of the player (TH)
 	string inv; //when the player chooses to view the inventory (TH)
 	int health = 0; //when the player chooses to view the health meter (TH)
@@ -444,10 +491,17 @@ int main()
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
 																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
 																							//          || != || == || == || == || ==|| =! ||
+=======
+	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //						  FIN
+																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
+																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
+																							//          || == || == || == || == || ==|| == ||
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 																							//			||xxx || xxx|| == || xxx|| ==||xxxx||
 																							//			||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||
 																							//						    ^
 																							//						  START
+<<<<<<< HEAD
 
 	double scale = 0.1;																	// helps correct coordinate rounding errors							
 
@@ -455,8 +509,17 @@ int main()
 	basicGraphicSetUp(name);
 	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling);
 
+=======
+	double coord = 0.0;
+	
+	int monsterIndicate = 0;															// will help the system accord depending on which monster appears
+																						// this will be used when setting up the random coordinate system
+																						// 1 = slime, 2 = goblin, 3 = dark magician
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 
+	double scale = 0.1;																	// helps correct coordinate rounding errors							
 
+<<<<<<< HEAD
 	///////////////////////////////
 	// Hannah stopped coding here//
 	///////////////////////////////
@@ -468,19 +531,43 @@ int main()
 	//attack / person / monsters variables -- 
 
 	//attack through loops
+=======
+	
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 
-	//finish inventory loops and variables --
+	//	Hannah here! this is for the person who's going to make the coordinate system. I have already made the first level array above.
+	//  I have decided to use decimals for the coordinates, and the coordiantes read as (Xpos.Ypos). it seems complicated, but it makes coding
+	//  the logic for it much easier. The level array will contain coordinates that the player CAN go on. 
+	//
+	//	The coord variable at each start of the level will be reseted to the start point of the leave. When the player wants to go up or down,
+	//  you will change the variable by a tenth (.1). When they want to go right or left, you will change it by an integer (1).
+	//  It may seem jarring to code, but think of it is that we're simply making sure the player is on path. If the player tries to go off
+	//  it would be wise to negate their "move" that they tried to make. You might want to do this with a copy variable.
+	//
+	//	If you have trouble with certain coordinates not rounding up correctly, use this code to fix those parts of the array:
+	//	coordinatelevel[thenumbernotworking] = floor(coordinatelevel[#] / scale + 0.5) * scale; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+	//  
+	//  For now, just make a basic level function, where if the player reaches the end, it only prints something like "good job".
+	//  If you have any questions about what to do, ask me either in email or person. When you get this done, we can move onto dead ends,
+	//  monster placement, and multiple levels. Also, don't forget to mark in the comments when you code that it's your code.
 
-	//work on the admin loops and variables --
-	//hardcoded enemies
+	basicGraphicSetUp();
+	basicPrintGraphic(person, floorCeiling);
+	
 
-	//hardcoded dead ends -- 
-	//end game message --
+	
+																						///////////////////////////////
+																						// Hannah stopped coding here//
+																						///////////////////////////////
+																						
 
+<<<<<<< HEAD
 	//small graphic funcs3
 >>>>>>> parent of d84a31a... More to Admin Menu/placement for function
+=======
+>>>>>>> parent of 9d6d0ed... Merge branch 'master' of https://github.com/theadrick46/TeamDungeon_CIS150_FinalProject
 
 	system("pause");
-	return 0;
+    return 0;
 }
 
