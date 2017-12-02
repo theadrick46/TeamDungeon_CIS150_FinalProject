@@ -189,12 +189,9 @@ void admin(string password) //function that allows admin to pull up map *passwor
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 		//function for maps??
 >>>>>>> parent of d84a31a... More to Admin Menu/placement for function
-=======
->>>>>>> parent of c15bce0... Attempt to add health/ other necesities
 	}
 
 	else
@@ -204,14 +201,11 @@ void admin(string password) //function that allows admin to pull up map *passwor
 	}
 }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 void mainGameMenu(int choice, int movement, string inv, int health, string goodbye, string password, double coordinatelevel[])
 {
 	cout << "What would you like to do?" << endl;//main menu         MAY NEED TO MOVE TO ANOTHER FUNCTION?
 =======
-=======
->>>>>>> parent of c15bce0... Attempt to add health/ other necesities
 																											
 void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
 {
@@ -469,11 +463,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 	{
 		basicPrintGraphic(person, floorCeiling);
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> parent of c15bce0... Attempt to add health/ other necesities
 }
 
 int main()
