@@ -36,6 +36,7 @@
 #include <iostream>
 #include <string>
 #include "Windows.h"
+
 using namespace std;
 
 ////////////////////////////////////////////
@@ -195,11 +196,11 @@ void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter)
 											
 
 	//if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
-	{
-		cout << "=======" << endl;
-		cout << "LEVEL " levelNumber << endl; //nextLevel();
-		cout << "=======" << endl;
-	}
+	//{
+	//	cout << "=======" << endl;
+	//	cout << "LEVEL " levelNumber << endl; //nextLevel();
+	//	cout << "=======" << endl;
+	//}
 
 	gameLoop = true;
 
@@ -258,7 +259,7 @@ void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//f
 //Tanness started coding again here	//
 //////////////////////////////////////
 
-void checkInv(int weaponCounter, string weapon[])							//function to allow user to see what they have collected (TH)
+void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor[], int potion)							//function to allow user to see what they have collected (TH)
 {																				
 																			//////////////////////////////////////
 	gameLoop = false;														// gameloops and pseudo added by HS //
@@ -331,7 +332,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 		if (adminChoice == 3)
 		{
-			mainGameMenu; //does anything go after this to call the function successfully????????????????????????????????????????????????????????
+			gameLoop = true;
 		}
 
 		else
@@ -353,9 +354,8 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 
 
-void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter) 
+void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
-	const int MOVE = 1, INV = 2, HLTH = 3, EX = 4, ADMIN = 9; //adds the different options for the main menu (TH)
 
 	cout << "What would you like to do?" << endl;//main menu (TH)        
 	cout << "1. Move" << endl;
@@ -367,39 +367,39 @@ void mainGameMenu(int health, string password, double coordinatelevel[], string 
 	cout << "Enter selection: ";
 	cin >> choice;
 
-	switch (choice) //menu is in format of a switch (TH)
-	{ 
-		case MOVE: //move option
 
-		askMove(coordinatelevel, levelSizes, levelCounter); //allows user to move
-		break;
+	if (choice == 1)
+	{
+		gameLoop = false;
+		askMove(coordinatelevel, levelSizes, levelCounter);
+		gameLoop = true;
+	}
 
-		case INV: //view inventory option
+	if (choice == 2)
+	{
+		checkInv(weaponCounter, weapon, armorCounter, armor, potion); //allows user to check inventory
+	}
 
-		checkInv(weaponCounter, weapon); //allows user to check inventory
-		break;
-	
-		case HLTH: //view health option
-
+	if (choice == 3)
+	{
 		healthStatus(health); //allows user to check health
-		break;
-	
-		case EX: //exit program option
+	}
 
+	if (choice == 4)
+	{
 		exit(); //allows user to exit program
-		break;
+	}
 	
-		case ADMIN: //go to admin options
+	if (choice == 9)
+	{
+		admin(password, adminChoice); //allows admin to access maps *with password
+	}
 
-		admin(password); //allows admin to access maps *with password
-		break;
-
-		default: //if user does not enter a valid choice (#s 1-4 or 9)
-			cout << endl;
+	if (choice != 1 || choice != 2 || choice != 3 || choice != 4 || choice != 9)
 			cout << "Please enter a valid choice." << endl;
 			cout << endl;
 
-	}
+}
 
 
 //////The previous functions were codeded by Tanness Headrick////////
@@ -572,7 +572,7 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
 	while (gameLoop)
 	{
@@ -582,17 +582,17 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
-		mainGameMenu(health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter);
+		mainGameMenu(health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
 	
 }
 
-int playerHealth 
+void playerHealth()
 {
-	int playerHealth = 20
+	int playerHealth = 20;
 
-	if 
+}
 
 int main()
 {
@@ -616,6 +616,11 @@ int main()
 	int weaponCounter = -1;														   // these variables are -1 because 0 would equal the first weapon in the array
 
 	int armorCounter = -1;														  ///////////
+
+	int playerHealth = 20;														  // The player's health (TH)
+
+	
+	int adminChoice = 0;														  // choice for the admin submenu (TH)
 	
 
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
@@ -715,7 +720,7 @@ int main()
 
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 
 
 	
