@@ -311,7 +311,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 	{
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
-		//function for maps???????????????????????????????????????????????????????????
+		
 
 		cout << endl;
 		cout << "What would you like to do?" << endl;
@@ -354,7 +354,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 
 
-void mainGameMenu(int health, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
+void mainGameMenu(int playerHealth, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
 
 	cout << "What would you like to do?" << endl;//main menu (TH)        
@@ -382,7 +382,7 @@ void mainGameMenu(int health, string password, double coordinatelevel[], string 
 
 	if (choice == 3)
 	{
-		healthStatus(health); //allows user to check health
+		healthStatus(playerHealth); //allows user to check health
 	}
 
 	if (choice == 4)
@@ -573,7 +573,7 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int health, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int playerHealth, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
 	while (gameLoop)
 	{
@@ -583,7 +583,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
-		mainGameMenu(health, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
+		mainGameMenu(playerHealth, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
 	
@@ -605,7 +605,6 @@ int main()
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
 
 	string name;		//the string for the name of the player (TH)
-	int health = 0;		//when the player chooses to view the health meter (TH)
 
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
@@ -624,7 +623,7 @@ int main()
 	int globlinHealth = 10;														  //
 	int dkMagician = 15;														  //
 
-	int playerAttack = 5;														//
+	int playerAttack = 5;														// The  attack variables were coded by TH
 	double slimeAttack = 2.5;                                                   //
 	int goblinAttack = 5;                                                       //
 	int dkMagicianAttack = 10;                                                  //
@@ -729,7 +728,7 @@ int main()
 
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 
 
 
