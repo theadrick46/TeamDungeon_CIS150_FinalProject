@@ -23,8 +23,8 @@
 //		||-[]-|| = goblin in this space (open)
 //		|| ** || = dark magician in this space (open)
 //
-//		|| :) || = the treasure/end of the game 
-// (might add a boss later)
+//		|| :( || = the treasure/boss/end of the game
+// 
 //
 //////////////////////////////////////////////
 
@@ -47,7 +47,7 @@ int choice = 0;																		//the choice the player makes for the main menu
 double coord = 0.0;																	// which coordinate of the level the player is on (HS)
 double coordCopy = 0.0;
 
-int monsterIndicate = 3;															// will help the system accord depending on which monster appears  (HS)
+int monsterIndicate = 0;															// will help the system accord depending on which monster appears  (HS)
 																					// this will be used when setting up the random coordinate system
 																					// 1 = slime, 2 = goblin, 3 = dark magician
 
@@ -111,16 +111,115 @@ void basicPrintGraphic(string person[], string floorCeiling)
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void correctCoordRoundup(double coordinatelevel[])										// Hannah coded this function		
+void correctCoordRoundup(double coordinatelevel[], int levelCounter)					// Hannah coded this function		
 
 																						//since lots of doubles in the array weren't rounding up correctly, I figured
 																						//out a way to fix it. It's long, but wihtout it the game won't work.
 {
-	coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
-	coordinatelevel[10] = floor(coordinatelevel[10] / 0.1 + 0.5) * 0.1; // 
-	coordinatelevel[2] = floor(coordinatelevel[2] / 0.1 + 0.5) * 0.1; // 
-	coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; // 
-	coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
+	if (levelCounter == 0)
+	{
+		coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+		coordinatelevel[10] = floor(coordinatelevel[10] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[2] = floor(coordinatelevel[2] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
+	}
+
+	else if (levelCounter == 1)
+	{
+		coordinatelevel[9] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[11] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[15] = floor(coordinatelevel[15] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[17] = floor(coordinatelevel[17] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[19] = floor(coordinatelevel[19] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[21] = floor(coordinatelevel[21] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[22] = floor(coordinatelevel[22] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[23] = floor(coordinatelevel[23] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[30] = floor(coordinatelevel[30] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[32] = floor(coordinatelevel[32] / 0.1 + 0.5) * 0.1; // 
+	}
+
+	else if (levelCounter == 2)
+	{
+		for (int i = 8; i < 12; i++)
+		{
+			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; // 
+		}
+		coordinatelevel[19] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel[19] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; // 
+	}
+
+	else if (levelCounter == 3)
+	{
+		coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[5] = floor(coordinatelevel[5] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; //
+		for (int i = 11; i < 16; i++)
+		{
+			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+		}
+		coordinatelevel[19] = floor(coordinatelevel[19] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[20] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel[21] = floor(coordinatelevel[21] / 0.1 + 0.5) * 0.1; //
+		for (int i = 37; i < 40; i++)
+		{
+			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+		}
+	}
+
+	else if (levelCounter == 4)
+	{
+		for (int i = 11; i < 15; i++)
+		{
+			if (i != 14)
+			{
+				coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+			}
+		}
+
+		for (int i = 21; i < 24; i++)
+		{
+			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+		}
+
+		for (int i = 31; i < 39; i++)
+		{
+			if (i != 37)
+			{
+				coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+			}
+		}
+	}
+}
+
+
+void correctCoordDetermine(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter)
+{
+	if (levelCounter == 0)
+	{
+		correctCoordRoundup(coordinatelevel, levelCounter);
+	}
+
+	if (levelCounter == 1)
+	{
+		correctCoordRoundup(coordinatelevel2, levelCounter);
+	}
+
+	if (levelCounter == 2)
+	{
+		correctCoordRoundup(coordinatelevel3, levelCounter);
+	}
+
+	if (levelCounter == 3)
+	{
+		correctCoordRoundup(coordinatelevel4, levelCounter);
+	}
+
+	if (levelCounter == 4)
+	{
+		correctCoordRoundup(coordinatelevel5, levelCounter);
+	}
 }
 
 void startPositionDetermineCheck(double coordinatelevel[])
@@ -236,7 +335,7 @@ void move()															///////////////////////////////
 
 
 
-void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by KP)																		
+void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by KP)																		
 {
 	cout << "\n";
 	cout << "Which direction would you like to go?" << endl; 
@@ -246,7 +345,7 @@ void askMove(double coordinatelevel[], int levelSizes[], int &levelCounter)		//f
 	cout << "4. Down" << endl;
 	cin >> movement;
 
-	correctCoordRoundup(coordinatelevel);
+	correctCoordDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter);
 	startPositionDetermineCheck(coordinatelevel);
 	move();													//this sends the coordinate copy to be added/subtracted to //// (HS)
 	moveFinalize(coordinatelevel, levelSizes, levelCounter);
@@ -354,7 +453,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 
 
-void mainGameMenu(int playerHealth, string password, double coordinatelevel[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
+void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
 
 	cout << "What would you like to do?" << endl;//main menu (TH)        
@@ -371,7 +470,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], s
 	if (choice == 1)
 	{
 		gameLoop = false;
-		askMove(coordinatelevel, levelSizes, levelCounter);
+		askMove(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter);
 		gameLoop = true;
 	}
 
@@ -435,7 +534,123 @@ void basicGraphicSetUp()
 /// START OF GRAPHIC FUNCTIONS///////////////////////////////
 ////////////////////////////////////////////////////////////
 
+void cyberdemonPrint(string finalBossCD[], int cyberdemonCounter, string person[], string floorCeiling)
+{
+	int personCounter = 0;
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	cout << floorCeiling << endl;
+
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+	cout << "\t\t\t";
+	cout << finalBossCD[0] << endl;
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+	for (int forLoopCount = 1; forLoopCount < 5; forLoopCount++)
+	{
+		if (forLoopCount != 4)
+		{
+			cout << "\t\t\t";
+			cout << finalBossCD[forLoopCount] << endl;
+		}
+		else
+		{
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow, print part of person				
+			cout << person[personCounter];
+			cout << "\t\t\t";
+
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+			cout << finalBossCD[forLoopCount] << endl;
+			personCounter++;
+		}
+	}
+
+	for (int forLoopCount = 5; forLoopCount < 7; forLoopCount++)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow, print part of person				
+		cout << person[personCounter];
+		cout << "\t\t\t";
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		cout << finalBossCD[forLoopCount] << endl;
+		personCounter++;
+	}
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow, print part of person				
+	cout << person[personCounter];
+	cout << "\t\t\t";
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+	cout << finalBossCD[7] << endl;
+	personCounter++;
+
+	for (int forLoopCount = 8; forLoopCount < 10; forLoopCount++)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// change to yellow, print part of person				
+		cout << person[personCounter];
+		cout << "\t\t\t";
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		cout << finalBossCD[forLoopCount] << endl;
+		personCounter++;
+	}
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	cout << floorCeiling << endl;
+	cout << "The Cyberdemon has appeared!\n";
+
+}
+
+void cyberdemonAnimate(string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter, string person[], string floorCeiling)
+{
+	int frameCount = 0;																	///////////////////////////////////////////////////
+	int forLoopCounter = 0;																//////// CREDIT FOR THIS ANIMATION LOOP ///////////
+																						/////// GOES TO ZACK MOORE				///////////
+	for (int forLoopCount = 0; forLoopCount < 4; forLoopCount++)						////// (CIS150_FINALPROJECTIDEAS_ASCII) ///////////
+	{																					///////////////////////////////////////////////////
+		if (cyberdemonCounter == 3)
+		{
+			break;
+			
+		}
+		else
+		{
+			if (frameCount == 0)
+			{
+				cyberdemonPrint(finalBossCD, cyberdemonCounter, person, floorCeiling);
+				frameCount++;
+				Sleep(1000);
+				system("CLS");
+			}
+
+			if (frameCount == 1)
+			{
+				cyberdemonPrint(finalBossCD2, cyberdemonCounter, person, floorCeiling);
+				frameCount++;
+				Sleep(1000);
+				system("CLS");
+			}
+
+			if (frameCount == 2)
+			{
+				cyberdemonPrint(finalBossCD3, cyberdemonCounter, person, floorCeiling);
+				frameCount++;
+				Sleep(1000);
+				system("CLS");
+			}
+
+			if (frameCount == 3)
+			{
+				frameCount = 0;
+				forLoopCounter = 0;
+				cyberdemonCounter++;
+			}
+		}
+	}
+	
+	cyberdemonPrint(finalBossCD, cyberdemonCounter, person, floorCeiling);
+}
 
 void darkMagicianPrint(string darkMagician[], string person[])
 {																						////////////////////////
@@ -521,32 +736,44 @@ void slimePrint(string slime[], string person[])										/////////////////////
 }
 
 
-void monsterPrintGraphic(string floorCeiling, string person[], string slime[], string goblin[], string dM[])
+void monsterPrintGraphic(string floorCeiling, string person[], string slime[], string goblin[], string dM[], string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter)
 {// the organized function to print a monster encounter situation
 
-	cout << floorCeiling;
 
 	if (monsterIndicate == 1)
 	{
+		cout << floorCeiling;
 		slimePrint(slime, person);
+		cout << floorCeiling;
 	}
 	else if (monsterIndicate == 2)
 	{
+		cout << floorCeiling;
 		goblinPrint(goblin, person);
+		cout << floorCeiling;
 	}
 	else if (monsterIndicate == 3)
 	{
+		cout << floorCeiling;
 		darkMagicianPrint(dM, person);
+		cout << floorCeiling;
+	}
+	else if (monsterIndicate == 4)
+	{
+		if (cyberdemonCounter < 3)
+		{
+			cyberdemonAnimate(finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter, person, floorCeiling);
+		}
+		else cyberdemonPrint(finalBossCD, cyberdemonCounter, person, floorCeiling);
 	}
 
-	cout << floorCeiling;
 }
 
-void printDetermine(string floorCeiling, string person[], string slime[], string goblin[], string darkMagician[])
+void printDetermine(string floorCeiling, string person[], string slime[], string goblin[], string darkMagician[], string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter)
 {
 	if (monsterIndicate != 0)
 	{
-		monsterPrintGraphic(floorCeiling, person, slime, goblin, darkMagician);
+		monsterPrintGraphic(floorCeiling, person, slime, goblin, darkMagician, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter);
 	}
 	else
 	{
@@ -573,27 +800,22 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int playerHealth, string password, double coordinatelevel[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion, string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter)
 {
 	while (gameLoop)
 	{
 		system("cls");
-		printDetermine(floorCeiling, person, slime, goblin, darkMagician);
+		printDetermine(floorCeiling, person, slime, goblin, darkMagician, finalBossCD, finalBossCD2, finalBossCD3,cyberdemonCounter);
 		if (positionDetermine != 0)
 		{
 			moveDisplay();
 		}
-		mainGameMenu(playerHealth, password, coordinatelevel, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
+		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
 	
 }
 
-void playerHealth()
-{
-	int playerHealth = 20;
-
-}
 
 
 int main()
@@ -603,6 +825,11 @@ int main()
 	string goblin[] = { "-------","|-. .-|","| --- |","-|   |-"," |___|", " |   | " };  // the array for a mid level goblin
 	string darkMagician[] = { "    /\\** ","   /__\\  ","  |.  .| ","  | -- |","~~|----|", "  |    |", "  |____|","  |    |" }; // the array for a high level dark magician
 	string floorCeiling = "================================================\n";			// the string for the floor/ceiling
+
+	string finalBossCD[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","\\\\  | --- |   //", " ===|     |===","    |     |","    |_____|","    |     |","    |     |" };		//The array for the Cyberdemon boss (first frame)
+	string finalBossCD2[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","||  | --- |   ||", " ===|     |===","    |     |","    |_____|","    |     |","    |       " };		//The array for the Cyberdemon boss (second frame)
+	string finalBossCD3[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","//  | --- |   \\\\", " ===|     |===","    |     |","    |_____|","    |     |","          |" };		//The array for the Cyberdemon boss (third frame)
+	int cyberdemonCounter = 0;		// counter for animating the cyberdemon
 
 	string name;		//the string for the name of the player (TH)
 
@@ -617,6 +844,7 @@ int main()
 	int weaponCounter = -1;														   // these variables are -1 because 0 would equal the first weapon in the array
 
 	int armorCounter = -1;														  ///////////
+
 
 	int playerHealth = 20;														  // The health variables were coded by TH
 	int slimeHealth = 5;														  //
@@ -638,8 +866,10 @@ int main()
 	int levelCounter = 0;																	// which level the player is on
 
 	double deadEndCoords[5][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
-								  11, 11,
-								  11, 11 };
+								  0.7, 4.7
+								  -1, -1,
+								  0.3, -1,
+								   -1, -1};
 
 	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (-1's when there is no coord for that specific monster)
 								3.3, 0.6, -1,
@@ -647,13 +877,14 @@ int main()
 								5.1, 3.3, 6.8,
 								6.2, 3.2, 4.3 };
 
-	double goblinCoords[4][3] = { -1, -1, -1,											// arrays with less than 5 rows mean they are not present
-								  -1, -1, -1,											// on all levels (goblinCoords[4] means that goblins only
-								  -1, -1, -1 };											// start appearing on the last 4 levels)
+	double goblinCoords[4][3] = { 0.2, -1, -1,											// arrays with less than 5 rows mean they are not present
+								  2.1, 3.3, -1,											// on all levels (goblinCoords[4] means that goblins only
+								 4.4, 7.3, 4.7,											// start appearing on the last 4 levels)
+								 1.1, 3.3, 3.9};											
 
-	double darkMagicianCoords[3][2] = { -1, -1,
-										-1, -1,
-										-1, -1 };
+	double darkMagicianCoords[3][2] = { 2.4, -1,
+										5.5, -1,
+										5.1, 7.8 };
 
 	double weaponCoords[4][2] = { 2.4, -1,
 								 -1, -1,
@@ -722,13 +953,13 @@ int main()
 																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
 																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
 																							//			||xxxx||xxxx|| A  || == || W  || == || P  ||  ** ||  == ||
-																							//			||xxxx||xxxx|| == ||-[]-|| == || :) || == ||  == ||  == ||
+																							//			||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||
 																							//
 																							//
 
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter);
 
 
 
@@ -772,9 +1003,14 @@ int main()
 	//		cout << you have reached a dead end
 	//	}
 	//	
-	//
+	// 
 	//
 	//small graphic funcs3 (HS)
+	//
+	//
+	// hardcoded weapons/armor/potions
+	//
+	//
 	//
 	//
 
