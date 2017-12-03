@@ -395,10 +395,11 @@ void mainGameMenu(int health, string password, double coordinatelevel[], string 
 		admin(password, adminChoice); //allows admin to access maps *with password
 	}
 
-	if (choice != 1 || choice != 2 || choice != 3 || choice != 4 || choice != 9)
-			cout << "Please enter a valid choice." << endl;
-			cout << endl;
-
+	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)
+	{
+		cout << "Please enter a valid choice." << endl;
+		cout << endl;
+	}
 }
 
 
@@ -594,6 +595,7 @@ void playerHealth()
 
 }
 
+
 int main()
 {
 	string person[] = { "   @","   |","---|---","   |"," // \\\\","//   \\\\" };		// the array for the person character on the screen	/////////// All strings for characters coded by HS
@@ -604,7 +606,7 @@ int main()
 
 	string name;		//the string for the name of the player (TH)
 	int health = 0;		//when the player chooses to view the health meter (TH)
-	
+
 	string goodbye;		//when the player chooses to end the game (TH)
 	string password;	//when the administrator option is chosen- they will be asked to enter a password (TH)
 
@@ -617,18 +619,25 @@ int main()
 
 	int armorCounter = -1;														  ///////////
 
-	int playerHealth = 20;														  // The player's health (TH)
+	int playerHealth = 20;														  // The health variables were coded by TH
+	int slimeHealth = 5;														  //
+	int globlinHealth = 10;														  //
+	int dkMagician = 15;														  //
 
-	
+	int playerAttack = 5;														//
+	double slimeAttack = 2.5;                                                   //
+	int goblinAttack = 5;                                                       //
+	int dkMagicianAttack = 10;                                                  //
+
 	int adminChoice = 0;														  // choice for the admin submenu (TH)
-	
+
 
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
 
 
 	int levelSizes[5] = { 11, 36, 22, 48, 44 };												// the number of coordinates in each level
 	int levelCounter = 0;																	// which level the player is on
-	
+
 	double deadEndCoords[5][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
 								  11, 11,
 								  11, 11 };
@@ -643,7 +652,7 @@ int main()
 								  -1, -1, -1,											// on all levels (goblinCoords[4] means that goblins only
 								  -1, -1, -1 };											// start appearing on the last 4 levels)
 
-	double darkMagicianCoords[3][2] =  {-1, -1,												
+	double darkMagicianCoords[3][2] = { -1, -1,
 										-1, -1,
 										-1, -1 };
 
@@ -652,7 +661,7 @@ int main()
 								 4.0,6.5,
 								 4.8, -1 };
 
-	double armorCoords[4] =	  { 3.7,1.1,2.3,2.8 };									  // armor and potions are only one per level, so they
+	double armorCoords[4] = { 3.7,1.1,2.3,2.8 };									  // armor and potions are only one per level, so they
 																					  // don't need to be 2D
 
 	double potionCoords[4] = { 4.1,2.5,-1,5.8 };
@@ -696,7 +705,7 @@ int main()
 									0.3,1.3,2.3,3.3,4.3,5.3,6.3,7.3,8.3,9.3,				//			||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||
 									1.4,2.4,3.4,4.4,5.4,6.4,7.4,8.4,9.4,					//			||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||
 									1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,					//			|| != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START
-									4.6,5.6,6.6,7.6,4.7,5.7,6.7,4.8,5.8,6.8,0.5};			//			||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||
+									4.6,5.6,6.6,7.6,4.7,5.7,6.7,4.8,5.8,6.8,0.5 };			//			||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||
 																							//	FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||
 																							//			||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||
 																							//			||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||
@@ -723,9 +732,9 @@ int main()
 	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, health, password, coordinatelevel, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 
 
-	
-	
-	
+
+
+
 	//cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
 	//cout << "Thank you for playing Dungeons & Goblins!" << endl; // end game message KP
 
@@ -734,20 +743,43 @@ int main()
 	// Hannah stopped coding here//
 	///////////////////////////////
 
-	//health / person / monsters variables --
-	//attack / person / monsters variables -- 
 
-	//attack through loops
+	//attack through loops --- split later
 
-	//finish inventory loops and variables --
+	// level travel (HS)
 
-	//work on the admin loops and variables (including option to teleport) --
-	//hardcoded enemies
+	//work on the admin loops and variables (including option to teleport) -- (TH)
+	// teleport = ask the user which coordinate? (cin coordCopy), ((if levelCounter == 1), for loop made just for coordinate level1) for loop that compares the copy with the coordinatelevel array, if coord does equal something on the array, then make coord = coordCopy, you have teleported to coord, if nothing equals the thing in the array, say you cannot teleport to a wall.
+	// map = c-out map key commeneted in top of code in a c-out statement, ask for which level, declare levelChoice IN function, if statment series (if levelChoice == 1, cout << "map array...")
+	//
+	// cout << MAP KEY:\n				
+//		|| == || = allowed/open space\n
+//		||xxxx|| = forbidden space/a wall\n
+//		|| != || = dead end\n ... 
+//
+//
 
-	//hardcoded dead ends -- 
-	//end game message --
 
-	//small graphic funcs3
+	//hardcoded enemies	--	(KP)
+
+	// (if levelCounter < 1, for loop to compare coordinate to slimecoords[]). (if levelCounter < 2, for loop for slimecoords[], for loop for goblincoord[]) if levelCounter < 3, dm, slime, goblin).		if any of these for loops meets a true condition (coord == slimecoord), then change monsterIndicate to corresponding monster (1 = slime, 2 = goblin, 3 = DM)
+
+	//hardcoded dead ends --						(TH)
+	// almost same thing as enemie one but:
+	//
+	//	if (levelCounter == 1)
+	//	for (int i; levelSizes[levelCounter]; i++)
+	//	{ (if coord == deadendCoord[levelCounter][])
+	//		cout << you have reached a dead end
+	//	}
+	//	
+	//
+	//
+	//small graphic funcs3 (HS)
+	//
+	//
+
+	// finished -- end game (KP)
 
 	system("pause");
 	return 0;
