@@ -673,7 +673,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
 	}
 
-	else if (mapchoice != 1 || mapchoice != 2 || mapchoice != 3 || mapchoice != 4 || mapchoice != 5)
+	else if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5)
 	{
 		cout << "You did not choose an available level." << endl;
 	}                                                                              ///The above was coded by TH///////////////
@@ -682,41 +682,50 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter ) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
 	gameLoop = false;
+
+	bool adminLoop = true;							// bool stuff added by HS
+
 	system("CLS");
 	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
 	cin >> password;
 
 	if (password == "dungeon") //if they enter a correct passwordv (TH)
 	{
-		system("CLS");
-		cout << "Welcome, administrator." << endl;
-		
+			system("CLS");
+			cout << "Welcome, administrator." << endl;
 
-		cout << endl; //admin options (TH)
-		cout << "What would you like to do?" << endl;
-		cout << "1. View Game Maps" << endl;
-		cout << "2. Teleport" << endl;
-		cout << "3. Return to Main Menu" << endl;
-		cin >> adminChoice;
 
-		if (adminChoice == 1)
-		{
-			displayMaps();          ///This block coded by TH///
-		}
+			cout << endl; //admin options (TH)
+			cout << "What would you like to do?" << endl;
+			cout << "1. View Game Maps" << endl;
+			cout << "2. Teleport" << endl;
+			cout << "3. Return to Main Menu" << endl;
+			cin >> adminChoice;
+			if (adminLoop)
+			{
+			if (adminChoice == 1)
+			{
+				displayMaps();          ///This block coded by TH///
+				adminLoop = false;
+			}
 
-		if (adminChoice == 2)      ////////////////////////////
-		{
-			teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
-		}
-		                              /////////(TH) ///////////
-		if (adminChoice == 3)
-		{
-			gameLoop = true; ///////////////////////////////////
-		}
+			if (adminChoice == 2)      ////////////////////////////
+			{
+				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+				adminLoop = false;
+			}
+			/////////(TH) ///////////
+			if (adminChoice == 3)
+			{
+				screenPseudoPause();
+				gameLoop = true; ///////////////////////////////////
+			}
 
-		else
-		{
-			cout << "Please enter a valid option: ";
+			else if (adminChoice < 1 || adminChoice > 3)
+			{
+				cout << "Please enter a valid option: ";
+				cin >> adminChoice;
+			}
 		}
 	}
 
@@ -1255,17 +1264,6 @@ int main()
 
 	// level travel (HS)
 
-	//work on the admin loops and variables (including option to teleport) -- (TH)
-	// teleport = ask the user which coordinate? (cin coordCopy), ((if levelCounter == 1), for loop made just for coordinate level1) for loop that compares the copy with the coordinatelevel array, if coord does equal something on the array, then make coord = coordCopy, you have teleported to coord, if nothing equals the thing in the array, say you cannot teleport to a wall.
-	// map = c-out map key commeneted in top of code in a c-out statement, ask for which level, declare levelChoice IN function, if statment series (if levelChoice == 1, cout << "map array...")
-	//
-	// cout << MAP KEY:\n				
-//		|| == || = allowed/open space\n
-//		||xxxx|| = forbidden space/a wall\n
-//		|| != || = dead end\n ... 
-//
-//
-
 
 	//hardcoded enemies	--	(KP)
 
@@ -1285,13 +1283,11 @@ int main()
 	//small graphic funcs3 (HS)
 	//
 	//
-	// hardcoded weapons/armor/potions
+	// hardcoded weapons/armor/potions (TH)
 	//
 	//
 	//
 	//
-
-	// finished -- end game (KP)
 
 	system("pause");
 	return 0;
