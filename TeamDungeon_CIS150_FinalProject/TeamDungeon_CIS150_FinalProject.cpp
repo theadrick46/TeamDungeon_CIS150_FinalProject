@@ -1292,4 +1292,34 @@ int main()
 	system("pause");
 	return 0;
 }
-
+//whether player hit monster locations coded by KP
+Function()
+If  (level counter == 0)
+For (int I; I < level sizes[level  counter]; i++)
+If (coord == slime coords[i])
+)
+{
+monsterIndicate = 0;
+Break;
+}
+If (level counter == 1)
+For (int I; I < level sizes[level  counter]; i++)
+If (coord == slime coords[i])
+{
+monsterIndicate = 1;
+Break;
+}
+If (level counter == 2)
+For (int I; I < level sizes[level counter]; i++)
+If (coord == goblin coords[i])
+{
+monsterIndicate = 2;
+Break;
+}
+If (level counter == 3)
+For (int I; I < level sizes[level counter]; i++)
+If (coord == goblin cords [i]}
+}
+monsterIndicate = 3;
+break;
+//end of monster locations coded by kp
