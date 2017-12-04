@@ -447,10 +447,86 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 	}
 }
 		
-void displayMaps()
+void displayMaps(int mapchoice)
 {
+	cout << "Which level map would you like to view?";
+	cin >> mapchoice;
+	
+	if (mapchoice == 1)
+	{
+		cout << "MAP KEY:" << endl;
+		cout << "|| == || = allowed/open space" << endl;
+		cout << "||xxxx|| = forbidden space/a wall" << endl;
+		cout << "|| != || = dead end" << endl;
+		cout << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << endl;
+		cout << "|| [] || = slime in this space (open)" << endl;
+		cout << "||-[]-|| = goblin in this space (open)" << endl;
+		cout << "|| ** || = dark magician in this space(open)" << endl;
+		cout << endl;
+		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
+		
+		cout << endl;
+		cout << endl;
+		cout << "------------------------------------------------------"
+		cout << endl;
+		cout << endl;
+
+		cout << "Level 1 Map" << endl;
+		cout << "               FIN                   " <<endl;
+		cout << "||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||" << endl;
+		cout << "||xxxx||XXXX|| == ||xxxx||xxx||xxxx||" << endl;
+		cout << "|| != || == || == || == ||[] || =! ||" << endl;
+		cout << "||xxx || xxx|| == || xxx|| ==||xxxx||" << endl;
+		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
+		cout << " 				 ^                 " << endl;
+		cout << "			   START               " << endl;
+	}
+
+	if (mapchoice == 2)
+	{
+		cout << "MAP KEY:" << endl;
+		cout << "|| == || = allowed/open space" << endl;
+		cout << "||xxxx|| = forbidden space/a wall" << endl;
+		cout << "|| != || = dead end" << endl;
+		cout << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << endl;
+		cout << "|| [] || = slime in this space (open)" << endl;
+		cout << "||-[]-|| = goblin in this space (open)" << endl;
+		cout << "|| ** || = dark magician in this space(open)" << endl;
+		cout << endl;
+		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
+
+		cout << endl;
+		cout << endl;
+		cout << "------------------------------------------------------"
+			cout << endl;
+		cout << endl;
+
+		cout << "Level 2 Map" << endl;
+		cout << "               FIN                   " << endl;
+		cout << "||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||" << endl;
+		cout << "||xxxx||XXXX|| == ||xxxx||xxx||xxxx||" << endl;
+		cout << "|| != || == || == || == ||[] || =! ||" << endl;
+		cout << "||xxx || xxx|| == || xxx|| ==||xxxx||" << endl;
+		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
+		cout << " 				 ^                 " << endl;
+		cout << "			   START               " << endl;
+	}
 }
 
+// map = c-out map key commeneted in top of code in a c-out statement, ask for which level, declare levelChoice IN function, if statment series (if levelChoice == 1, cout << "map array...")
+//
+// cout << MAP KEY:\n				
+//		|| == || = allowed/open space\n
+//		||xxxx|| = forbidden space/a wall\n
+//		|| != || = dead end\n ... 
 void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map
 {
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: ";
