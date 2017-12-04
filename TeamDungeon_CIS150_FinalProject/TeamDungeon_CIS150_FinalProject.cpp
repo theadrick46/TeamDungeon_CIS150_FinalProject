@@ -449,7 +449,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 		
 void displayMaps(int mapchoice)
 {
-	cout << "Which level map would you like to view?";
+	cout << "Which level map would you like to view? (Levels 1-5)";
 	cin >> mapchoice;
 	
 	if (mapchoice == 1)
@@ -471,7 +471,7 @@ void displayMaps(int mapchoice)
 		
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------"
+		cout << "------------------------------------------------------" << endl;
 		cout << endl;
 		cout << endl;
 
@@ -505,28 +505,139 @@ void displayMaps(int mapchoice)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------"
-			cout << endl;
+		cout << "------------------------------------------------------" << endl;
+		cout << endl;
 		cout << endl;
 
 		cout << "Level 2 Map" << endl;
-		cout << "               FIN                   " << endl;
-		cout << "||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||" << endl;
-		cout << "||xxxx||XXXX|| == ||xxxx||xxx||xxxx||" << endl;
-		cout << "|| != || == || == || == ||[] || =! ||" << endl;
-		cout << "||xxx || xxx|| == || xxx|| ==||xxxx||" << endl;
-		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
-		cout << " 				 ^                 " << endl;
-		cout << "			   START               " << endl;
+		cout << "  START                         " << endl;
+		cout << "	||		                     " << endl;
+		cout << "|| 0.0|| == || == || == || == ||" << endl;
+		cout << "|| == || == || == || == || P  ||" << endl;
+		cout << "||-[]-|| == || == || == || == ||" << endl;
+		cout << "|| == || == || == || [] || == ||" << endl;
+		cout << "|| == || == || W  || == || == ||" << endl;
+		cout << "|| == || == || == || == || 4.5|| < FIN" << endl;
+		cout << "|| [] ||xxxx|| == ||xxxx||xxxx||" << endl;
+		cout << "|| != ||xxxx|| == || A  || =! ||" << endl;
+	}
+
+	if (mapchoice == 3)
+	{
+		cout << "MAP KEY:" << endl;
+		cout << "|| == || = allowed/open space" << endl;
+		cout << "||xxxx|| = forbidden space/a wall" << endl;
+		cout << "|| != || = dead end" << endl;
+		cout << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << endl;
+		cout << "|| [] || = slime in this space (open)" << endl;
+		cout << "||-[]-|| = goblin in this space (open)" << endl;
+		cout << "|| ** || = dark magician in this space(open)" << endl;
+		cout << endl;
+		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
+
+		cout << endl;
+		cout << endl;
+		cout << "------------------------------------------------------" << endl;
+		cout << endl;
+		cout << endl;
+
+		cout << "Level 3 Map" << endl;
+		cout << "            START" << endl;
+		cout << "             ||  " << endl;
+		cout << "           || 0.0|| == || == ||xxxx||" << endl;
+		cout << "           ||xxxx|| A  ||-[]-|| == ||" << endl;
+		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
+		cout << "           ||xxxx||xxxx|| == ||-[]-||" << endl;
+		cout << "FIN     >  || 0.4|| == || ** || == ||" << endl;
+		cout << "           ||xxxx||xxxx|| P  || [] ||" << endl;
+		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
+		cout << "           ||xxxx||xxxx|| [] || == ||" << endl;
+		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
+	}
+
+	if (mapchoice == 4)
+	{
+		cout << "MAP KEY:" << endl;
+		cout << "|| == || = allowed/open space" << endl;
+		cout << "||xxxx|| = forbidden space/a wall" << endl;
+		cout << "|| != || = dead end" << endl;
+		cout << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << endl;
+		cout << "|| [] || = slime in this space (open)" << endl;
+		cout << "||-[]-|| = goblin in this space (open)" << endl;
+		cout << "|| ** || = dark magician in this space(open)" << endl;
+		cout << endl;
+		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
+
+		cout << endl;
+		cout << endl;
+		cout << "------------------------------------------------------" << endl;
+		cout << endl;
+		cout << endl;
+
+		cout << "Level 4 Map" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||" << endl;
+		cout << "           || != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START" << endl;
+		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||" << endl;
+		cout << "FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||" << endl;
+	}
+
+	if (mapchoice == 5)
+	{
+		cout << "MAP KEY:" << endl;
+		cout << "|| == || = allowed/open space" << endl;
+		cout << "||xxxx|| = forbidden space/a wall" << endl;
+		cout << "|| != || = dead end" << endl;
+		cout << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << endl;
+		cout << "|| [] || = slime in this space (open)" << endl;
+		cout << "||-[]-|| = goblin in this space (open)" << endl;
+		cout << "|| ** || = dark magician in this space(open)" << endl;
+		cout << endl;
+		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
+
+		cout << endl;
+		cout << endl;
+		cout << "------------------------------------------------------" << endl;
+		cout << endl;
+		cout << endl;
+
+		cout << "Level 5 (Final Level) Map" << endl;
+		cout << "                     START                                " << endl;
+		cout << "                      ||                                  " << endl;
+		cout << "|| == || == || == || 3.0|| == || == || == ||xxxxx||xxxxx||" << endl;
+		cout << "|| == ||-[]-|| == || == || == || ** || == ||xxxxx||xxxxx||" << endl;
+		cout << "|| == || == || == || == || == || == || [] ||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| [] ||-[]-||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| == || [] ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| A  || == || W  || == || P  ||  ** ||  == ||" << endl;
+		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
+	}
+
+	else
+	{
+		cout << "You did not choose an available level." << endl;
 	}
 }
 
-// map = c-out map key commeneted in top of code in a c-out statement, ask for which level, declare levelChoice IN function, if statment series (if levelChoice == 1, cout << "map array...")
-//
-// cout << MAP KEY:\n				
-//		|| == || = allowed/open space\n
-//		||xxxx|| = forbidden space/a wall\n
-//		|| != || = dead end\n ... 
 void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map
 {
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: ";
