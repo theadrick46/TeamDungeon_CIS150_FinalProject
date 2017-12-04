@@ -673,7 +673,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
 	}
 
-	else
+	else if (mapchoice != 1 || mapchoice != 2 || mapchoice != 3 || mapchoice != 4 || mapchoice != 5)
 	{
 		cout << "You did not choose an available level." << endl;
 	}                                                                              ///The above was coded by TH///////////////
