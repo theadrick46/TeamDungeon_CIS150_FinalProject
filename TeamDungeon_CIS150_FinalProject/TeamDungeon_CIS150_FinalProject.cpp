@@ -385,26 +385,26 @@ void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor
 
 void healthStatus(int health) //function to allow user to see their current health status (TH)
 {
-	gameLoop = false;
+	gameLoop = false;														//stops the game from looping again
 	system("CLS");															//clears console
 	cout << "You are currently at " << health << " out of 20." << endl;		// I changed the health to 20 //// Hannah
-	screenPseudoPause();
+	screenPseudoPause();													//restarts loop
 	gameLoop = true;
 }
 
 void exit() //function that allows user to exit (TH)	////HS removed the string parameter
 {
-	gameLoop = false;
+	gameLoop = false;													//stops the game from looping again
 	system("CLS");                                                       //clears console
 	cout << "Thanks for playing. Goodbye!" << endl;                      //ending statement when player chooses to exit
 }
 
 void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
-	gameLoop = false;
-	system("CLS");
-	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
-	cin >> password;
+	gameLoop = false;                                                  //stops the game from looping again
+	system("CLS");                                                     //clears the console
+	cout << "Enter password (case sensitive): ";                      //asks user for the admin password (TH)
+	cin >> password;                            
 
 	if (password == "dungeon") //if they enter a correct passwordv (TH)
 	{
