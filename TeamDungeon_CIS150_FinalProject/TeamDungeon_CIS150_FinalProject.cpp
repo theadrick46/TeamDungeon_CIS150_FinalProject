@@ -399,59 +399,100 @@ void exit() //function that allows user to exit (TH)	////HS removed the string p
 	cout << "Thanks for playing. Goodbye!" << endl;
 }
 
-void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- password: dungeon (TH)
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
 {
-	gameLoop = false;
-	system("CLS");
-	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
-	cin >> password;
+	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose coordinate
+	cin >> coordCopy;
 
-	if (password == "dungeon") //if they enter a correct passwordv (TH)
+	if (levelCounter == 0) //if they choose level 1 (TH)
 	{
-		system("CLS");
-		cout << "Welcome, administrator." << endl;
-		
-
-		cout << endl; //admin options (TH)
-		cout << "What would you like to do?" << endl;
-		cout << "1. View Game Maps" << endl;
-		cout << "2. Teleport" << endl;
-		cout << "3. Return to Main Menu" << endl;
-		cin >> adminChoice;
-
-		if (adminChoice == 1)
+		for (int i = 0; i < 4; i++)
 		{
-			displayMaps();          ///This block coded by TH///
-		}
+			if (coordCopy == coordinatelevel[i])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 1";
+			}
 
-		if (adminChoice == 2)      ////////////////////////////
-		{
-			teleport();
-		}
-		                              /////////(TH) ///////////
-		if (adminChoice == 3)
-		{
-			gameLoop = true; ///////////////////////////////////
-		}
-
-		else
-		{
-			cout << "Please enter a valid option: ";
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
 		}
 	}
 
-	else
+	if (levelCounter == 1) //if they choose level 2 (TH)
 	{
-		system("CLS");
-		cout << "Please enter correct password: "; ///////////(TH)/////////////
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel2[i])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 2";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
 	}
-}
-		
-void displayMaps(int mapchoice) //function to display maps to user with admin priviledges(TH)
+
+	if (levelCounter == 2) //if they choose level 3 (TH)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel3[i])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 3";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 3) //if they choose level 4 (TH)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel4[i])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 4";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 4) //if they choose level 5 (TH)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel5[i])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 5";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+	/////The above was coded by TH////////
+}                                                                                                       //////////////////////////////////////
+
+void displayMaps() //function to display maps to user with admin priviledges(TH)
 {
+	int mapchoice;
+
 	cout << "Which level map would you like to view? (Levels 1-5)";                       ///////////Coded by TH//////////////////////////
 	cin >> mapchoice;
-	
+
 	if (mapchoice == 1) //map for level 1
 	{
 		cout << "MAP KEY:" << endl;
@@ -468,7 +509,7 @@ void displayMaps(int mapchoice) //function to display maps to user with admin pr
 		cout << "|| ** || = dark magician in this space(open)" << endl;
 		cout << endl;
 		cout << "|| :(|| = the treasure / boss / end of the game" << endl;
-		
+
 		cout << endl;
 		cout << endl;
 		cout << "------------------------------------------------------" << endl;
@@ -476,7 +517,7 @@ void displayMaps(int mapchoice) //function to display maps to user with admin pr
 		cout << endl;
 
 		cout << "Level 1 Map" << endl;
-		cout << "               FIN                   " <<endl;
+		cout << "               FIN                   " << endl;
 		cout << "||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||" << endl;
 		cout << "||xxxx||XXXX|| == ||xxxx||xxx||xxxx||" << endl;
 		cout << "|| != || == || == || == ||[] || =! ||" << endl;
@@ -634,96 +675,60 @@ void displayMaps(int mapchoice) //function to display maps to user with admin pr
 
 	else
 	{
-		cout << "You did not choose an available level." << endl;  
+		cout << "You did not choose an available level." << endl;
 	}                                                                              ///The above was coded by TH///////////////
 }																					//////////////////////////////////////////
 
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
+void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter ) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
-	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose coordinate
-	cin >> coordCopy;
+	gameLoop = false;
+	system("CLS");
+	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
+	cin >> password;
 
-	if (levelCounter == 0) //if they choose level 1 (TH)
+	if (password == "dungeon") //if they enter a correct passwordv (TH)
 	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (coordCopy == coordinatelevel[])
-			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 1";
-			}
+		system("CLS");
+		cout << "Welcome, administrator." << endl;
+		
 
-			else
-			{
-				cout << "You may not teleport into a wall";
-			}
+		cout << endl; //admin options (TH)
+		cout << "What would you like to do?" << endl;
+		cout << "1. View Game Maps" << endl;
+		cout << "2. Teleport" << endl;
+		cout << "3. Return to Main Menu" << endl;
+		cin >> adminChoice;
+
+		if (adminChoice == 1)
+		{
+			displayMaps();          ///This block coded by TH///
+		}
+
+		if (adminChoice == 2)      ////////////////////////////
+		{
+			teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+		}
+		                              /////////(TH) ///////////
+		if (adminChoice == 3)
+		{
+			gameLoop = true; ///////////////////////////////////
+		}
+
+		else
+		{
+			cout << "Please enter a valid option: ";
 		}
 	}
 
-	if (levelCounter == 1) //if they choose level 2 (TH)
+	else
 	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (coordCopy == coordinatelevel2[])
-			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 2";
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall";
-			}
-		}
+		system("CLS");
+		cout << "Please enter correct password: "; ///////////(TH)/////////////
 	}
+}
+		
 
-	if (levelCounter == 2) //if they choose level 3 (TH)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (coordCopy == coordinatelevel3[])
-			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 3";
-			}
 
-			else
-			{
-				cout << "You may not teleport into a wall";
-			}
-		}
-	}
-
-	if (levelCounter == 3) //if they choose level 4 (TH)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (coordCopy == coordinatelevel4[])
-			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 4";
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall";
-			}
-		}
-	}
-
-	if (levelCounter == 4) //if they choose level 5 (TH)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (coordCopy == coordinatelevel5[])
-			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 5";
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall";
-			}
-		}
-	}
-																										/////The above was coded by TH////////
-}                                                                                                       //////////////////////////////////////
 
 void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
@@ -763,7 +768,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	
 	if (choice == 9)
 	{
-		admin(password, adminChoice); //allows admin to access maps *with password
+		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter ); //allows admin to access maps *with password
 	}
 
 	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)
