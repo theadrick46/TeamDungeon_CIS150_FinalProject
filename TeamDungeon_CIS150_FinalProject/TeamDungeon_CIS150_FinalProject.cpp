@@ -483,8 +483,8 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 			}
 		}
 	}
-	/////The above was coded by TH////////
-}                                                                                                       //////////////////////////////////////
+	///// The above was coded by TH //////////////////////////////////////////////
+}                                                        
 
 void displayMaps() //function to display maps to user with admin priviledges(TH)
 {
