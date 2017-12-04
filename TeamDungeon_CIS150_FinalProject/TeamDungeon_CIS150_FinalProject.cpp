@@ -426,7 +426,7 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 		if (adminChoice == 2)
 		{
-			//teleportation function
+			teleport();
 		}
 
 		if (adminChoice == 3)
@@ -447,11 +447,96 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 	}
 }
 		
-//void displayMaps()
-//{
-//}
+void displayMaps()
+{
+}
 
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map
+{
+	cout << "Enter the coordinate for Level 1 that you would like to teleport to: ";
+	cin >> coordCopy;
 
+	if (levelCounter == 0)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel[])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 1";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 1)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel2[])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 2";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 2)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel3[])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 3";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 3)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel4[])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 4";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+	if (levelCounter == 4)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (coordCopy == coordinatelevel5[])
+			{
+				cout << "You have chosen to teleport to " << coordCopy << "on level 5";
+			}
+
+			else
+			{
+				cout << "You may not teleport into a wall";
+			}
+		}
+	}
+
+}
 
 void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
