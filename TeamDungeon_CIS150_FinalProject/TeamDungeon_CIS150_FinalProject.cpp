@@ -66,14 +66,14 @@ int movement = 0;																	//represents where the player decides to move 
 //////The following functions were codeded by Tanness Headrick////////
 
 
-void greeting(string name) //function to start game- greets user (TH)                                                                              
+void greeting(string name)															//function to start game- greets user (TH)                                                                              
 {
-	cout << "Enter your name: ";
-	cin >> name;
-	system("CLS");
-	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
-	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;
-	cout << "" << endl;
+	cout << "Enter your name: ";                                                   // asks user to enter their name
+	cin >> name;																	//stores user's name
+	system("CLS");																	//clears the console
+	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl; //greets user by name
+	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;    //continuation of greeting
+	cout << "" << endl;																						//finishes up greeting
 }
 
 /////////////////////////////////////////////////////
@@ -386,7 +386,7 @@ void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor
 void healthStatus(int health) //function to allow user to see their current health status (TH)
 {
 	gameLoop = false;
-	system("CLS");
+	system("CLS");															//clears console
 	cout << "You are currently at " << health << " out of 20." << endl;		// I changed the health to 20 //// Hannah
 	screenPseudoPause();
 	gameLoop = true;
@@ -395,8 +395,8 @@ void healthStatus(int health) //function to allow user to see their current heal
 void exit() //function that allows user to exit (TH)	////HS removed the string parameter
 {
 	gameLoop = false;
-	system("CLS");
-	cout << "Thanks for playing. Goodbye!" << endl;
+	system("CLS");                                                       //clears console
+	cout << "Thanks for playing. Goodbye!" << endl;                      //ending statement when player chooses to exit
 }
 
 void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- password: dungeon (TH)
