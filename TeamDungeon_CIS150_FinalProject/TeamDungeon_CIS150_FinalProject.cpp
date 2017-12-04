@@ -399,20 +399,20 @@ void exit() //function that allows user to exit (TH)	////HS removed the string p
 	cout << "Thanks for playing. Goodbye!" << endl;
 }
 
-void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- passoword: dungeon (TH)
+void admin(string password, int adminChoice) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
 	gameLoop = false;
 	system("CLS");
-	cout << "Enter password (case sensitive): ";
+	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
 	cin >> password;
 
-	if (password == "dungeon")
+	if (password == "dungeon") //if they enter a correct passwordv (TH)
 	{
 		system("CLS");
 		cout << "Welcome, administrator." << endl;
 		
 
-		cout << endl;
+		cout << endl; //admin options (TH)
 		cout << "What would you like to do?" << endl;
 		cout << "1. View Game Maps" << endl;
 		cout << "2. Teleport" << endl;
@@ -421,17 +421,17 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 
 		if (adminChoice == 1)
 		{
-			//gamemap display function
+			displayMaps();          ///This block coded by TH///
 		}
 
-		if (adminChoice == 2)
+		if (adminChoice == 2)      ////////////////////////////
 		{
 			teleport();
 		}
-
+		                              /////////(TH) ///////////
 		if (adminChoice == 3)
 		{
-			gameLoop = true;
+			gameLoop = true; ///////////////////////////////////
 		}
 
 		else
@@ -443,16 +443,16 @@ void admin(string password, int adminChoice) //function that allows admin to pul
 	else
 	{
 		system("CLS");
-		cout << "Please enter correct password: ";
+		cout << "Please enter correct password: "; ///////////(TH)/////////////
 	}
 }
 		
-void displayMaps(int mapchoice)
+void displayMaps(int mapchoice) //function to display maps to user with admin priviledges(TH)
 {
-	cout << "Which level map would you like to view? (Levels 1-5)";
+	cout << "Which level map would you like to view? (Levels 1-5)";                       ///////////Coded by TH//////////////////////////
 	cin >> mapchoice;
 	
-	if (mapchoice == 1)
+	if (mapchoice == 1) //map for level 1
 	{
 		cout << "MAP KEY:" << endl;
 		cout << "|| == || = allowed/open space" << endl;
@@ -486,7 +486,7 @@ void displayMaps(int mapchoice)
 		cout << "			   START               " << endl;
 	}
 
-	if (mapchoice == 2)
+	if (mapchoice == 2) //map for level 2
 	{
 		cout << "MAP KEY:" << endl;
 		cout << "|| == || = allowed/open space" << endl;
@@ -522,7 +522,7 @@ void displayMaps(int mapchoice)
 		cout << "|| != ||xxxx|| == || A  || =! ||" << endl;
 	}
 
-	if (mapchoice == 3)
+	if (mapchoice == 3) //map for level 3
 	{
 		cout << "MAP KEY:" << endl;
 		cout << "|| == || = allowed/open space" << endl;
@@ -559,7 +559,7 @@ void displayMaps(int mapchoice)
 		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
 	}
 
-	if (mapchoice == 4)
+	if (mapchoice == 4) //map for level 4
 	{
 		cout << "MAP KEY:" << endl;
 		cout << "|| == || = allowed/open space" << endl;
@@ -594,7 +594,7 @@ void displayMaps(int mapchoice)
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||" << endl;
 	}
 
-	if (mapchoice == 5)
+	if (mapchoice == 5) //map for level 5
 	{
 		cout << "MAP KEY:" << endl;
 		cout << "|| == || = allowed/open space" << endl;
@@ -634,16 +634,16 @@ void displayMaps(int mapchoice)
 
 	else
 	{
-		cout << "You did not choose an available level." << endl;
-	}
-}
+		cout << "You did not choose an available level." << endl;  
+	}                                                                              ///The above was coded by TH///////////////
+}																					//////////////////////////////////////////
 
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
 {
-	cout << "Enter the coordinate for Level 1 that you would like to teleport to: ";
+	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose coordinate
 	cin >> coordCopy;
 
-	if (levelCounter == 0)
+	if (levelCounter == 0) //if they choose level 1 (TH)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -659,7 +659,7 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		}
 	}
 
-	if (levelCounter == 1)
+	if (levelCounter == 1) //if they choose level 2 (TH)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -675,7 +675,7 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		}
 	}
 
-	if (levelCounter == 2)
+	if (levelCounter == 2) //if they choose level 3 (TH)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -691,7 +691,7 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		}
 	}
 
-	if (levelCounter == 3)
+	if (levelCounter == 3) //if they choose level 4 (TH)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -707,7 +707,7 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		}
 	}
 
-	if (levelCounter == 4)
+	if (levelCounter == 4) //if they choose level 5 (TH)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -722,8 +722,8 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 			}
 		}
 	}
-
-}
+																										/////The above was coded by TH////////
+}                                                                                                       //////////////////////////////////////
 
 void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
 {
