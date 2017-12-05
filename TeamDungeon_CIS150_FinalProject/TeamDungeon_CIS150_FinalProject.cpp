@@ -1293,15 +1293,22 @@ int main()
 	return 0;
 }
 //whether player hit monster locations coded by KP
-Function()
-If  (level counter == 0)
-For (int I; I < level sizes[level  counter]; i++)
-If (coord == slime coords[i])
-)
+monsterPlayerPosCheck()
 {
-monsterIndicate = 0;
-Break;
-}
+	if (levelCounter == 0)
+	{
+		for(int i; i < levelSizes[levelCounter]; i++)
+		{
+			if(coord == slimeCoords[levelCounter][i])
+			{
+				monsterIndicate = 0;
+				break;
+			}
+		}
+
+	}
+
+
 If (level counter == 1)
 For (int I; I < level sizes[level  counter]; i++)
 If (coord == slime coords[i])
@@ -1322,4 +1329,5 @@ If (coord == goblin cords [i]}
 }
 monsterIndicate = 3;
 break;
+}
 //end of monster locations coded by kp
