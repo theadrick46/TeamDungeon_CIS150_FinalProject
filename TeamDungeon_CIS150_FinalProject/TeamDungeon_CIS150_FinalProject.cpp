@@ -523,8 +523,8 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "|| != || == || == || == ||[] || =! ||" << endl;
 		cout << "||xxx || xxx|| == || xxx|| ==||xxxx||" << endl;
 		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
-		cout << " 				 ^                 " << endl;
-		cout << "			   START               " << endl;
+		cout << " 				 ^                    " << endl;
+		cout << "			   START                  " << endl;
 	}
 
 	if (mapchoice == 2) //map for level 2
@@ -551,16 +551,16 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << endl;
 
 		cout << "Level 2 Map" << endl;
-		cout << "  START                         " << endl;
-		cout << "	||		                     " << endl;
-		cout << "|| 0.0|| == || == || == || == ||" << endl;
-		cout << "|| == || == || == || == || P  ||" << endl;
-		cout << "||-[]-|| == || == || == || == ||" << endl;
-		cout << "|| == || == || == || [] || == ||" << endl;
-		cout << "|| == || == || W  || == || == ||" << endl;
+		cout << "  START                               " << endl;
+		cout << "	||		                           " << endl;
+		cout << "|| 0.0|| == || == || == || == ||      " << endl;
+		cout << "|| == || == || == || == || P  ||      " << endl;
+		cout << "||-[]-|| == || == || == || == ||      " << endl;
+		cout << "|| == || == || == || [] || == ||      " << endl;
+		cout << "|| == || == || W  || == || == ||      " << endl;
 		cout << "|| == || == || == || == || 4.5|| < FIN" << endl;
-		cout << "|| [] ||xxxx|| == ||xxxx||xxxx||" << endl;
-		cout << "|| != ||xxxx|| == || A  || =! ||" << endl;
+		cout << "|| [] ||xxxx|| == ||xxxx||xxxx||      " << endl;
+		cout << "|| != ||xxxx|| == || A  || =! ||      " << endl;
 	}
 
 	if (mapchoice == 3) //map for level 3
@@ -624,15 +624,15 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << endl;
 
 		cout << "Level 4 Map" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||           " << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||           " << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           || != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START" << endl;
-		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||" << endl;
-		cout << "FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||" << endl;
-		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||" << endl;
+		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||           " << endl;
+		cout << "FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||           " << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||           " << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||           " << endl;
+		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||           " << endl;
 	}
 
 	if (mapchoice == 5) //map for level 5
