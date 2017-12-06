@@ -327,6 +327,69 @@ void moveDisplay()
 	gameLoop = true;
 }
 
+void deadEnd(int levelCounter, int levelSizes[], int deadEndCoords[]) //function by TH - with help from HS
+{
+	if (levelCounter == 0) //if at the first level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == deadEndCoords[i]) //lists dead ends
+			{
+				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
+				break;
+			}
+		}
+	}
+
+	if (levelCounter == 1) //if at the second level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == deadEndCoords[i]) //lists dead ends
+			{
+				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
+				break;
+			}
+		}
+	}
+
+	if (levelCounter == 2) //if at the third level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == deadEndCoords[i]) //lists dead ends
+			{
+				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
+				break;
+			}
+		}
+	}
+
+	if (levelCounter == 3) //if at the fourth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == deadEndCoords[i]) //lists dead ends
+			{
+				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
+				break;
+			}
+		}
+	}
+
+	if (levelCounter == 4) //if at the fifth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == deadEndCoords[i]) //lists dead ends
+			{
+				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
+				break;
+			}
+		}
+	}
+}
+
 ////////////////////////////////////////////////
 ////////////// HANNAH STARTS CODING AGAIN HERE
 
@@ -1455,59 +1518,70 @@ void monsterPlayerPosCheck()
 //end of monster locations coded by kp
 
 
-//hardcoded dead ends (TH)
-
-if (level counter == 0)
+void potionLocations(int levelCounter, int levelSizes[], int potionCoords[], int potion) //function by TH
 {
-	for (int i; i < levelsizes[level counter]; i++)
+	if (levelCounter == 0) //if at the first level
 	{
-		if (coord == deadEndCoords[i])
+		for (int i; i < levelSizes[levelCounter]; i++)
 		{
-			cout << "You have run into a dead end. " << endl;
+			if (coord == potionCoords[i]) //lists potion locations
+			{
+				cout << "You have found a potion!" << endl; //informs player that they have found a potion
+				break;
+				potion++;
+			}
 		}
 	}
-}
 
-if (level counter == 1)
-{
-	for (int i; i < levelsizes[level counter]; i++)
+	if (levelCounter == 1) //if at the second level
 	{
-		if (coord == deadEndCoords[i])
+		for (int i; i < levelSizes[levelCounter]; i++)
 		{
-			cout << "You have run into a dead end. " << endl;
+			if (coord == potionCoords[i]) //lists potion locations
+			{
+				cout << "You have found a potion!" << endl; //informs player that they have found a potion
+				break;
+				potion++;
+			}
 		}
 	}
-}
 
-if (level counter == 2)
-{
-	for (int i; i < levelsizes[level counter]; i++)
+	if (levelCounter == 2) //if at the third level
 	{
-		if (coord == deadEndCoords[i])
+		for (int i; i < levelSizes[levelCounter]; i++)
 		{
-			cout << "You have run into a dead end. " << endl;
+			if (coord == potionCoords[i]) //lists potion locations
+			{
+				cout << "You have found a potion!" << endl; //informs player that they have found a potion
+				break;
+				potion++;
+			}
 		}
 	}
-}
 
-if (level counter == 3)
-{
-	for (int i; i < levelsizes[level counter]; i++)
+	if (levelCounter == 3) //if at the fourth level
 	{
-		if (coord == deadEndCoords[i])
+		for (int i; i < levelSizes[levelCounter]; i++)
 		{
-			cout << "You have run into a dead end. " << endl;
+			if (coord == potionCoords[i]) //lists potion locations
+			{
+				cout << "You have found a potion!" << endl; //informs player that they have found a potion
+				break;
+				potion++;
+			}
 		}
 	}
-}
 
-if (level counter == 4)
-{
-	for (int i; i < levelsizes[level counter]; i++)
+	if (levelCounter == 4) //if at the fifth level
 	{
-		if (coord == deadEndCoords[i])
+		for (int i; i < levelSizes[levelCounter]; i++)
 		{
-			cout << "You have run into a dead end. " << endl;
+			if (coord == potionCoords[i]) //lists potion locations
+			{
+				cout << "You have found a potion!" << endl; //informs player that they have found a potion
+				break;
+				potion++;
+			}
 		}
 	}
 }
