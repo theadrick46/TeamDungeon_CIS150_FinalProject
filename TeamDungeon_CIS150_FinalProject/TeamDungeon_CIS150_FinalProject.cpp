@@ -1457,3 +1457,57 @@ void monsterPlayerPosCheck()
 
 //hardcoded dead ends (TH)
 
+if (level counter == 0)
+{
+	for (int i; i < levelsizes[level counter]; i++)
+	{
+		if (coord == deadEndCoords[i])
+		{
+			cout << "You have run into a dead end. " << endl;
+		}
+	}
+}
+
+if (level counter == 1)
+{
+	for (int i; i < levelsizes[level counter]; i++)
+	{
+		if (coord == deadEndCoords[i])
+		{
+			cout << "You have run into a dead end. " << endl;
+		}
+	}
+}
+
+if (level counter == 2)
+{
+	for (int i; i < levelsizes[level counter]; i++)
+	{
+		if (coord == deadEndCoords[i])
+		{
+			cout << "You have run into a dead end. " << endl;
+		}
+	}
+}
+
+if (level counter == 3)
+{
+	for (int i; i < levelsizes[level counter]; i++)
+	{
+		if (coord == deadEndCoords[i])
+		{
+			cout << "You have run into a dead end. " << endl;
+		}
+	}
+}
+
+if (level counter == 4)
+{
+	for (int i; i < levelsizes[level counter]; i++)
+	{
+		if (coord == deadEndCoords[i])
+		{
+			cout << "You have run into a dead end. " << endl;
+		}
+	}
+}
