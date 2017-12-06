@@ -124,7 +124,7 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; //
 		
 
-		coordinatelevel2[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel2[9] = floor((coordinatelevel2[9] / 0.1) + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
 		coordinatelevel2[11] = floor(coordinatelevel2[11] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel2[15] = floor(coordinatelevel2[15] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel2[17] = floor(coordinatelevel2[17] / 0.1 + 0.5) * 0.1; // 
@@ -495,8 +495,7 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		for (int i = 0; i < 11; i++)
 		{
 			if (coordCopy == coordinatelevel[i])
-			{
-				cout << "m\n";
+			{;
 				teleportCorrect = true;
 				coord = coordCopy;															// this was added by HS
 				cout << "You have chosen to teleport to " << coord << "on level 1\n";
@@ -1221,7 +1220,6 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
-		cout << coord << endl;
 		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
@@ -1457,59 +1455,6 @@ void monsterPlayerPosCheck()
 }
 //end of monster locations coded by kp
 
-if (levelCounter == 0)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
 
-if (levelCounter == 1)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 2)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 3)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 4)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
 //hardcoded dead ends (TH)
 
