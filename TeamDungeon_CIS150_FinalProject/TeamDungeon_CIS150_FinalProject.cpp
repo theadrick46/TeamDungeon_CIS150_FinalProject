@@ -1328,3 +1328,61 @@ monsterIndicate = 3;
 break;
 }
 //end of monster locations coded by kp
+
+
+//hardcoded dead ends (TH)
+
+if (levelCounter == 0)
+{
+	for (int i; levelSizes[levelCounter]; i++)
+	{
+		if (coord == deadEndCoords[levelCounter][i])
+		{
+			cout << "You have reached a dead end." << endl;
+		}
+	}
+}
+
+if (levelCounter == 1)
+{
+	for (int i; levelSizes[levelCounter]; i++)
+	{
+		if (coord == deadEndCoords[levelCounter][i])
+		{
+			cout << "You have reached a dead end." << endl;
+		}
+	}
+}
+
+if (levelCounter == 2)
+{
+	for (int i; levelSizes[levelCounter]; i++)
+	{
+		if (coord == deadEndCoords[levelCounter][i])
+		{
+			cout << "You have reached a dead end." << endl;
+		}
+	}
+}
+
+if (levelCounter == 3)
+{
+	for (int i; levelSizes[levelCounter]; i++)
+	{
+		if (coord == deadEndCoords[levelCounter][i])
+		{
+			cout << "You have reached a dead end." << endl;
+		}
+	}
+}
+
+if (levelCounter == 4)
+{
+	for (int i; levelSizes[levelCounter]; i++)
+	{
+		if (coord == deadEndCoords[levelCounter][i])
+		{
+			cout << "You have reached a dead end." << endl;
+		}
+	}
+}
