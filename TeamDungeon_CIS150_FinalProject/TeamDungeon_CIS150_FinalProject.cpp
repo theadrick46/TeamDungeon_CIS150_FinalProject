@@ -62,18 +62,15 @@ string fillerCin = "";																// a filler char to "pause" the screen unt
 int movement = 0;																	//represents where the player decides to move (TH)
 																					//1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
 
-///////////////////////////////////////////////////////////////////////
-//////The following functions were codeded by Tanness Headrick////////
 
-
-void greeting(string name) //function to start game- greets user (TH)                                                                              
+void greeting(string name)															//function to start game- greets user (ENTIRE FUNCTION- TH)                                                                              
 {
-	cout << "Enter your name: ";
-	cin >> name;
-	system("CLS");
-	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;
-	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;
-	cout << "" << endl;
+	cout << "Enter your name: ";													//user enters their name to make the game more personalized
+	cin >> name;																	//stores user's name
+	system("CLS");																	//clears console
+	cout << "Welcome " << name << ". You are about to embark on a marvelous journey. It will be " << endl;	//greets the user, with their name
+	cout << "full of monsters and mayhem... and possibly treasure! Good luck on your travels!" << endl;		//gives a small backstory
+	cout << "" << endl;																						//end of the greeting
 }
 
 /////////////////////////////////////////////////////
@@ -114,7 +111,7 @@ void basicPrintGraphic(string person[], string floorCeiling)
 void correctCoordRoundup(double coordinatelevel[], int levelCounter)					// Hannah coded this function		
 
 																						//since lots of doubles in the array weren't rounding up correctly, I figured
-																						//out a way to fix it. It's long, but wihtout it the game won't work.
+																						//out a way to fix it. It's long, but without it the game won't work.
 {
 	if (levelCounter == 0)
 	{
@@ -460,11 +457,11 @@ void askMove(double coordinatelevel[], double coordinatelevel2[], double coordin
 //Tanness started coding again here	//
 //////////////////////////////////////
 
-void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor[], int potion)							//function to allow user to see what they have collected (TH)
+void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor[], int potion)		//function to allow user to see what they have collected (TH)
 {																				
 																			//////////////////////////////////////
 	gameLoop = false;														// gameloops and pseudo added by HS //
-	system("CLS");															//////////////////////////////////////
+	system("CLS");	//clears console										//////////////////////////////////////
 	cout << "You currently have: " << endl;   
 	
 	if (weaponCounter == -1)												/////////////////////////////////////////
@@ -487,23 +484,27 @@ void checkInv(int weaponCounter, string weapon[], int armorCounter, string armor
 
 void healthStatus(int health) //function to allow user to see their current health status (TH)
 {
-	gameLoop = false;
-	system("CLS");
-	cout << "You are currently at " << health << " out of 20." << endl;		// I changed the health to 20 //// Hannah
+	gameLoop = false; //prevents game from looping over again
+	system("CLS"); //clears console
+	cout << "You are currently at " << health << " out of 20." << endl;	//tells player what their current health is	// I changed the health to 20 //// Hannah
 	screenPseudoPause();
 	gameLoop = true;
 }
 
 void exit() //function that allows user to exit (TH)	////HS removed the string parameter
 {
-	gameLoop = false;
-	system("CLS");
-	cout << "Thanks for playing. Goodbye!" << endl;
+	gameLoop = false; //prevents game from looping again
+	system("CLS"); //clears console
+	cout << "Thanks for playing. Goodbye!" << endl; //end message to player if they choose to exit game
 }
 
+<<<<<<< HEAD
 void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
+=======
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 {
-	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose coordinate
+	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose exact coordinate
 	cin >> coordCopy;
 
 	if (levelCounter == 0) //if they choose level 1 (TH)
@@ -512,13 +513,17 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel[i])
 			{
+<<<<<<< HEAD
 				coord = coordCopy;															// this was added by HS
 				cout << "You have chosen to teleport to " << coord << "on level 1";
+=======
+				cout << "You have chosen to teleport to " << coordCopy << "on level 1"; //tells player where they will teleport to on Level 1
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 
 			else
 			{
-				cout << "You may not teleport into a wall";
+				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 			}
 		}
 	}
@@ -529,12 +534,12 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel2[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 2";
+				cout << "You have chosen to teleport to " << coordCopy << "on level 2"; //tells player where they will teleport to on Level 2
 			}
 
 			else
 			{
-				cout << "You may not teleport into a wall";
+				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 			}
 		}
 	}
@@ -545,12 +550,12 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel3[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 3";
+				cout << "You have chosen to teleport to " << coordCopy << "on level 3"; //tells player where they will teleport to on Level 3
 			}
 
 			else
 			{
-				cout << "You may not teleport into a wall";
+				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 			}
 		}
 	}
@@ -561,12 +566,12 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel4[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 4";
+				cout << "You have chosen to teleport to " << coordCopy << "on level 4"; //tells player where they will teleport to on Level 4
 			}
 
 			else
 			{
-				cout << "You may not teleport into a wall";
+				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 			}
 		}
 	}
@@ -577,12 +582,12 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel5[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 5";
+				cout << "You have chosen to teleport to " << coordCopy << "on level 5"; //tells player where they will teleport to on Level 5
 			}
 
 			else
 			{
-				cout << "You may not teleport into a wall";
+				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 			}
 		}
 	}
@@ -591,10 +596,10 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 
 void displayMaps() //function to display maps to user with admin priviledges(TH)
 {
-	int mapchoice;
+	int mapchoice; //declares mapchoice variable (which map is chosen to view)
 
-	cout << "Which level map would you like to view? (Levels 1-5)";                       ///////////Coded by TH//////////////////////////
-	cin >> mapchoice;
+	cout << "Which level map would you like to view? (Levels 1-5)"; //asks user with admin priviledges which map they would like to view                      ///////////All Map Options Coded by TH//////////////////////////
+	cin >> mapchoice; //stores their choice
 
 	if (mapchoice == 1) //map for level 1
 	{
@@ -603,7 +608,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx|| = forbidden space/a wall" << endl;
 		cout << "|| != || = dead end" << endl;
 		cout << endl;
-		cout << "|| W  || = weapon in this space (open)" << endl;
+		cout << "|| W  || = weapon in this space (open)" << endl;     //////////////map key//////////////
 		cout << "|| A  || = armor in this space (open)" << endl;
 		cout << "|| P  || = potion in this space (open)" << endl;
 		cout << endl;
@@ -615,7 +620,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------" << endl;
+		cout << "------------------------------------------------------" << endl; //seperates key from map
 		cout << endl;
 		cout << endl;
 
@@ -623,7 +628,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "               FIN                   " << endl;
 		cout << "||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||" << endl;
 		cout << "||xxxx||XXXX|| == ||xxxx||xxx||xxxx||" << endl;
-		cout << "|| != || == || == || == ||[] || =! ||" << endl;
+		cout << "|| != || == || == || == ||[] || =! ||" << endl; //prints visual of map of level 1
 		cout << "||xxx || xxx|| == || xxx|| ==||xxxx||" << endl;
 		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
 		cout << " 				 ^                    " << endl;
@@ -638,7 +643,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "|| != || = dead end" << endl;
 		cout << endl;
 		cout << "|| W  || = weapon in this space (open)" << endl;
-		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;       //////////////map key//////////////
 		cout << "|| P  || = potion in this space (open)" << endl;
 		cout << endl;
 		cout << "|| [] || = slime in this space (open)" << endl;
@@ -649,7 +654,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------" << endl;
+		cout << "------------------------------------------------------" << endl; //seperates key from map
 		cout << endl;
 		cout << endl;
 
@@ -658,7 +663,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "	||		                           " << endl;
 		cout << "|| 0.0|| == || == || == || == ||      " << endl;
 		cout << "|| == || == || == || == || P  ||      " << endl;
-		cout << "||-[]-|| == || == || == || == ||      " << endl;
+		cout << "||-[]-|| == || == || == || == ||      " << endl; //prints visual of map of level 2
 		cout << "|| == || == || == || [] || == ||      " << endl;
 		cout << "|| == || == || W  || == || == ||      " << endl;
 		cout << "|| == || == || == || == || 4.5|| < FIN" << endl;
@@ -675,7 +680,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << endl;
 		cout << "|| W  || = weapon in this space (open)" << endl;
 		cout << "|| A  || = armor in this space (open)" << endl;
-		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;         //////////////map key//////////////
 		cout << endl;
 		cout << "|| [] || = slime in this space (open)" << endl;
 		cout << "||-[]-|| = goblin in this space (open)" << endl;
@@ -685,7 +690,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------" << endl;
+		cout << "------------------------------------------------------" << endl; //seperates key from map
 		cout << endl;
 		cout << endl;
 
@@ -696,7 +701,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "           ||xxxx|| A  ||-[]-|| == ||" << endl;
 		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
 		cout << "           ||xxxx||xxxx|| == ||-[]-||" << endl;
-		cout << "FIN     >  || 0.4|| == || ** || == ||" << endl;
+		cout << "FIN     >  || 0.4|| == || ** || == ||" << endl;          //prints visual of map of level 3
 		cout << "           ||xxxx||xxxx|| P  || [] ||" << endl;
 		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
 		cout << "           ||xxxx||xxxx|| [] || == ||" << endl;
@@ -711,7 +716,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "|| != || = dead end" << endl;
 		cout << endl;
 		cout << "|| W  || = weapon in this space (open)" << endl;
-		cout << "|| A  || = armor in this space (open)" << endl;
+		cout << "|| A  || = armor in this space (open)" << endl;               //////////////map key//////////////
 		cout << "|| P  || = potion in this space (open)" << endl;
 		cout << endl;
 		cout << "|| [] || = slime in this space (open)" << endl;
@@ -722,7 +727,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------" << endl;
+		cout << "------------------------------------------------------" << endl; //seperates key from map
 		cout << endl;
 		cout << endl;
 
@@ -731,7 +736,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           || != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START" << endl;
-		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||           " << endl;
+		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||           " << endl;        //prints visual of map of level 4
 		cout << "FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||           " << endl;
@@ -747,7 +752,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << endl;
 		cout << "|| W  || = weapon in this space (open)" << endl;
 		cout << "|| A  || = armor in this space (open)" << endl;
-		cout << "|| P  || = potion in this space (open)" << endl;
+		cout << "|| P  || = potion in this space (open)" << endl;          //////////////map key//////////////
 		cout << endl;
 		cout << "|| [] || = slime in this space (open)" << endl;
 		cout << "||-[]-|| = goblin in this space (open)" << endl;
@@ -757,7 +762,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 
 		cout << endl;
 		cout << endl;
-		cout << "------------------------------------------------------" << endl;
+		cout << "------------------------------------------------------" << endl; //seperates key from map
 		cout << endl;
 		cout << endl;
 
@@ -768,7 +773,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "|| == ||-[]-|| == || == || == || ** || == ||xxxxx||xxxxx||" << endl;
 		cout << "|| == || == || == || == || == || == || [] ||xxxxx||xxxxx||" << endl;
 		cout << "||xxxx||xxxx|| [] ||-[]-||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
-		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
+		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;        //prints visual of map of level 5
 		cout << "||xxxx||xxxx|| == || [] ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
 		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
 		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
@@ -776,10 +781,14 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
 	}
 
+<<<<<<< HEAD
 	if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5)
+=======
+	else if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5) //if user does not choose a valid map choice
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 	{
 		cout << "You did not choose an available level." << endl;
-	}                                                                              ///The above was coded by TH///////////////
+	}																				///////The above was coded by TH//////////
 }																					//////////////////////////////////////////
 
 void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter, int levelSizes[]) //function that allows admin to pull up map *password protected- password: dungeon (TH)
@@ -790,18 +799,23 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 
 	system("CLS");
 	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
-	cin >> password;
+	cin >> password; //stores password
 
 	while (adminLoop)
 	{
+<<<<<<< HEAD
 		if (password == "dungeon") //if they enter a correct passwordv (TH)
 		{
 			system("CLS");
 			cout << "Welcome, administrator." << endl;
+=======
+			system("CLS"); //clears console
+			cout << "Welcome, administrator." << endl; //greets player once it is established that they have admin privlidges
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 
 
 			cout << endl; //admin options (TH)
-			cout << "What would you like to do?" << endl;
+			cout << "What would you like to do?" << endl; //asks user what they would like to do (which option)
 			cout << "1. View Game Maps" << endl;
 			cout << "2. Teleport" << endl;
 			cout << "3. Return to Main Menu" << endl;
@@ -810,14 +824,23 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			if (adminChoice == 1)
 			{
 				displayMaps();          ///This block coded by TH///
+<<<<<<< HEAD
 
 				screenPseudoPause();	////// all pseudo-pauses added by hannah
+=======
+				adminLoop = false; //added by Hannah
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 
 			if (adminChoice == 2)      ////////////////////////////
 			{
+<<<<<<< HEAD
 				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
 				screenPseudoPause();
+=======
+				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+				adminLoop = false; //added by Hannah
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 			/////////(TH) ///////////
 			if (adminChoice == 3)
@@ -826,14 +849,22 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 				gameLoop = true; ///////////////////////////////////
 			}
 
+<<<<<<< HEAD
 			if (adminChoice < 1 || adminChoice > 3)
 			{
 				cout << "Please enter a valid option. ";
 				cout << "\n";
 				screenPseudoPause();
+=======
+			else if (adminChoice < 1 || adminChoice > 3) //added by Hannah
+			{
+				cout << "Please enter a valid option: "; //if player doesn't choose 1, 2, or 3
+				cin >> adminChoice; //stores choice
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 		}
 
+<<<<<<< HEAD
 		if (password != "dungeon")
 		{
 			system("CLS");
@@ -842,16 +873,22 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			adminLoop = false;
 			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes);
 		}
+=======
+	else
+	{
+		system("CLS"); //clears console
+		cout << "Please enter correct password: "; ///////////(TH)/////////////
+>>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 	}
 }
 		
 
 
 
-void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)
+void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)//this line- Hannah
 {
 
-	cout << "What would you like to do?" << endl;//main menu (TH)        
+	cout << "What would you like to do?" << endl;//menu options coded by TH      
 	cout << "1. Move" << endl;
 	cout << "2. Check Inventory" << endl;
 	cout << "3. Check Health" << endl;
@@ -862,34 +899,34 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	cin >> choice;
 
 
-	if (choice == 1)
+	if (choice == 1)//TH
 	{
 		gameLoop = false;
-		askMove(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter);
+		askMove(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter); //function that allows user to give move input (HS)
 		gameLoop = true;
 	}
 
-	if (choice == 2)
+	if (choice == 2)//TH
 	{
-		checkInv(weaponCounter, weapon, armorCounter, armor, potion); //allows user to check inventory
+		checkInv(weaponCounter, weapon, armorCounter, armor, potion); //function that allows user to check inventory
 	}
 
-	if (choice == 3)
+	if (choice == 3)//TH
 	{
 		healthStatus(playerHealth); //allows user to check health
 	}
 
-	if (choice == 4)
+	if (choice == 4)//TH
 	{
 		exit(); //allows user to exit program
 	}
 	
-	if (choice == 9)
+	if (choice == 9)//TH
 	{
 		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes); //allows admin to access maps *with password
 	}
 
-	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)
+	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)//TH
 	{
 		cout << "Please enter a valid choice." << endl;
 		cout << endl;
