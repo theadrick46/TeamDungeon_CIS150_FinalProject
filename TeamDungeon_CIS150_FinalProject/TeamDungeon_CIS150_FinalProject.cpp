@@ -36,6 +36,7 @@
 #include <iostream>
 #include <string>
 #include "Windows.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -112,116 +113,83 @@ void basicPrintGraphic(string person[], string floorCeiling)
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void correctCoordRoundup(double coordinatelevel[])					// Hannah coded this function		
+void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])					// Hannah coded this function		
 
 																						//since lots of doubles in the array weren't rounding up correctly, I figured
 																						//out a way to fix it. It's long, but without it the game won't work.
 {
-	if (levelCounter == 0)
-	{
 		coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
 		coordinatelevel[10] = floor(coordinatelevel[10] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel[2] = floor(coordinatelevel[2] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
-	}
+		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; //
+		
 
-	else if (levelCounter == 1)
-	{
-		coordinatelevel[9] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[11] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[15] = floor(coordinatelevel[15] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[17] = floor(coordinatelevel[17] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[19] = floor(coordinatelevel[19] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[21] = floor(coordinatelevel[21] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[22] = floor(coordinatelevel[22] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[23] = floor(coordinatelevel[23] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[30] = floor(coordinatelevel[30] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[32] = floor(coordinatelevel[32] / 0.1 + 0.5) * 0.1; // 
-	}
+		coordinatelevel2[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel2[11] = floor(coordinatelevel2[11] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[15] = floor(coordinatelevel2[15] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[17] = floor(coordinatelevel2[17] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[18] = floor(coordinatelevel2[18] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[19] = floor(coordinatelevel2[19] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[21] = floor(coordinatelevel2[21] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[22] = floor(coordinatelevel2[22] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel2[23] = floor(coordinatelevel2[23] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[30] = floor(coordinatelevel2[30] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel2[32] = floor(coordinatelevel2[32] / 0.1 + 0.5) * 0.1; // 
+	
 
-	else if (levelCounter == 2)
-	{
 		for (int i = 8; i < 12; i++)
 		{
-			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; // 
+			coordinatelevel3[i] = floor(coordinatelevel3[i] / 0.1 + 0.5) * 0.1; // 
 		}
-		coordinatelevel[19] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; // 
-		coordinatelevel[19] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; // 
-	}
+		coordinatelevel3[19] = floor(coordinatelevel3[19] / 0.1 + 0.5) * 0.1; // 
+		coordinatelevel3[20] = floor(coordinatelevel3[20] / 0.1 + 0.5) * 0.1; // 
+	
 
-	else if (levelCounter == 3)
-	{
-		coordinatelevel[3] = floor(coordinatelevel[3] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[5] = floor(coordinatelevel[5] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[9] = floor(coordinatelevel[9] / 0.1 + 0.5) * 0.1; //
+	
+		coordinatelevel4[3] = floor(coordinatelevel4[3] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[4] = floor(coordinatelevel4[4] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[5] = floor(coordinatelevel4[5] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[9] = floor(coordinatelevel4[9] / 0.1 + 0.5) * 0.1; //
 		for (int i = 11; i < 16; i++)
 		{
-			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+			coordinatelevel4[i] = floor(coordinatelevel4[i] / 0.1 + 0.5) * 0.1; //
 		}
-		coordinatelevel[19] = floor(coordinatelevel[19] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[20] = floor(coordinatelevel[20] / 0.1 + 0.5) * 0.1; //
-		coordinatelevel[21] = floor(coordinatelevel[21] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[19] = floor(coordinatelevel4[19] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[20] = floor(coordinatelevel4[20] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[21] = floor(coordinatelevel4[21] / 0.1 + 0.5) * 0.1; //
 		for (int i = 37; i < 40; i++)
 		{
-			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+			coordinatelevel4[i] = floor(coordinatelevel4[i] / 0.1 + 0.5) * 0.1; //
 		}
-	}
+		coordinatelevel4[44] = floor(coordinatelevel4[44] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[45] = floor(coordinatelevel4[45] / 0.1 + 0.5) * 0.1; //
+		coordinatelevel4[46] = floor(coordinatelevel4[46] / 0.1 + 0.5) * 0.1; //
+	
 
-	else if (levelCounter == 4)
-	{
+	
 		for (int i = 11; i < 15; i++)
 		{
 			if (i != 14)
 			{
-				coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+				coordinatelevel5[i] = floor(coordinatelevel5[i] / 0.1 + 0.5) * 0.1; //
 			}
 		}
 
 		for (int i = 21; i < 24; i++)
 		{
-			coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+			coordinatelevel5[i] = floor(coordinatelevel5[i] / 0.1 + 0.5) * 0.1; //
 		}
 
 		for (int i = 31; i < 39; i++)
 		{
 			if (i != 37)
 			{
-				coordinatelevel[i] = floor(coordinatelevel[i] / 0.1 + 0.5) * 0.1; //
+				coordinatelevel5[i] = floor(coordinatelevel5[i] / 0.1 + 0.5) * 0.1; //
 			}
 		}
-	}
 }
 
 
-void correctCoordDetermine(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
-{
-	if (levelCounter == 0)
-	{
-		correctCoordRoundup(coordinatelevel);
-	}
-
-	if (levelCounter == 1)
-	{
-		correctCoordRoundup(coordinatelevel2);
-	}
-
-	if (levelCounter == 2)
-	{
-		correctCoordRoundup(coordinatelevel3);
-	}
-
-	if (levelCounter == 3)
-	{
-		correctCoordRoundup(coordinatelevel4);
-	}
-
-	if (levelCounter == 4)
-	{
-		correctCoordRoundup(coordinatelevel5);
-	}
-}
 
 void startPositionDetermineCheck(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
 {
@@ -275,6 +243,7 @@ void moveNextLevelCheck(double coordinatelevel[], double coordinatelevel2[], dou
 		{
 			levelCounter++;
 			positionDetermine = 0;
+			system("cls");
 			cout << "You reach an open doorway and descend to the 2nd level of the dungeon.\n";
 			cout << "\n";
 			screenPseudoPause();
@@ -283,11 +252,14 @@ void moveNextLevelCheck(double coordinatelevel[], double coordinatelevel2[], dou
 
 	if (levelCounter == 1)
 	{
-		if (coord == coordinatelevel[35])						//35 is the last coordinate in the array, which is the finish coordinate
+		if (coord == 4.5)						//35 is the last coordinate in the array, which is the finish coordinate
 		{
 			levelCounter++;
 			positionDetermine = 0;
+			system("cls");
 			cout << "You walk down a dusty stairway and descend to the 3rd level of the dungeon.\n";
+			cout << "\n";
+			screenPseudoPause();
 		}
 	}
 
@@ -360,9 +332,13 @@ void moveDisplay()
 
 void moveFinalize(double coordinatelevel[], int levelSizes[]) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
 {
+	coordCopy = floor(coordCopy / 0.1 + 0.5) * 0.1;
+
+	int test = 0;
 
 	for (int count = 0; count < levelSizes[levelCounter]; count++)				// loops through the valid coordinates on the level							
 	{
+		test++;
 		if (coordCopy == coordinatelevel[count])
 		{
 			coord = coordCopy;													// if coordinate is valid, paste the copy into the original		
@@ -447,7 +423,7 @@ void askMove(double coordinatelevel[], double coordinatelevel2[], double coordin
 	cout << "4. Down" << endl;
 	cin >> movement;
 
-	correctCoordDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+	
 	startPositionDetermineCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 	move();													//this sends the coordinate copy to be added/subtracted to //// (HS)
 	moveFinalizeDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
@@ -506,8 +482,13 @@ void exit() //function that allows user to exit (TH)	////HS red the string param
 void teleport(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
 
 {
+	
+	bool teleportCorrect = false;
+
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose exact coordinate
 	cin >> coordCopy;
+
+	coordCopy = floor(coordCopy / 0.1 + 0.5) * 0.1; //
 
 	if (levelCounter == 0) //if they choose level 1 (TH)
 	{
@@ -515,27 +496,30 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		{
 			if (coordCopy == coordinatelevel[i])
 			{
-
+				cout << "m\n";
+				teleportCorrect = true;
 				coord = coordCopy;															// this was added by HS
-				cout << "You have chosen to teleport to " << coord << "on level 1";
-
-				cout << "You have chosen to teleport to " << coordCopy << "on level 1"; //tells player where they will teleport to on Level 1
+				cout << "You have chosen to teleport to " << coord << "on level 1\n";
+				
 			}
-
-			else
-			{
-				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
-			}
+		}
+		if (teleportCorrect == false)
+		{
+			cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
 		}
 	}
 
 	if (levelCounter == 1) //if they choose level 2 (TH)
 	{
-		for (int i = 0; i < 4; i++)
+		cout << setprecision(20) << coordCopy << endl;
+
+		for (int i = 0; i < 36; i++)
 		{
 			if (coordCopy == coordinatelevel2[i])
 			{
+				coord = coordCopy;
 				cout << "You have chosen to teleport to " << coordCopy << "on level 2"; //tells player where they will teleport to on Level 2
+				break;
 			}
 
 			else
@@ -547,11 +531,13 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 
 	if (levelCounter == 2) //if they choose level 3 (TH)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 22; i++)
 		{
 			if (coordCopy == coordinatelevel3[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 3"; //tells player where they will teleport to on Level 3
+				coord = coordCopy;
+				cout << "You have chosen to teleport to " << coord << "on level 3"; //tells player where they will teleport to on Level 3
+				break;
 			}
 
 			else
@@ -563,11 +549,13 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 
 	if (levelCounter == 3) //if they choose level 4 (TH)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 48; i++)
 		{
 			if (coordCopy == coordinatelevel4[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 4"; //tells player where they will teleport to on Level 4
+				coord = coordCopy;
+				cout << "You have chosen to teleport to " << coord << "on level 4"; //tells player where they will teleport to on Level 4
+				break;
 			}
 
 			else
@@ -583,7 +571,9 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		{
 			if (coordCopy == coordinatelevel5[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 5"; //tells player where they will teleport to on Level 5
+				coord = coordCopy;
+				cout << "You have chosen to teleport to " << coord << "on level 5"; //tells player where they will teleport to on Level 5
+				break;
 			}
 
 			else
@@ -819,22 +809,22 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 				displayMaps();          ///This block coded by TH///
 
 				screenPseudoPause();	////// all pseudo-pauses added by hannah
-
-				adminLoop = false; //added by Hannah
+				
 			}
 
 			if (adminChoice == 2)      ////////////////////////////
 			{
 				teleport(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
 				screenPseudoPause();
-				adminLoop = false; //added by Hannah
+				
 
 			}
 			/////////(TH) ///////////
 			if (adminChoice == 3)
 			{
-				adminLoop = false;
 				gameLoop = true; ///////////////////////////////////
+				adminLoop = false;
+				
 			}
 
 			if (adminChoice < 1 || adminChoice > 3)
@@ -850,6 +840,7 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 				cin >> adminChoice; //stores choice
 			}
 		}
+
 
 
 		if (password != "dungeon")
@@ -1230,6 +1221,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
+		cout << coord << endl;
 		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
@@ -1316,7 +1308,7 @@ int main()
 	double potionCoords[4] = { 4.1,2.5,-1,5.8 };
 
 
-	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 }; //	Level  1			  FIN
+	double coordinatelevel[11] = { 2.0, 2.1, 4.1, 0.2, 1.2, 2.2, 3.2, 4.2, 5.2, 2.3, 2.4 };//	Level  1			  FIN
 																							//          ||xxxx||xxxx|| 2.4||xxxx||xxx||xxxx||
 																							//			||xxxx||XXXX|| == ||xxxx||xxx||xxxx||
 																							//          || != || == || == || == ||[] || =! ||
@@ -1328,7 +1320,7 @@ int main()
 	double coordinatelevel2[36] = { 0.0,1.0,2.0,3.0,4.0,0.1,1.1,2.1,3.1,4.1,				//	Level 2   START
 									0.2,1.2,2.2,3.2,4.2,0.3,1.3,2.3,3.3,4.3,				//		    	||
 									0.4,1.4,2.4,3.4,4.4,0.5,1.5,2.5,3.5,4.7,				//			 || 0.0|| == || == || == || == ||
-									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || P  ||
+									0.6,2.6,0.7,2.7,3.7,4.5 };								//			 || == || == || == || == || 00 ||
 																							//			 ||-[]-|| == || == || == || == ||	
 																							//			 || == || == || == || [] || == ||
 																							//			 || == || == || W  || == || == ||
@@ -1338,7 +1330,7 @@ int main()
 																							//
 																							//
 	double coordinatelevel3[22] = { 0.0,1.0,2.0,1.1,2.1,3.1,2.2,3.2,2.3,3.3,				// Level 3	 START
-								   1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,					//			  ||
+								    1.4,2.4,3.4,2.5,3.5,2.6,3.6,2.7,3.7,3.8,				//			  ||
 								   2.8,0.4 };												//			|| 0.0|| == || == ||xxxx||
 																							//          ||xxxx|| A  ||-[]-|| == ||
 																							//			||xxxx||xxxx|| == || == ||
@@ -1377,6 +1369,7 @@ int main()
 																							//
 
 	basicGraphicSetUp();
+	correctCoordRoundup(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 	greetingScreen(name, person, floorCeiling);
 	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter);
 
@@ -1464,9 +1457,6 @@ void monsterPlayerPosCheck()
 }
 //end of monster locations coded by kp
 
-
-//hardcoded dead ends (TH)
-
 if (levelCounter == 0)
 {
 	for (int i; levelSizes[levelCounter]; i++)
@@ -1521,3 +1511,5 @@ if (levelCounter == 4)
 		}
 	}
 }
+//hardcoded dead ends (TH)
+
