@@ -491,18 +491,16 @@ void healthStatus(int health) //function to allow user to see their current heal
 	gameLoop = true;
 }
 
-void exit() //function that allows user to exit (TH)	////HS removed the string parameter
+void exit() //function that allows user to exit (TH)	////HS red the string parameter
 {
 	gameLoop = false; //prevents game from looping again
 	system("CLS"); //clears console
 	cout << "Thanks for playing. Goodbye!" << endl; //end message to player if they choose to exit game
 }
 
-<<<<<<< HEAD
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
-=======
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
+
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
+
 {
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose exact coordinate
 	cin >> coordCopy;
@@ -513,12 +511,11 @@ void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel
 		{
 			if (coordCopy == coordinatelevel[i])
 			{
-<<<<<<< HEAD
+
 				coord = coordCopy;															// this was added by HS
 				cout << "You have chosen to teleport to " << coord << "on level 1";
-=======
+
 				cout << "You have chosen to teleport to " << coordCopy << "on level 1"; //tells player where they will teleport to on Level 1
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 
 			else
@@ -781,11 +778,8 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
 	}
 
-<<<<<<< HEAD
-	if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5)
-=======
+
 	else if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5) //if user does not choose a valid map choice
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 	{
 		cout << "You did not choose an available level." << endl;
 	}																				///////The above was coded by TH//////////
@@ -803,15 +797,10 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 
 	while (adminLoop)
 	{
-<<<<<<< HEAD
 		if (password == "dungeon") //if they enter a correct passwordv (TH)
 		{
-			system("CLS");
-			cout << "Welcome, administrator." << endl;
-=======
 			system("CLS"); //clears console
 			cout << "Welcome, administrator." << endl; //greets player once it is established that they have admin privlidges
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 
 
 			cout << endl; //admin options (TH)
@@ -824,23 +813,18 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			if (adminChoice == 1)
 			{
 				displayMaps();          ///This block coded by TH///
-<<<<<<< HEAD
 
 				screenPseudoPause();	////// all pseudo-pauses added by hannah
-=======
+
 				adminLoop = false; //added by Hannah
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 
 			if (adminChoice == 2)      ////////////////////////////
 			{
-<<<<<<< HEAD
 				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
 				screenPseudoPause();
-=======
-				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 				adminLoop = false; //added by Hannah
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
+
 			}
 			/////////(TH) ///////////
 			if (adminChoice == 3)
@@ -849,22 +833,21 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 				gameLoop = true; ///////////////////////////////////
 			}
 
-<<<<<<< HEAD
 			if (adminChoice < 1 || adminChoice > 3)
 			{
 				cout << "Please enter a valid option. ";
 				cout << "\n";
 				screenPseudoPause();
-=======
-			else if (adminChoice < 1 || adminChoice > 3) //added by Hannah
+			}
+
+			if (adminChoice < 1 || adminChoice > 3) //added by Hannah
 			{
 				cout << "Please enter a valid option: "; //if player doesn't choose 1, 2, or 3
 				cin >> adminChoice; //stores choice
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
 			}
 		}
 
-<<<<<<< HEAD
+
 		if (password != "dungeon")
 		{
 			system("CLS");
@@ -873,12 +856,13 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			adminLoop = false;
 			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes);
 		}
-=======
-	else
-	{
-		system("CLS"); //clears console
-		cout << "Please enter correct password: "; ///////////(TH)/////////////
->>>>>>> fb37ff9833de9096f3fa53519e6ca9a9dfbdf04c
+
+		else
+		{
+			system("CLS"); //clears console
+			cout << "Please enter correct password: "; ///////////(TH)/////////////
+
+		}
 	}
 }
 		
