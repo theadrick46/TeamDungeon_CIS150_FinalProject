@@ -222,13 +222,95 @@ void correctCoordDetermine(double coordinatelevel[], double coordinatelevel2[], 
 	}
 }
 
-void startPositionDetermineCheck(double coordinatelevel[])
+void startPositionDetermineCheck(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter)
 {
-	if (positionDetermine == 0)
+	if (levelCounter == 0)
 	{
-		coord = coordinatelevel[0];
-		cout << coord << endl;
+		if (positionDetermine == 0)
+		{
+			coord = coordinatelevel[0];
+		}
 	}
+
+	if (levelCounter == 1)
+	{
+		if (positionDetermine == 0)
+		{
+			coord = coordinatelevel2[0];
+		}
+	}
+
+	if (levelCounter == 2)
+	{
+		if (positionDetermine == 0)
+		{
+			coord = coordinatelevel3[0];
+		}
+	}
+
+	if (levelCounter == 3)
+	{
+		if (positionDetermine == 0)
+		{
+			coord = coordinatelevel4[17];
+		}
+	}
+
+	if (levelCounter == 4)
+	{
+		if (positionDetermine == 0)
+		{
+			coord = coordinatelevel5[3];
+		}
+	}
+}
+
+
+void moveNextLevelCheck(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
+{
+	if (levelCounter == 0)
+	{
+		if (coord == coordinatelevel[10])						//10 is the last coordinate in the array, which is the finish coordinate
+		{
+			levelCounter++;
+			positionDetermine = 0;
+			cout << "You reach an open doorway and descend to the 2nd level of the dungeon.\n";
+			cout << "\n";
+			screenPseudoPause();
+		}
+	}
+
+	if (levelCounter == 1)
+	{
+		if (coord == coordinatelevel[35])						//35 is the last coordinate in the array, which is the finish coordinate
+		{
+			levelCounter++;
+			positionDetermine = 0;
+			cout << "You walk down a dusty stairway and descend to the 3rd level of the dungeon.\n";
+		}
+	}
+
+	if (levelCounter == 2)
+	{
+		if (coord == coordinatelevel[21])						//21 is the last coordinate in the array, which is the finish coordinate
+		{
+			levelCounter++;
+			positionDetermine = 0;
+			cout << "You bust open the lock on a wooden door and descend to the 4th level of the dungeon.\n";
+		}
+	}
+
+	if (levelCounter == 3)
+	{
+		if (coord == coordinatelevel[47])						//47 is the last coordinate in the array, which is the finish coordinate
+		{
+			levelCounter++;
+			positionDetermine = 0;
+			cout << "A massive, steel gate garnished with blood marks swings open before you. You hesitantly descend to the 5th level of the dungeon .\n";
+		}
+	}
+
+	gameLoop = true;
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -272,10 +354,11 @@ void moveDisplay()
 	gameLoop = true;
 }
 
+////////////////////////////////////////////////
+////////////// HANNAH STARTS CODING AGAIN HERE
+
 void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
 {
-	gameLoop = false;
-
 
 	for (int count = 0; count < levelSizes[levelCounter]; count++)				// loops through the valid coordinates on the level							
 	{
@@ -292,23 +375,40 @@ void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter)
 			positionDetermine++;
 		}
 	}
-											
-
-	//if (rightway == true && coord == coordinatelevel[10])				// NOT DYNAMIC; FIXING LATER
-	//{
-	//	cout << "=======" << endl;
-	//	cout << "LEVEL " levelNumber << endl; //nextLevel();
-	//	cout << "=======" << endl;
-	//}
-
-	gameLoop = true;
 
 }
 
+void moveFinalizeDetermine(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[])
+{
+	if (levelCounter == 0)
+	{
+		moveFinalize(coordinatelevel, levelSizes, levelCounter);
+	}
 
-void move()															///////////////////////////////
-{																	// Hannah coded This Function//
-																	///////////////////////////////
+	if (levelCounter == 1)
+	{
+		moveFinalize(coordinatelevel2, levelSizes, levelCounter);
+	}
+
+	if (levelCounter == 2)
+	{
+		moveFinalize(coordinatelevel3, levelSizes, levelCounter);
+	}
+
+	if (levelCounter == 3)
+	{
+		moveFinalize(coordinatelevel4, levelSizes, levelCounter);
+	}
+
+	if (levelCounter == 4)
+	{
+		moveFinalize(coordinatelevel5, levelSizes, levelCounter);
+	}
+}
+
+void move()															
+{																	
+																	
 	coordCopy = coord;
 
 	if (movement == 1)											
@@ -332,12 +432,13 @@ void move()															///////////////////////////////
 	}
 }
 
+////////////////////////////////////////////////
+////////////// HANNAH STOPS CODING AGAIN HERE
 
 
-
-void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter)		//function to get user input for movement (Most of the func coded by KP)																		
+void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter)		//function to get user input for movement 																		
 {
-	cout << "\n";
+	cout << "\n";															//////// MOST OF THIS FUNCTION CODED BY KP ////////
 	cout << "Which direction would you like to go?" << endl; 
 	cout << "1. Right" << endl;
 	cout << "2. Left" << endl;
@@ -346,9 +447,10 @@ void askMove(double coordinatelevel[], double coordinatelevel2[], double coordin
 	cin >> movement;
 
 	correctCoordDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter);
-	startPositionDetermineCheck(coordinatelevel);
+	startPositionDetermineCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter);
 	move();													//this sends the coordinate copy to be added/subtracted to //// (HS)
-	moveFinalize(coordinatelevel, levelSizes, levelCounter);
+	moveFinalizeDetermine(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
+	moveNextLevelCheck(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 
 }
 
@@ -399,18 +501,19 @@ void exit() //function that allows user to exit (TH)	////HS removed the string p
 	cout << "Thanks for playing. Goodbye!" << endl;
 }
 
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
+void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) teleport to a chose spot on the map (TH)
 {
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose coordinate
 	cin >> coordCopy;
 
 	if (levelCounter == 0) //if they choose level 1 (TH)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 11; i++)
 		{
 			if (coordCopy == coordinatelevel[i])
 			{
-				cout << "You have chosen to teleport to " << coordCopy << "on level 1";
+				coord = coordCopy;															// this was added by HS
+				cout << "You have chosen to teleport to " << coord << "on level 1";
 			}
 
 			else
@@ -673,24 +776,26 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
 	}
 
-	else if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5)
+	if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5)
 	{
 		cout << "You did not choose an available level." << endl;
 	}                                                                              ///The above was coded by TH///////////////
 }																					//////////////////////////////////////////
 
-void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter ) //function that allows admin to pull up map *password protected- password: dungeon (TH)
+void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter, int levelSizes[]) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
 	gameLoop = false;
 
-	bool adminLoop = true;							// bool stuff added by HS
+	bool adminLoop = true;						//bool added by HS
 
 	system("CLS");
 	cout << "Enter password (case sensitive): "; //asks user for the admin password (TH)
 	cin >> password;
 
-	if (password == "dungeon") //if they enter a correct passwordv (TH)
+	while (adminLoop)
 	{
+		if (password == "dungeon") //if they enter a correct passwordv (TH)
+		{
 			system("CLS");
 			cout << "Welcome, administrator." << endl;
 
@@ -701,38 +806,42 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			cout << "2. Teleport" << endl;
 			cout << "3. Return to Main Menu" << endl;
 			cin >> adminChoice;
-			if (adminLoop)
-			{
+
 			if (adminChoice == 1)
 			{
 				displayMaps();          ///This block coded by TH///
-				adminLoop = false;
+
+				screenPseudoPause();	////// all pseudo-pauses added by hannah
 			}
 
 			if (adminChoice == 2)      ////////////////////////////
 			{
-				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
-				adminLoop = false;
+				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
+				screenPseudoPause();
 			}
 			/////////(TH) ///////////
 			if (adminChoice == 3)
 			{
-				screenPseudoPause();
+				adminLoop = false;
 				gameLoop = true; ///////////////////////////////////
 			}
 
-			else if (adminChoice < 1 || adminChoice > 3)
+			if (adminChoice < 1 || adminChoice > 3)
 			{
-				cout << "Please enter a valid option: ";
-				cin >> adminChoice;
+				cout << "Please enter a valid option. ";
+				cout << "\n";
+				screenPseudoPause();
 			}
 		}
-	}
 
-	else
-	{
-		system("CLS");
-		cout << "Please enter correct password: "; ///////////(TH)/////////////
+		if (password != "dungeon")
+		{
+			system("CLS");
+			cout << "Please enter the correct password. \n"; ///////////(TH)/////////////
+			screenPseudoPause();
+			adminLoop = false;
+			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes);
+		}
 	}
 }
 		
@@ -777,7 +886,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	
 	if (choice == 9)
 	{
-		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter ); //allows admin to access maps *with password
+		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes); //allows admin to access maps *with password
 	}
 
 	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)
@@ -1293,41 +1402,40 @@ int main()
 	return 0;
 }
 //whether player hit monster locations coded by KP
-monsterPlayerPosCheck()
+void monsterPlayerPosCheck()
 {
-	if (levelCounter == 0)
+	//if (levelCounter == 0)
 	{
-		for(int i; i < levelSizes[levelCounter]; i++)
+		//for(int i; i < levelSizes[levelCounter]; i++)
 		{
-			if(coord == slimeCoords[levelCounter][i])
+			//if(coord == slimeCoords[levelCounter][i])
 			{
 				monsterIndicate = 0;
-				break;
+				//break;
 			}
 		}
 
 	}
 
 
-If (level counter == 1)
-For (int I; I < level sizes[level  counter]; i++)
-If (coord == slime coords[i])
-{
-monsterIndicate = 1;
-Break;
-}
-If (level counter == 2)
-For (int I; I < level sizes[level counter]; i++)
-If (coord == goblin coords[i])
-{
-monsterIndicate = 2;
-Break;
-}
-If (level counter == 3)
-For (int I; I < level sizes[level counter]; i++)
-If (coord == goblin cords [i]}
-}
-monsterIndicate = 3;
-break;
+//If (level counter == 1)
+//For (int I; I < level sizes[level  counter]; i++)
+//If (coord == slime coords[i])
+//{
+//monsterIndicate = 1;
+//Break;
+//}
+//If (level counter == 2)
+//For (int I; I < level sizes[level counter]; i++)
+//If (coord == goblin coords[i])
+//{
+//monsterIndicate = 2;
+//Break;
+//}
+//If (level counter == 3)
+//For (int I; I < level sizes[level counter]; i++)
+//If (coord == goblin cords [i]}
+//}//monsterIndicate = 3;
+//break;
 }
 //end of monster locations coded by kp
