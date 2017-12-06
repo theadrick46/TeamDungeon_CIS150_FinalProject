@@ -1429,26 +1429,32 @@ void monsterPlayerPosCheck()
 			}
 		}
 
-	}
-
-
-//If (level counter == 1)
-//For (int I; I < level sizes[level  counter]; i++)
-//If (coord == slime coords[i])
+//if (levelCounter == 1)
+	{
+//for (int i; i < levelSizes[levelCounter]; i++)
+	{
+//if (coord == slimeCoords[levelCounter] [i])
 //{
 //monsterIndicate = 1;
 //Break;
+			
 //}
-//If (level counter == 2)
-//For (int I; I < level sizes[level counter]; i++)
-//If (coord == goblin coords[i])
+		
+//if (levelCounter == 2)
+	{
+//for (int i; i < levelSizes[levelCounter]; i++)
+	{
+//if (coord == goblinCoords[levelCounter][i])
 //{
 //monsterIndicate = 2;
 //Break;
 //}
-//If (level counter == 3)
-//For (int I; I < level sizes[level counter]; i++)
-//If (coord == goblin cords [i]}
+//if (levelCounter == 3)
+	{
+//for (int i; i < levelSizes[levelCounter]; i++)
+	{
+//if (coord == goblinCoords[levelCounter][i]}
+	{	
 //}//monsterIndicate = 3;
 //break;
 }
