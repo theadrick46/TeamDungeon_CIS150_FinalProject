@@ -492,40 +492,39 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 
 	if (levelCounter == 0) //if they choose level 1 (TH)
 	{
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < 11; i++) //(TH)
 		{
 			if (coordCopy == coordinatelevel[i])
-			{;
-				teleportCorrect = true;
+			{
+				teleportCorrect = true; //HS
 				coord = coordCopy;															// this was added by HS
-				cout << "You have chosen to teleport to " << coord << "on level 1\n";
+				cout << "You have chosen to teleport to " << coord << " on level 1." << endl;;
 				
 			}
 		}
-		if (teleportCorrect == false)
+		
+		if (teleportCorrect == false) //HS
 		{
-			cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
+			cout << "You may not teleport into a wall." << endl; //if player chooses a coordinate that is a wall (TH)
 		}
 	}
 
 	if (levelCounter == 1) //if they choose level 2 (TH)
 	{
-		cout << setprecision(20) << coordCopy << endl;
-
 		for (int i = 0; i < 36; i++)
 		{
 			if (coordCopy == coordinatelevel2[i])
 			{
+				teleportCorrect = true; //HS
 				coord = coordCopy;
-				cout << "You have chosen to teleport to " << coordCopy << "on level 2"; //tells player where they will teleport to on Level 2
-				break;
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
+				cout << "You have chosen to teleport to " << coordCopy << " on level 2." << endl; //tells player where they will teleport to on Level 2
 			}
 		}
+			
+		if (teleportCorrect == false) //HS
+			{
+				cout << "You may not teleport into a wall." << endl; //if player chooses a coordinate that is a wall
+			}
 	}
 
 	if (levelCounter == 2) //if they choose level 3 (TH)
@@ -534,16 +533,16 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		{
 			if (coordCopy == coordinatelevel3[i])
 			{
+				teleportCorrect = true; //HS
 				coord = coordCopy;
-				cout << "You have chosen to teleport to " << coord << "on level 3"; //tells player where they will teleport to on Level 3
-				break;
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
+				cout << "You have chosen to teleport to " << coord << " on level 3." << endl; //tells player where they will teleport to on Level 3
 			}
 		}
+			
+		if (teleportCorrect == false) //HS
+			{
+				cout << "You may not teleport into a wall." << endl; //if player chooses a coordinate that is a wall
+			}
 	}
 
 	if (levelCounter == 3) //if they choose level 4 (TH)
@@ -552,16 +551,16 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		{
 			if (coordCopy == coordinatelevel4[i])
 			{
+				teleportCorrect = true; //HS
 				coord = coordCopy;
-				cout << "You have chosen to teleport to " << coord << "on level 4"; //tells player where they will teleport to on Level 4
-				break;
-			}
-
-			else
-			{
-				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
+				cout << "You have chosen to teleport to " << coord << " on level 4." << endl; //tells player where they will teleport to on Level 4
 			}
 		}
+			
+		if (teleportCorrect == false) //HS
+			{
+				cout << "You may not teleport into a wall." << endl; //if player chooses a coordinate that is a wall
+			}
 	}
 
 	if (levelCounter == 4) //if they choose level 5 (TH)
@@ -570,15 +569,15 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 		{
 			if (coordCopy == coordinatelevel5[i])
 			{
+				teleportCorrect = true; //HS
 				coord = coordCopy;
-				cout << "You have chosen to teleport to " << coord << "on level 5"; //tells player where they will teleport to on Level 5
-				break;
+				cout << "You have chosen to teleport to " << coord << " on level 5." << endl; //tells player where they will teleport to on Level 5
 			}
-
-			else
-			{
-				cout << "You may not teleport into a wall"; //if player chooses a coordinate that is a wall
-			}
+		}
+			
+		if (teleportCorrect == false) //HS
+		{
+			cout << "You may not teleport into a wall."; //if player chooses a coordinate that is a wall
 		}
 	}
 	///// The above was coded by TH //////////////////////////////////////////////
@@ -1454,60 +1453,6 @@ void monsterPlayerPosCheck()
 //break;
 }
 //end of monster locations coded by kp
-if (levelCounter == 0)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 1)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 2)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 3)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
-
-if (levelCounter == 4)
-{
-	for (int i; levelSizes[levelCounter]; i++)
-	{
-		if (coord == deadEndCoords[levelCounter][i])
-		{
-			cout << "You have reached a dead end." << endl;
-		}
-	}
-}
 
 
 //hardcoded dead ends (TH)
