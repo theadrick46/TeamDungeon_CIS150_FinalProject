@@ -62,6 +62,10 @@ string fillerCin = "";																// a filler char to "pause" the screen unt
 int movement = 0;																	//represents where the player decides to move (TH)
 																					//1 = Right, 2 = Left, 3 = Up, 4 = Down /////Hannah added this
 
+int levelCounter = 0;																	// which level the player is on
+
+/////////////////////////////////
+/////////////////////////////////
 
 void greeting(string name)															//function to start game- greets user (ENTIRE FUNCTION- TH)                                                                              
 {
@@ -108,7 +112,7 @@ void basicPrintGraphic(string person[], string floorCeiling)
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void correctCoordRoundup(double coordinatelevel[], int levelCounter)					// Hannah coded this function		
+void correctCoordRoundup(double coordinatelevel[])					// Hannah coded this function		
 
 																						//since lots of doubles in the array weren't rounding up correctly, I figured
 																						//out a way to fix it. It's long, but without it the game won't work.
@@ -191,35 +195,35 @@ void correctCoordRoundup(double coordinatelevel[], int levelCounter)					// Hann
 }
 
 
-void correctCoordDetermine(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter)
+void correctCoordDetermine(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
 {
 	if (levelCounter == 0)
 	{
-		correctCoordRoundup(coordinatelevel, levelCounter);
+		correctCoordRoundup(coordinatelevel);
 	}
 
 	if (levelCounter == 1)
 	{
-		correctCoordRoundup(coordinatelevel2, levelCounter);
+		correctCoordRoundup(coordinatelevel2);
 	}
 
 	if (levelCounter == 2)
 	{
-		correctCoordRoundup(coordinatelevel3, levelCounter);
+		correctCoordRoundup(coordinatelevel3);
 	}
 
 	if (levelCounter == 3)
 	{
-		correctCoordRoundup(coordinatelevel4, levelCounter);
+		correctCoordRoundup(coordinatelevel4);
 	}
 
 	if (levelCounter == 4)
 	{
-		correctCoordRoundup(coordinatelevel5, levelCounter);
+		correctCoordRoundup(coordinatelevel5);
 	}
 }
 
-void startPositionDetermineCheck(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter)
+void startPositionDetermineCheck(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
 {
 	if (levelCounter == 0)
 	{
@@ -263,7 +267,7 @@ void startPositionDetermineCheck(double coordinatelevel[], double coordinateleve
 }
 
 
-void moveNextLevelCheck(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
+void moveNextLevelCheck(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[])
 {
 	if (levelCounter == 0)
 	{
@@ -354,7 +358,7 @@ void moveDisplay()
 ////////////////////////////////////////////////
 ////////////// HANNAH STARTS CODING AGAIN HERE
 
-void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
+void moveFinalize(double coordinatelevel[], int levelSizes[]) //// Determines whether the movement is valid and proceeds //// This function was coded by Hannah
 {
 
 	for (int count = 0; count < levelSizes[levelCounter]; count++)				// loops through the valid coordinates on the level							
@@ -375,31 +379,31 @@ void moveFinalize(double coordinatelevel[], int levelSizes[], int &levelCounter)
 
 }
 
-void moveFinalizeDetermine(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[])
+void moveFinalizeDetermine(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[])
 {
 	if (levelCounter == 0)
 	{
-		moveFinalize(coordinatelevel, levelSizes, levelCounter);
+		moveFinalize(coordinatelevel, levelSizes);
 	}
 
 	if (levelCounter == 1)
 	{
-		moveFinalize(coordinatelevel2, levelSizes, levelCounter);
+		moveFinalize(coordinatelevel2, levelSizes);
 	}
 
 	if (levelCounter == 2)
 	{
-		moveFinalize(coordinatelevel3, levelSizes, levelCounter);
+		moveFinalize(coordinatelevel3, levelSizes);
 	}
 
 	if (levelCounter == 3)
 	{
-		moveFinalize(coordinatelevel4, levelSizes, levelCounter);
+		moveFinalize(coordinatelevel4, levelSizes);
 	}
 
 	if (levelCounter == 4)
 	{
-		moveFinalize(coordinatelevel5, levelSizes, levelCounter);
+		moveFinalize(coordinatelevel5, levelSizes);
 	}
 }
 
@@ -433,7 +437,7 @@ void move()
 ////////////// HANNAH STOPS CODING AGAIN HERE
 
 
-void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter)		//function to get user input for movement 																		
+void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[])		//function to get user input for movement 																		
 {
 	cout << "\n";															//////// MOST OF THIS FUNCTION CODED BY KP ////////
 	cout << "Which direction would you like to go?" << endl; 
@@ -443,11 +447,11 @@ void askMove(double coordinatelevel[], double coordinatelevel2[], double coordin
 	cout << "4. Down" << endl;
 	cin >> movement;
 
-	correctCoordDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter);
-	startPositionDetermineCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter);
+	correctCoordDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+	startPositionDetermineCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 	move();													//this sends the coordinate copy to be added/subtracted to //// (HS)
-	moveFinalizeDetermine(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
-	moveNextLevelCheck(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
+	moveFinalizeDetermine(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
+	moveNextLevelCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);
 
 }
 
@@ -499,7 +503,7 @@ void exit() //function that allows user to exit (TH)	////HS red the string param
 }
 
 
-void teleport(int levelCounter, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
+void teleport(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that will allow user (with admin priveledges) to teleport to a chose spot on the map (TH)
 
 {
 	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose exact coordinate
@@ -785,7 +789,7 @@ void displayMaps() //function to display maps to user with admin priviledges(TH)
 	}																				///////The above was coded by TH//////////
 }																					//////////////////////////////////////////
 
-void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelCounter, int levelSizes[]) //function that allows admin to pull up map *password protected- password: dungeon (TH)
+void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) //function that allows admin to pull up map *password protected- password: dungeon (TH)
 {
 	gameLoop = false;
 
@@ -821,7 +825,7 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 
 			if (adminChoice == 2)      ////////////////////////////
 			{
-				teleport(levelCounter, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
+				teleport(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
 				screenPseudoPause();
 				adminLoop = false; //added by Hannah
 
@@ -854,7 +858,7 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			cout << "Please enter the correct password. \n"; ///////////(TH)/////////////
 			screenPseudoPause();
 			adminLoop = false;
-			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes);
+			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
 		}
 
 		else
@@ -869,7 +873,7 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 
 
 
-void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], int levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)//this line- Hannah
+void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion)//this line- Hannah
 {
 
 	cout << "What would you like to do?" << endl;//menu options coded by TH      
@@ -886,7 +890,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	if (choice == 1)//TH
 	{
 		gameLoop = false;
-		askMove(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter); //function that allows user to give move input (HS)
+		askMove(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes); //function that allows user to give move input (HS)
 		gameLoop = true;
 	}
 
@@ -907,7 +911,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	
 	if (choice == 9)//TH
 	{
-		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelCounter, levelSizes); //allows admin to access maps *with password
+		admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes); //allows admin to access maps *with password
 	}
 
 	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)//TH
@@ -1216,7 +1220,7 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], int &levelCounter, string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion, string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], string weapon[], int weaponCounter, int armorCounter, int adminChoice, string armor[], int potion, string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter)
 {
 	while (gameLoop)
 	{
@@ -1226,7 +1230,7 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		{
 			moveDisplay();
 		}
-		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
+		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion);
 		
 	}
 	
@@ -1279,7 +1283,6 @@ int main()
 
 
 	int levelSizes[5] = { 11, 36, 22, 48, 44 };												// the number of coordinates in each level
-	int levelCounter = 0;																	// which level the player is on
 
 	double deadEndCoords[5][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
 								  0.7, 4.7
@@ -1375,7 +1378,7 @@ int main()
 
 	basicGraphicSetUp();
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, levelCounter, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter);
 
 
 
