@@ -327,68 +327,6 @@ void moveDisplay()
 	gameLoop = true;
 }
 
-void deadEnd(int levelCounter, int levelSizes[], int deadEndCoords[]) //function by TH - with help from HS
-{
-	if (levelCounter == 0) //if at the first level
-	{
-		for (int i; i < levelSizes[levelCounter]; i++)
-		{
-			if (coord == deadEndCoords[i]) //lists dead ends
-			{
-				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
-				break;
-			}
-		}
-	}
-
-	if (levelCounter == 1) //if at the second level
-	{
-		for (int i; i < levelSizes[levelCounter]; i++)
-		{
-			if (coord == deadEndCoords[i]) //lists dead ends
-			{
-				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
-				break;
-			}
-		}
-	}
-
-	if (levelCounter == 2) //if at the third level
-	{
-		for (int i; i < levelSizes[levelCounter]; i++)
-		{
-			if (coord == deadEndCoords[i]) //lists dead ends
-			{
-				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
-				break;
-			}
-		}
-	}
-
-	if (levelCounter == 3) //if at the fourth level
-	{
-		for (int i; i < levelSizes[levelCounter]; i++)
-		{
-			if (coord == deadEndCoords[i]) //lists dead ends
-			{
-				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
-				break;
-			}
-		}
-	}
-
-	if (levelCounter == 4) //if at the fifth level
-	{
-		for (int i; i < levelSizes[levelCounter]; i++)
-		{
-			if (coord == deadEndCoords[i]) //lists dead ends
-			{
-				cout << "You have run into a dead end. " << endl; //informs player that they have run into a dead end
-				break;
-			}
-		}
-	}
-}
 
 ////////////////////////////////////////////////
 ////////////// HANNAH STARTS CODING AGAIN HERE
@@ -1331,16 +1269,13 @@ int main()
 	int adminChoice = 0;														  // choice for the admin submenu (TH)
 
 
+
+
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
 
 
 	int levelSizes[5] = { 11, 36, 22, 48, 44 };												// the number of coordinates in each level
 
-	double deadEndCoords[5][2] = { 0.2, 5.2,												// coordinates of dead ends for each level (not finished)
-								  0.7, 4.7
-								  -1, -1,
-								  0.3, -1,
-								   -1, -1};
 
 	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (-1's when there is no coord for that specific monster)
 								3.3, 0.6, -1,
@@ -1492,6 +1427,7 @@ int main()
 			//}
 		//}
 
+<<<<<<< HEAD
 //if (levelCounter == 1)
 //	{
 //for (int i; i < levelSizes[levelCounter]; i++)
@@ -1581,12 +1517,44 @@ void potionLocations(int levelCounter, int levelSizes[], int potionCoords[], int
 	if (levelCounter == 4) //if at the fifth level
 	{
 		for (int i; i < levelSizes[levelCounter]; i++)
+=======
+		//if (levelCounter == 1)
+>>>>>>> c767d88fd91dadb064baf9663e5fd3ca6e85169d
 		{
-			if (coord == potionCoords[i]) //lists potion locations
+			//for (int i; i < levelSizes[levelCounter]; i++)
 			{
-				cout << "You have found a potion!" << endl; //informs player that they have found a potion
-				break;
-				potion++;
+				//if (coord == slimeCoords[levelCounter] [i])
+				//{
+				//monsterIndicate = 1;
+				//Break;
+
+				//}
+
+				//if (levelCounter == 2)
+				{
+					//for (int i; i < levelSizes[levelCounter]; i++)
+					{
+						//if (coord == goblinCoords[levelCounter][i])
+						//{
+						//monsterIndicate = 2;
+						//Break;
+						//}
+						//if (levelCounter == 3)
+						{
+							//for (int i; i < levelSizes[levelCounter]; i++)
+							{
+								//if (coord == goblinCoords[levelCounter][i]}
+								{
+									//}//monsterIndicate = 3;
+									//break;
+								}
+								//end of monster locations coded by kp
+
+
+							}
+						}
+					}
+				}
 			}
 		}
 	}
