@@ -1479,23 +1479,23 @@ int main()
 	return 0;
 }
 //whether player hit monster locations coded by KP
-void monsterPlayerPosCheck()
-{
+//void monsterPlayerPosCheck()
+//{
 	//if (levelCounter == 0)
-	{
+	//{
 		//for(int i; i < levelSizes[levelCounter]; i++)
-		{
+		//{
 			//if(coord == slimeCoords[levelCounter][i])
-			{
-				monsterIndicate = 0;
+			//{
+				//monsterIndicate = 0;
 				//break;
-			}
-		}
+			//}
+		//}
 
 //if (levelCounter == 1)
-	{
+//	{
 //for (int i; i < levelSizes[levelCounter]; i++)
-	{
+	//{
 //if (coord == slimeCoords[levelCounter] [i])
 //{
 //monsterIndicate = 1;
@@ -1504,23 +1504,23 @@ void monsterPlayerPosCheck()
 //}
 		
 //if (levelCounter == 2)
-	{
+	//{
 //for (int i; i < levelSizes[levelCounter]; i++)
-	{
+	//{
 //if (coord == goblinCoords[levelCounter][i])
 //{
 //monsterIndicate = 2;
 //Break;
 //}
 //if (levelCounter == 3)
-	{
+	//{
 //for (int i; i < levelSizes[levelCounter]; i++)
-	{
+	//{
 //if (coord == goblinCoords[levelCounter][i]}
-	{	
+	//{	
 //}//monsterIndicate = 3;
 //break;
-}
+//}
 //end of monster locations coded by kp
 
 
@@ -1587,6 +1587,152 @@ void potionLocations(int levelCounter, int levelSizes[], int potionCoords[], int
 				cout << "You have found a potion!" << endl; //informs player that they have found a potion
 				break;
 				potion++;
+			}
+		}
+	}
+}
+
+void armorLocations(int levelCounter, int levelSizes[], int armorCoords[], string armor[], int armorCounter) //function by TH- with help from HS
+{
+	if (levelCounter == 0) //if at the first level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == armorCoords[i]) //lists armor locations
+			{
+				armorCounter++;
+				cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+				break;
+				
+			}
+		}
+	}
+
+	if (levelCounter == 1) //if at the second level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == armorCoords[i]) //lists armor locations
+			{
+				armorCounter++;
+				cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 2) //if at the third level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == armorCoords[i]) //lists armor locations
+			{
+				armorCounter++;
+				cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 3) //if at the fourth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == armorCoords[i]) //lists armor locations
+			{
+				armorCounter++;
+				cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 4) //if at the fifth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == armorCoords[i]) //lists armor locations
+			{
+				armorCounter++;
+				cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+				break;
+
+			}
+		}
+	}
+}
+
+void weaponLocations(int levelCounter, int levelSizes[], int weaponCoords[], string armor[], int weaponCounter) //function by TH- with help from HS
+{
+	if (levelCounter == 0) //if at the first level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == weaponCoords[i]) //lists weapon locations
+			{
+				weaponCounter++;
+				cout << "You have found the " << armor[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 1) //if at the second level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == weaponCoords[i]) //lists weapon locations
+			{
+				weaponCounter++;
+				cout << "You have found the " << armor[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 2) //if at the third level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == weaponCoords[i]) //lists weapon locations
+			{
+				weaponCounter++;
+				cout << "You have found the " << armor[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 3) //if at the fourth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == weaponCoords[i]) //lists weapon locations
+			{
+				weaponCounter++;
+				cout << "You have found the " << armor[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				break;
+
+			}
+		}
+	}
+
+	if (levelCounter == 4) //if at the fifth level
+	{
+		for (int i; i < levelSizes[levelCounter]; i++)
+		{
+			if (coord == weaponCoords[i]) //lists weapon locations
+			{
+				weaponCounter++;
+				cout << "You have found the " << armor[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				break;
+
 			}
 		}
 	}

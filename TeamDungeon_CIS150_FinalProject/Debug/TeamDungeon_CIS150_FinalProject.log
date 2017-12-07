@@ -1,2 +1,4 @@
-﻿  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\theadrick01\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.exe
-  TeamDungeon_CIS150_FinalProject.vcxproj -> C:\Users\theadrick01\Documents\GitHub\TeamDungeon_CIS150_FinalProject\Debug\TeamDungeon_CIS150_FinalProject.pdb (Full PDB)
+﻿  TeamDungeon_CIS150_FinalProject.cpp
+c:\users\theadrick01\documents\github\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(1528): error C2601: 'potionLocations': local function definitions are illegal
+  c:\users\theadrick01\documents\github\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(1518): note: this line contains a '{' which has not yet been matched
+c:\users\theadrick01\documents\github\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject\teamdungeon_cis150_finalproject.cpp(1518): fatal error C1075: the left brace '{' was unmatched at the end of the file
