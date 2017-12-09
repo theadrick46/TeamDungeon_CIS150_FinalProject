@@ -78,6 +78,39 @@ void greeting(string name)															//function to start game- greets user (
 	cout << "" << endl;																						//end of the greeting
 }
 
+void gameComplete(string infiniteGems[], string person[])
+	// when user completes the game ///////// Coded by KP and HS/////////////
+{
+	system("cls");																		////////////////////////////
+																						// Graphics coded by HS ////
+	for (int i = 0; i < 6; i++)															////////////////////////////
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);					// set to yellow, print a part of the person
+		cout << person[i];
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9);					// set to bright blue
+		cout << "\t\t\t" << infiniteGems[i] << endl;									// create tabs to seperate, then print a part of the gem
+																						// a part of the person AND a part of the gem print on the same line
+	}
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);						// changes the color back to default
+
+
+
+	cout << "In wake of defeating the Cyberedemon, you have saved the Infinite Gem of Power" << endl;  // end game message KP
+	cout << "from the grasp of evil, while also granting yourself all the strength in the land." << endl;    
+	cout << "Thank you for playing Dungeons & Goblins!" << endl; 
+	cout << "\n";
+	gameLoop = false;																					// end the main game loop (stop the game)
+}
+
+void gameOver()
+{
+	// when player's health reaches 0	///// Coded by HS ////////
+	cout << "You have been slain by a monster on your quest, and failed to save the Infinite Gem of Power.\n";
+	cout << "Although, you may always try again...\n";
+	cout << "\n";
+	gameLoop = false;
+}
+
 /////////////////////////////////////////////////////
 ////////// Coded by Hannah /////////////////////////
 ////////////////////////////////////////////////////
@@ -120,7 +153,8 @@ void basicPrintGraphic(string person[], string floorCeiling)
 /// START OF MENU/MOVEMENT FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], double weaponCoords[][2], double armorCoords[4], double potionCoords[4])	// Hannah coded this function		
+void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], double weaponCoords[][2], double armorCoords[4], double potionCoords[4], double slimeCoords[][3], double goblinCoords[][3], double darkMagicianCoords[][2])
+				// Hannah coded this
 
 																						//since lots of doubles in the arrays weren't rounding up correctly, I figured
 																						//out a way to fix it. It's long, but without it the game won't work.
@@ -131,7 +165,7 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 		coordinatelevel[4] = floor(coordinatelevel[4] / 0.1 + 0.5) * 0.1; //
 		
 
-		coordinatelevel2[9] = floor((coordinatelevel2[9] / 0.1) + 0.5) * 0.1; // https://stackoverflow.com/questions/798046/digit-limitation-from-decimal-point-in-c
+		coordinatelevel2[9] = floor((coordinatelevel2[9] / 0.1) + 0.5) * 0.1; //
 		coordinatelevel2[11] = floor(coordinatelevel2[11] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel2[15] = floor(coordinatelevel2[15] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel2[17] = floor(coordinatelevel2[17] / 0.1 + 0.5) * 0.1; // 
@@ -144,27 +178,26 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 		coordinatelevel2[32] = floor(coordinatelevel2[32] / 0.1 + 0.5) * 0.1; // 
 	
 
-		for (int i = 8; i < 12; i++)
+		for (int i = 8; i < 13; i++)
 		{
 			coordinatelevel3[i] = floor(coordinatelevel3[i] / 0.1 + 0.5) * 0.1; // 
 		}
 		coordinatelevel3[19] = floor(coordinatelevel3[19] / 0.1 + 0.5) * 0.1; // 
 		coordinatelevel3[20] = floor(coordinatelevel3[20] / 0.1 + 0.5) * 0.1; // 
 	
-
 	
 		coordinatelevel4[3] = floor(coordinatelevel4[3] / 0.1 + 0.5) * 0.1; //
 		coordinatelevel4[4] = floor(coordinatelevel4[4] / 0.1 + 0.5) * 0.1; //
 		coordinatelevel4[5] = floor(coordinatelevel4[5] / 0.1 + 0.5) * 0.1; //
 		coordinatelevel4[9] = floor(coordinatelevel4[9] / 0.1 + 0.5) * 0.1; //
-		for (int i = 11; i < 16; i++)
+		for (int i = 11; i < 17; i++)
 		{
 			coordinatelevel4[i] = floor(coordinatelevel4[i] / 0.1 + 0.5) * 0.1; //
 		}
 		coordinatelevel4[19] = floor(coordinatelevel4[19] / 0.1 + 0.5) * 0.1; //
 		coordinatelevel4[20] = floor(coordinatelevel4[20] / 0.1 + 0.5) * 0.1; //
 		coordinatelevel4[21] = floor(coordinatelevel4[21] / 0.1 + 0.5) * 0.1; //
-		for (int i = 37; i < 40; i++)
+		for (int i = 37; i < 41; i++)
 		{
 			coordinatelevel4[i] = floor(coordinatelevel4[i] / 0.1 + 0.5) * 0.1; //
 		}
@@ -174,7 +207,7 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 	
 
 	
-		for (int i = 11; i < 15; i++)
+		for (int i = 11; i < 16; i++)
 		{
 			if (i != 14)
 			{
@@ -182,12 +215,12 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 			}
 		}
 
-		for (int i = 21; i < 24; i++)
+		for (int i = 21; i < 25; i++)
 		{
 			coordinatelevel5[i] = floor(coordinatelevel5[i] / 0.1 + 0.5) * 0.1; //
 		}
 
-		for (int i = 31; i < 39; i++)
+		for (int i = 31; i < 40; i++)
 		{
 			if (i != 37)
 			{
@@ -204,6 +237,22 @@ void correctCoordRoundup(double coordinatelevel[], double coordinatelevel2[], do
 
 		potionCoords[0] = floor(potionCoords[0] / 0.1 + 0.5) * 0.1; //
 		potionCoords[3] = floor(potionCoords[3] / 0.1 + 0.5) * 0.1; //
+
+		slimeCoords[1][0] = floor(slimeCoords[1][0] / 0.1 + 0.5) * 0.1; //
+		slimeCoords[1][1] = floor(slimeCoords[1][1] / 0.1 + 0.5) * 0.1; //
+		slimeCoords[3][0] = floor(slimeCoords[3][0] / 0.1 + 0.5) * 0.1; //
+		slimeCoords[3][1] = floor(slimeCoords[3][1] / 0.1 + 0.5) * 0.1; //
+		slimeCoords[4][1] = floor(slimeCoords[4][1] / 0.1 + 0.5) * 0.1; //
+
+		for (int i = 1; i < 4; i++)
+		{
+			goblinCoords[i][1] = floor(goblinCoords[i][1] / 0.1 + 0.5) * 0.1; //
+		}
+		goblinCoords[3][2] = floor(goblinCoords[3][2] / 0.1 + 0.5) * 0.1; //
+
+		darkMagicianCoords[0][0] = floor(darkMagicianCoords[0][0] / 0.1 + 0.5) * 0.1; //
+		darkMagicianCoords[1][1] = floor(darkMagicianCoords[1][1] / 0.1 + 0.5) * 0.1; //
+		darkMagicianCoords[2][1] = floor(darkMagicianCoords[2][1] / 0.1 + 0.5) * 0.1; //
 }
 
 
@@ -296,7 +345,7 @@ void moveNextLevelCheck(double coordinatelevel[], double coordinatelevel2[], dou
 
 	if (levelCounter == 3)
 	{
-		if (coord == coordinatelevel[47])						//47 is the last coordinate in the array, which is the finish coordinate
+		if (coord == coordinatelevel4[47])						//47 is the last coordinate in the array, which is the finish coordinate
 		{
 			system("cls");
 			levelCounter++;
@@ -309,7 +358,7 @@ void moveNextLevelCheck(double coordinatelevel[], double coordinatelevel2[], dou
 	gameLoop = true;
 }
 
-void monsterBattleLoop(int &playerHealth, int slimeHealth, int goblinHealth, int dkMagicianHealth, int playerAttack, int slimeAttack, int goblinAttack, int dkMagicianAttack)
+void monsterBattleLoop(int &playerHealth, int slimeHealth, int goblinHealth, int dkMagicianHealth, int playerAttack, int slimeAttack, int goblinAttack, int dkMagicianAttack, int cyberdemonAttack, int cyberdemonHealth, string infiniteGems[], string person[])
 														// function that processes all battles
 {
 	gameLoop = false;									
@@ -359,7 +408,7 @@ void monsterBattleLoop(int &playerHealth, int slimeHealth, int goblinHealth, int
 			if (playerHealth <= 0)													
 			{
 				looper = false;														
-				//gameOver();
+				gameOver();
 			}
 		}
 
@@ -399,12 +448,13 @@ void monsterBattleLoop(int &playerHealth, int slimeHealth, int goblinHealth, int
 				monsterIndicate = 0;
 				looper = false;
 				gameLoop = true;
+				system("cls");
 			}
 
 			if (playerHealth <= 0)
 			{
 				looper = false;
-				//gameOver();
+				gameOver();
 			}
 		}
 
@@ -444,12 +494,50 @@ void monsterBattleLoop(int &playerHealth, int slimeHealth, int goblinHealth, int
 				monsterIndicate = 0;
 				looper = false;
 				gameLoop = true;
+				system("cls");
 			}
 
 			if (playerHealth <= 0)
 			{
 				looper = false;
-				//gameOver();
+				gameOver();
+			}
+		}
+
+	}
+
+	if (monsterIndicate == 4)												// same as the battle slime loop except with dark magician
+	{
+		while (looper)
+		{
+			if (playerTurn && playerHealth > 0)
+			{
+				cyberdemonHealth -= playerAttack;
+				cout << "You try to swing at the Cyberdemon and deal it " << playerAttack << " points of damage";
+				screenPseudoPauseBattle();
+				playerTurn = false;
+				monsterTurn = true;
+			}
+
+			if (monsterTurn && cyberdemonHealth > 0)
+			{
+				playerHealth -= cyberdemonAttack;
+				cout << "The Cyberdemon shoots you with blazing guns and deals " << cyberdemonAttack << " points of damage";
+				screenPseudoPauseBattle();
+				playerTurn = true;
+				monsterTurn = false;
+			}
+
+			if (cyberdemonHealth <= 0)
+			{
+				looper = false;
+				gameComplete(infiniteGems, person);
+			}
+
+			if (playerHealth <= 0)
+			{
+				looper = false;
+				gameOver();
 			}
 		}
 
@@ -485,7 +573,7 @@ void moveDisplay()
 	}
 	else if (movement == 4 && rightway)
 	{
-		cout << "You have moved down." << endl;	
+		cout << "You have moved backwards." << endl;	
 		cout << "\n";															
 	}																			
 
@@ -551,7 +639,7 @@ void potionLocations(int levelSizes[], double potionCoords[], int &potion )
 
 }
 
-void armorLocations(int levelSizes[], double armorCoords[], string armor[], int &armorCounter , int &playerHealth, int &playerMaxHealth)
+void armorLocations(int levelSizes[], double armorCoords[], string armor[], int &armorCounter , int &playerHealth, int &playerMaxHealth, bool &repeatPreventLeveling)
 {					// function to check if player encountered a spot with armor
 																				//////////////////////////////////
 																				/// CODED BY TANNESS AND HANNAH //
@@ -561,9 +649,11 @@ void armorLocations(int levelSizes[], double armorCoords[], string armor[], int 
 		if (coord == armorCoords[0] )											//lists armor locations
 		{
 			armorCounter++;
-			cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+			cout << "You have found the " << armor[armorCounter] << ". ";	 //informs player that they have found armor
+			cout << "Your max health has increased.\n";
 			cout << "\n";
 			armorCoords[0] = -1;												// removes armor coord off the map
+			repeatPreventLeveling = true;										// since they just got the armor, enable the upgrade
 		}
 	}
 
@@ -572,9 +662,11 @@ void armorLocations(int levelSizes[], double armorCoords[], string armor[], int 
 		if (coord == armorCoords[1] )											//lists armor locations
 		{
 			armorCounter++;
-			cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+			cout << "You have found the " << armor[armorCounter] << ". ";		//informs player that they have found armor
+			cout << "Your max health has increased.\n";	\
 			cout << "\n";
 			armorCoords[1] = -1;
+			repeatPreventLeveling = true;
 		}
 	}
 
@@ -583,9 +675,11 @@ void armorLocations(int levelSizes[], double armorCoords[], string armor[], int 
 		if (coord == armorCoords[2] )											//lists armor locations
 		{
 			armorCounter++;
-			cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+			cout << "You have found the " << armor[armorCounter] << ". ";		//informs player that they have found armor
+			cout << "Your max health has increased.\n";
 			cout << "\n";
 			armorCoords[2] = -1;
+			repeatPreventLeveling = true;
 		}
 	}
 
@@ -594,33 +688,36 @@ void armorLocations(int levelSizes[], double armorCoords[], string armor[], int 
 		if (coord == armorCoords[3]  && armorCounter > 2)						//lists armor locations
 		{
 			armorCounter++;
-			cout << "You have found the " << armor[armorCounter] << " ." << endl; //informs player that they have found armor
+			cout << "You have found the " << armor[armorCounter] << ". ";		//informs player that they have found armor
+			cout << "Your max health has increased.\n";
 			cout << "\n";
 			armorCoords[3] = -1;
+			repeatPreventLeveling = true;
 		}
 
 	}
 
-	if (armorCounter == 0)																//// this block coded by HS ////
+	if (armorCounter == 0 && repeatPreventLeveling)										//// this block coded by HS ////
 	{
-		playerHealth += 5;																// if player has the first armor
-		playerMaxHealth = playerHealth;													// make this their max health
+		playerMaxHealth = 25;																// if player has the first armor, make this their max health.	
+																							// base health is 20, so this armor grants 5 attack
+		repeatPreventLeveling = false;													// since armor was already accessed, make it false so this can't activate again
 	}
-	if (armorCounter == 1)
+	if (armorCounter == 1 && repeatPreventLeveling)
 	{
-		playerHealth += 15;																// if player has second armor
-		playerMaxHealth = playerHealth;
+		playerMaxHealth = 35;																// if player has second armor
+		repeatPreventLeveling = false;
 	}
-	if (armorCounter == 2)																// if player has third armor
+	if (armorCounter == 2 && repeatPreventLeveling)										// if player has third armor
 	{
-		playerHealth += 25;
-		playerMaxHealth = playerHealth;
+		playerMaxHealth = 45;
+		repeatPreventLeveling = false;
 	}																					///////////////////////////////
 }
 
-void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[], int &weaponCounter, int &playerAttack)
+void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[], int &weaponCounter, int &playerAttack, bool &repeatPreventLeveling)	
 							// function to check if player encounters spot with weapon
-{
+{														
 																						//////////////////////////////////
 																						/// CODED BY TANNESS AND HANNAH //
 
@@ -631,9 +728,11 @@ void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[]
 			if (coord == weaponCoords[0][i] )											//lists weapon locations
 			{
 				weaponCounter++;
-				cout << "You have found the " << weapon[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				cout << "You have found the " << weapon[weaponCounter] << ". ";		 //informs player that they have found a particular weapon
+				cout << "Your attack power has increased.\n";
 				cout << "\n";
 				weaponCoords[0][i] = -1;
+				repeatPreventLeveling = true;										// since they just got the weapon, enable the upgrade
 				break;
 
 			}
@@ -647,9 +746,11 @@ void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[]
 			if (coord == weaponCoords[1][i] )											//lists weapon locations
 			{
 				weaponCounter++;
-				cout << "You have found the " << weapon[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				cout << "You have found the " << weapon[weaponCounter] << ". ";		//informs player that they have found a particular weapon
+				cout << "Your attack power has increased.\n";
 				cout << "\n";
 				weaponCoords[1][i] = -1;
+				repeatPreventLeveling = true;
 				break;
 
 			}
@@ -663,9 +764,11 @@ void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[]
 			if (coord == weaponCoords[2][i] )											//lists weapon locations
 			{
 				weaponCounter++;
-				cout << "You have found the " << weapon[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				cout << "You have found the " << weapon[weaponCounter] << ". ";		//informs player that they have found a particular weapon
+				cout << "Your attack power has increased.\n";
 				cout << "\n";
 				weaponCoords[2][i] = -1;
+				repeatPreventLeveling = true;
 				break;
 
 			}
@@ -676,31 +779,42 @@ void weaponLocations(int levelSizes[], double weaponCoords[][2], string weapon[]
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			if (coord == weaponCoords[3][i]  && weaponCounter > 2)						//lists weapon locations
+			if (coord == weaponCoords[3][i]  && weaponCounter < 2)						//lists weapon locations
 			{
 				weaponCounter++;
-				cout << "You have found the " << weapon[weaponCounter] << " ." << endl; //informs player that they have found a particular weapon
+				cout << "You have found the " << weapon[weaponCounter] << ". ";		//informs player that they have found a particular weapon
+				cout << "Your attack power has increased.\n";
 				cout << "\n";
 				weaponCoords[3][i] = -1;
+				repeatPreventLeveling = true;
 				break;
 
+			}
+
+			if (coord == weaponCoords[3][i] && weaponCounter == 2)
+			{
+				cout << "You have obtained the most powerful weapon.\n";
+				break;
 			}
 		}
 	}
 
-	if (weaponCounter == 0)					/////This block added by HS///
+	if (weaponCounter == 0 && repeatPreventLeveling)	/////This block added by HS///
 	{
-		playerAttack += 5;
+		playerAttack = 10;								// base attack is 5, so this sword grants +5 attack
+		repeatPreventLeveling = false;
 	}
 
-	if (weaponCounter == 1)					
+	if (weaponCounter == 1 && repeatPreventLeveling)
 	{
-		playerAttack += 20;
+		playerAttack = 25;								// +15 attack
+		repeatPreventLeveling = false;
 	}
 
-	if (weaponCounter == 2)					
+	if (weaponCounter == 2 && repeatPreventLeveling)
 	{
-		playerAttack += 30;				/////////////////////////////////
+		playerAttack = 35;								// +25 attack
+		repeatPreventLeveling = false;				/////////////////////////////////
 	}
 }
 
@@ -712,6 +826,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{																	/////////////////////////////
 			if (coord == slimeCoords[levelCounter][i])
 			{
+				slimeCoords[levelCounter][i] = -1;
 				monsterIndicate = 1;
 				break;
 			}
@@ -724,6 +839,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == slimeCoords[levelCounter][i])
 			{
+				slimeCoords[levelCounter][i] = -1;
 				monsterIndicate = 1;
 				break;
 			}
@@ -733,6 +849,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == goblinCoords[0][i])
 			{
+				goblinCoords[0][i] = -1;
 				monsterIndicate = 2;
 				break;
 			}
@@ -745,6 +862,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == slimeCoords[levelCounter][i])
 			{
+				slimeCoords[levelCounter][i] = -1;
 				monsterIndicate = 1;
 				break;
 			}
@@ -754,6 +872,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == goblinCoords[1][i])
 			{
+				goblinCoords[1][i] = -1;
 				monsterIndicate = 2;
 				break;
 			}
@@ -763,6 +882,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == darkMagicianCoords[0][i])
 			{
+				darkMagicianCoords[0][i] = -1;
 				monsterIndicate = 3;
 				break;
 			}
@@ -775,6 +895,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == slimeCoords[levelCounter][i])
 			{
+				slimeCoords[levelCounter][i] = -1;
 				monsterIndicate = 1;
 				break;
 			}
@@ -784,6 +905,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == goblinCoords[2][i])
 			{
+				goblinCoords[2][i] = -1;
 				monsterIndicate = 2;
 				break;
 			}
@@ -793,6 +915,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == darkMagicianCoords[1][i])
 			{
+				darkMagicianCoords[1][i] = -1;
 				monsterIndicate = 3;
 				break;
 			}
@@ -806,6 +929,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == slimeCoords[levelCounter][i])
 			{
+				slimeCoords[levelCounter][i] = -1;
 				monsterIndicate = 1;
 				break;
 			}
@@ -815,6 +939,7 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == goblinCoords[3][i])
 			{
+				goblinCoords[3][i] = -1;
 				monsterIndicate = 2;
 				break;
 			}
@@ -824,12 +949,13 @@ void monsterPlayerPosCheck(double slimeCoords[][3], double goblinCoords[][3], do
 		{
 			if (coord == darkMagicianCoords[2][i])
 			{
+				darkMagicianCoords[2][i] = -1;
 				monsterIndicate = 3;
 				break;
 			}
 		}
 
-		if (coord == 5.9)											// location of the cyberdemon
+		if (coord == 5.9 && levelCounter == 4)									// location of the cyberdemon
 		{
 			monsterIndicate = 4;
 		}
@@ -928,16 +1054,28 @@ void move()
 
 
 void askMove(double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[])		//function to get user input for movement 																		
-{																			///////////////////////////////////////////////////
-	cout << "\n";															//////// MOST OF THIS FUNCTION CODED BY KP ////////
-	cout << "Which direction would you like to go?" << endl;				///////////////////////////////////////////////////
-	cout << "1. Right" << endl;
-	cout << "2. Left" << endl;
-	cout << "3. Up" << endl;
-	cout << "4. Down" << endl;
-	cin >> movement;
+{		
+	int tempLoop = true;
 
-	////// all function calls added by HS///////
+	while (tempLoop)
+	{																			///////////////////////////////////////////////////
+		cout << "\n";															//////// MOST OF THIS FUNCTION CODED BY KP ////////
+		cout << "Which direction would you like to go?" << endl;				///////////////////////////////////////////////////
+		cout << "1. Right" << endl;
+		cout << "2. Left" << endl;
+		cout << "3. Forward" << endl;
+		cout << "4. Backwards" << endl;
+		cin >> movement;
+
+		if (movement < 1 || movement > 4)										// if number is less than 1 or bigger than 4 (HS)
+		{
+			cout << "That is not a valid direction. Try again.\n";
+			screenPseudoPause();
+		}
+		else tempLoop = false;
+	}
+
+	////// all function calls and loops added by HS///////
 	
 	startPositionDetermineCheck(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5);			// checks to see if a level was just entered
 	move();																															// this sends the coordinate copy to be added/subtracted to
@@ -968,30 +1106,39 @@ void checkInv(int &weaponCounter, string weapon[], int &armorCounter, string arm
 	{
 		cout << "You have no armor." << endl;
 	}
-	else cout << "You have " << armor[armorCounter] << endl;
+	else cout << armor[armorCounter] << endl;
 
-	cout << "You have " << potion << " potion(s)" << endl;
+	cout << potion << " potion(s)" << endl;
 																			//////////////////////////////////
 	screenPseudoPause();	
 	gameLoop = true;
 }
 
-void healthStatus(int health, int &playerMaxHealth)
+void healthStatus(int health, int &playerMaxHealth, int &potion)
 //function to allow user to see their current health status and use a potion
 {																		///////////////////////////////////////
 	string tempAnswer;													/// FUNC CODED BY HANNAH AND TANNESS //
 
 	gameLoop = false;															 //prevents game from looping over again
 	system("CLS");																//clears console
-	cout << "You are currently at " << health << " out of 20." << endl;			//tells player what their current health is	//
+	cout << "You are currently at " << health << " out of " << playerMaxHealth << " ." << endl;		//tells player what their current health is	//
 
 																				////////////////////////////////////////////
 	cout << "Do you want to use a potion? (yes/no) \n";							///// This block added by HS////////////////
 	cin.ignore();
 	getline(cin, tempAnswer);
-	if (tempAnswer == "yes")
+
+	if (potion == 0 && tempAnswer == "yes")
+	{
+		cout << "You cannot use potions since you don't have any.\n";
+		screenPseudoPause();
+	}
+
+	if (potion > 0 && tempAnswer == "yes")
 	{
 		health = playerMaxHealth;												//restore player to max health
+		cout << "Your health has been restored to max capacity.\n";
+		screenPseudoPause();
 	}
 	else if (tempAnswer == "no")
 	{
@@ -1000,11 +1147,12 @@ void healthStatus(int health, int &playerMaxHealth)
 	}
 	else if (tempAnswer != "no" && tempAnswer != "yes")
 	{
-		cout << "You have not entered a yes or no response. Nagivate back to the health menu and try again.\n";
+		cout << "You have not entered a yes or no response. Nagivate back to the main menu and try again.\n";
 		screenPseudoPause();
-		gameLoop = true;													//////////////////////////////////
+		gameLoop = true;													
 	}
 	
+	gameLoop = true;														//////////////////////////////////
 }
 
 void exit() //function that allows user to exit (TH)
@@ -1022,7 +1170,7 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 	bool teleportCorrect = false;													// if teleport was valid bool (HS)
 																					// ALL bool usage in this func coded by HS
 
-	cout << "Enter the coordinate for Level 1 that you would like to teleport to: "; //will allow user to choose exact coordinate
+	cout << "Enter the coordinate for your current level that you would like to teleport to: "; //will allow user to choose exact coordinate
 	cin >> coordCopy;
 
 	coordCopy = floor(coordCopy / 0.1 + 0.5) * 0.1;									//coord adjust (HS)
@@ -1102,7 +1250,7 @@ void teleport(double coordinatelevel[], double coordinatelevel2[], double coordi
 
 	if (levelCounter == 4) //if they choose level 5 (TH)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 45; i++)
 		{
 			if (coordCopy == coordinatelevel5[i])
 			{
@@ -1163,6 +1311,7 @@ void displayMaps()
 		cout << "||xxxx||xxxx|| 2.0||xxxx||xxx||xxxx||" << endl;
 		cout << " 				 ^                    " << endl;
 		cout << "			   START                  " << endl;
+		screenPseudoPause();
 	}
 
 	if (mapchoice == 2) //map for level 2
@@ -1199,6 +1348,7 @@ void displayMaps()
 		cout << "|| == || == || == || == || 4.5|| < FIN" << endl;
 		cout << "|| [] ||xxxx|| == ||xxxx||xxxx||      " << endl;
 		cout << "|| != ||xxxx|| == || A  || =! ||      " << endl;
+		screenPseudoPause();
 	}
 
 	if (mapchoice == 3) //map for level 3
@@ -1236,6 +1386,7 @@ void displayMaps()
 		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
 		cout << "           ||xxxx||xxxx|| [] || == ||" << endl;
 		cout << "           ||xxxx||xxxx|| == || == ||" << endl;
+		screenPseudoPause();
 	}
 
 	if (mapchoice == 4) //map for level 4
@@ -1265,12 +1416,13 @@ void displayMaps()
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||           " << endl;
-		cout << "           || != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START" << endl;
+		cout << "           || != || ** || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START" << endl;
 		cout << "           ||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||           " << endl;        //prints visual of map of level 4
-		cout << "FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||           " << endl;
+		cout << "FIN >      || 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx||-[]-|| == || == ||xxxxx|| xxxx|| xxxx||           " << endl;
 		cout << "           ||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||           " << endl;
+		screenPseudoPause();
 	}
 
 	if (mapchoice == 5) //map for level 5
@@ -1309,14 +1461,17 @@ void displayMaps()
 		cout << "||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||" << endl;
 		cout << "||xxxx||xxxx|| A  || == || W  || == || P  ||  ** ||  == ||" << endl;
 		cout << "||xxxx||xxxx|| == ||-[]-|| == || :( || == ||  == ||  == ||" << endl;
+		screenPseudoPause();
 	}
 
 
-	else if (mapchoice != 1 && mapchoice != 2 && mapchoice != 3 && mapchoice != 4 && mapchoice != 5) //if user does not choose a valid map choice
+	else if (mapchoice < 1 || mapchoice > 5) //if user does not choose a valid map choice (1-5)
 	{
-		cout << "You did not choose an available level." << endl;
-	}																				///////The above was coded by TH//////////
-}																					//////////////////////////////////////////
+		cout << "You did not choose an available level. You will now be directed" << endl;
+		cout << "back to the admin screen.\n";		
+		screenPseudoPause();																///////////////////////////////////////////
+	}																						///////The above was coded by TH//////////
+}																							//////////////////////////////////////////
 
 void admin(string password, int adminChoice, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[]) 
 									//function that allows admin to pull up map *password protected- password: dungeon 
@@ -1349,16 +1504,13 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			if (adminChoice == 1)
 			{
 				displayMaps();          
-
-				screenPseudoPause();	////// all pseudo-pauses added by hannah
-				
+							
 			}
 
 			if (adminChoice == 2)     
 			{
 				teleport(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes);
-				screenPseudoPause();
-				
+				screenPseudoPause();				/// all pseudo pauses added by hannah
 
 			}
 			
@@ -1369,17 +1521,11 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 				
 			}
 
-			if (adminChoice < 1 || adminChoice > 3)
-			{
-				cout << "Please enter a valid option. ";
-				cout << "\n";
-				screenPseudoPause();
-			}
 
 			if (adminChoice < 1 || adminChoice > 3)		 //added by Hannah
 			{											 //
-				cout << "Please enter a valid option: "; //if player doesn't choose 1, 2, or 3
-				cin >> adminChoice;						//stores choice
+				cout << "Please enter a valid option.\n"; //if player doesn't choose 1, 2, or 3
+				screenPseudoPause();					//stores choice
 			}											//
 		}
 
@@ -1394,12 +1540,6 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 			admin(password, adminChoice, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes); // goes back to the start of the function
 		}
 
-		else
-		{
-			system("CLS");								//clears console
-			cout << "Please enter correct password: "; ///////////(TH)/////////////
-
-		}
 	}
 }
 		
@@ -1435,7 +1575,7 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 
 	if (choice == 3)//TH
 	{
-		healthStatus(playerHealth, playerMaxHealth); //allows user to check health
+		healthStatus(playerHealth, playerMaxHealth, potion); //allows user to check health
 	}
 
 	if (choice == 4)//TH
@@ -1451,7 +1591,8 @@ void mainGameMenu(int playerHealth, string password, double coordinatelevel[], d
 	if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 9)//TH
 	{
 		cout << "Please enter a valid choice." << endl;
-		cout << endl;
+		screenPseudoPause();
+		gameLoop = true;														// sends them back to the main menu
 	}
 }
 
@@ -1756,7 +1897,7 @@ void greetingScreen(string name, string person[], string floorCeiling)
 }
 
 
-void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int &playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], string weapon[], int &weaponCounter, int &armorCounter, int adminChoice, string armor[], int &potion, string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter, double potionCoords[], double armorCoords[], double weaponCoords[][2] , int &playerAttack, int &playerMaxHealth, double slimeCoords[][3], double goblinCoords[][3], double darkMagicianCoords[][2], int slimeHealth, int goblinHealth, int dkMagicianHealth, int slimeAttack, int goblinAttack, int dkMagicianAttack)
+void mainGameLoop(string person[], string slime[], string goblin[], string darkMagician[], string floorCeiling, int &playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], int levelSizes[], string weapon[], int &weaponCounter, int &armorCounter, int adminChoice, string armor[], int &potion, string finalBossCD[], string finalBossCD2[], string finalBossCD3[], int cyberdemonCounter, double potionCoords[], double armorCoords[], double weaponCoords[][2] , int &playerAttack, int &playerMaxHealth, double slimeCoords[][3], double goblinCoords[][3], double darkMagicianCoords[][2], int slimeHealth, int goblinHealth, int dkMagicianHealth, int slimeAttack, int goblinAttack, int dkMagicianAttack, int cyberdemonAttack, int cyberdemonHealth, string infiniteGems[], bool &repeatPreventLeveling)
 					// the loop of the game
 {
 	while (gameLoop)
@@ -1765,17 +1906,20 @@ void mainGameLoop(string person[], string slime[], string goblin[], string darkM
 		monsterPlayerPosCheck(slimeCoords, goblinCoords, darkMagicianCoords);
 		printDetermine(floorCeiling, person, slime, goblin, darkMagician, finalBossCD, finalBossCD2, finalBossCD3,cyberdemonCounter);	// determine main print
 		potionLocations(levelSizes, potionCoords, potion);																				// check for potion encounters for new valid coord
-		armorLocations(levelSizes, armorCoords, armor, armorCounter , playerHealth, playerMaxHealth);									// check for armor encounters for new valid coord
-		weaponLocations(levelSizes, weaponCoords, weapon, weaponCounter, playerAttack);													// check for weapons encounters for new valid coord
+		armorLocations(levelSizes, armorCoords, armor, armorCounter , playerHealth, playerMaxHealth, repeatPreventLeveling);									// check for armor encounters for new valid coord
+		weaponLocations(levelSizes, weaponCoords, weapon, weaponCounter, playerAttack, repeatPreventLeveling);													// check for weapons encounters for new valid coord
 		if (positionDetermine != 0)
 		{
 			moveDisplay();																												// if not start of level, print which way person moved if they did
 		}
-		if (monsterIndicate > 0)
+		if (monsterIndicate > 0)																										// if player encountered monster after move
 		{
-			monsterBattleLoop(playerHealth, slimeHealth, goblinHealth, dkMagicianHealth, playerAttack, slimeAttack, goblinAttack, dkMagicianAttack);
+			monsterBattleLoop(playerHealth, slimeHealth, goblinHealth, dkMagicianHealth, playerAttack, slimeAttack, goblinAttack, dkMagicianAttack, cyberdemonAttack, cyberdemonHealth, infiniteGems, person);	// go to battle loop
 		}
-		mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, playerMaxHealth);
+		if (gameLoop != false)
+		{
+			mainGameMenu(playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, person, floorCeiling, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, playerMaxHealth);
+		}
 		
 	}
 	
@@ -1794,6 +1938,9 @@ int main()
 	string finalBossCD[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","\\\\  | --- |   //", " ===|     |===","    |     |","    |_____|","    |     |","    |     |" };		//The array for the Cyberdemon boss (first frame)
 	string finalBossCD2[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","||  | --- |   ||", " ===|     |===","    |     |","    |_____|","    |     |","    |       " };		//The array for the Cyberdemon boss (second frame)
 	string finalBossCD3[10] = { "    \\\\    //", "    |'''''|","    |\\   /|", "    |.   .|","//  | --- |   \\\\", " ===|     |===","    |     |","    |_____|","    |     |","          |" };		//The array for the Cyberdemon boss (third frame)
+
+	string infiniteGems[6] = { "  ===  ", " /   \\ ", "|     |","|     |"," \\   /  ", "  ---  " };
+
 	int cyberdemonCounter = 0;		// counter for animating the cyberdemon
 
 	string name;		//the string for the name of the player (TH)
@@ -1810,7 +1957,7 @@ int main()
 
 	int armorCounter = -1;														  ///////////
 
-	int playerMaxHealth = 0;													 ////// HS
+	int playerMaxHealth = 20;													 ////// HS
 
 	int playerHealth = 20;														  // The health variables were coded by TH
 	int slimeHealth = 8;														  //
@@ -1826,19 +1973,21 @@ int main()
 
 	int adminChoice = 0;														  // choice for the admin submenu (TH)
 
+	bool repeatPreventLeveling = true;											// this variable makes sure that a weapon/armor power-up only activates once (HS)
+
 
 
 	/////////////////////// ALL COORD VARIABLES CODED BY HANNAH /////////////////////////////////
 
 
-	int levelSizes[5] = { 11, 36, 22, 48, 44 };												// the number of coordinates in each level
+	int levelSizes[5] = { 11, 36, 22, 48, 45 };												// the number of coordinates in each level
 
 
 	double slimeCoords[5][3] = { 4.2, -1, -1,												// coordiantes for spaces that contain slimes (-1's when there is no coord for that specific monster)
 								3.3, 0.6, -1,
 								3.5, 2.7, -1,
-								5.1, 3.3, 6.8,
-								6.2, 3.2, 4.3 };
+								5.1, 3.3, 8.5,
+								6.2, 3.3, 3.5 };
 
 	double goblinCoords[4][3] = { 0.2, -1, -1,											// arrays with less than 5 rows mean they are not present
 								  2.1, 3.3, -1,											// on all levels (goblinCoords[4] means that goblins only
@@ -1846,8 +1995,8 @@ int main()
 								 1.1, 3.3, 3.9};											
 
 	double darkMagicianCoords[3][2] = { 2.4, -1,
-										5.5, -1,
-										5.1, 7.8 };
+										5.5, 7.6,
+										1.3, 7.8 };
 
 	double weaponCoords[4][2] = { 2.4, -1,
 								 -1, -1,
@@ -1897,7 +2046,7 @@ int main()
 	double coordinatelevel4[48] = { 4.0,5.0,6.0,4.1,5.1,6.1,4.2,5.2,6.2,					//			||xxxx||xxxx||xxxx||xxxx|| W  || == || == || xxxx|| xxxx|| xxxx||
 									0.3,1.3,2.3,3.3,4.3,5.3,6.3,7.3,8.3,9.3,				//			||xxxx||xxxx||xxxx||xxxx|| == || [] || == || xxxx|| xxxx|| xxxx||
 									1.4,2.4,3.4,4.4,5.4,6.4,7.4,8.4,9.4,					//			||xxxx||xxxx||xxxx||xxxx|| == || == || == || xxxx|| xxxx|| xxxx||
-									1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,					//			|| != || == || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START
+									1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,					//			|| != || ** || A  || [] || == || == || == ||-[]- ||  == ||  9.3|| ---- START
 									4.6,5.6,6.6,7.6,4.7,5.7,6.7,4.8,5.8,6.8,0.5 };			//			||xxxx|| == || == || == ||-[]-|| == || == ||  == ||  == ||  == ||
 																							//	FIN	>	|| 0.5|| == || == || == || == || ** || W  ||  == ||  [] ||  == ||
 																							//			||xxxx||xxxx||xxxx||xxxx|| == || == || == ||  ** || xxxx|| xxxx||
@@ -1905,13 +2054,13 @@ int main()
 																							//			||xxxx||xxxx||xxxx||xxxx|| == || == || == ||xxxxx|| xxxx|| xxxx||
 																							//
 																							//
-	double coordinatelevel5[44] = { 0.0,1.0,2.0,3.0,4.0,5.0,6.0,							// Level 5/Final Level			START
+	double coordinatelevel5[45] = { 0.0,1.0,2.0,3.0,4.0,5.0,6.0,							// Level 5/Final Level			START
 																							//								 ||
 								   0.1,1.1,2.1,3.1,4.1,5.1,6.1,								//			|| == || == || == || 3.0|| == || == || == ||xxxxx||xxxxx||
 								   0.2,1.2,2.2,3.2,4.2,5.2,6.2,								//			|| == ||-[]-|| == || == || == || ** || == ||xxxxx||xxxxx||
 								   2.3,3.3,2.4,3.4,2.5,3.5,2.6,3.6,							//			|| == || == || == || == || == || == || [] ||xxxxx||xxxxx||
 								   2.7,3.7,2.8,3.8,4.8,5.8,6.8,7.8,8.8,						//			||xxxx||xxxx|| [] ||-[]-||xxxx||xxxx||xxxx||xxxxx||xxxxx||
-								   2.9,3.9,4.9,6.9,7.9,8.9 };								//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
+								   2.9,3.9,4.9,5.9, 6.9,7.9,8.9 };							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
 																							//			||xxxx||xxxx|| == || [] ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
 																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
 																							//			||xxxx||xxxx|| == || == ||xxxx||xxxx||xxxx||xxxxx||xxxxx||
@@ -1921,30 +2070,17 @@ int main()
 																							//
 
 	basicGraphicSetUp();																	// mostly windows graphic set-ups; one time runs
-	correctCoordRoundup(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, weaponCoords, armorCoords, potionCoords); // rounds up all glitchy coordinates in arrays to their normal number
+	correctCoordRoundup(coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, weaponCoords, armorCoords, potionCoords, slimeCoords, goblinCoords, darkMagicianCoords); // rounds up all glitchy coordinates in arrays to their normal number
 	greetingScreen(name, person, floorCeiling);
-	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter, potionCoords, armorCoords, weaponCoords, playerAttack, playerMaxHealth, slimeCoords, goblinCoords, darkMagicianCoords, slimeHealth, goblinHealth, dkMagicianHealth, slimeAttack, goblinAttack, dkMagicianAttack);
+	mainGameLoop(person, slime, goblin, darkMagician, floorCeiling, playerHealth, password, coordinatelevel, coordinatelevel2, coordinatelevel3, coordinatelevel4, coordinatelevel5, levelSizes, weapon, weaponCounter, armorCounter, adminChoice, armor, potion, finalBossCD, finalBossCD2, finalBossCD3, cyberdemonCounter, potionCoords, armorCoords, weaponCoords, playerAttack, playerMaxHealth, slimeCoords, goblinCoords, darkMagicianCoords, slimeHealth, goblinHealth, dkMagicianHealth, slimeAttack, goblinAttack, dkMagicianAttack, cyberDemonHealth, cyberDemonAttack, infiniteGems, repeatPreventLeveling);
 
 
 
-
-
-	//cout << "You have found the Infinite Gems of Xyzzy!" << endl;  // end game message KP
-	//cout << "Thank you for playing Dungeons & Goblins!" << endl; // end game message KP
 
 
 	////////////////////////////////////////////////////
 	// HANNAH STOPPED CODING HERE//////////////////////
 	//////////////////////////////////////////////////
-
-
-	//attack through loops --- split later
-	//hardcoded enemies	--	(KP)
-	// 
-	//
-	//small graphic funcs3 (HS)
-	//
-	//
 
 
 	system("pause");
@@ -1956,5 +2092,4 @@ int main()
 
 
 
-//end of monster locations coded by kp
 
