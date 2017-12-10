@@ -37,6 +37,7 @@
 #include <string>
 #include "Windows.h"
 #include <iomanip>
+#include "resource.h"
 
 using namespace std;
 
@@ -1114,14 +1115,14 @@ void checkInv(int &weaponCounter, string weapon[], int &armorCounter, string arm
 	gameLoop = true;
 }
 
-void healthStatus(int health, int &playerMaxHealth, int &potion)
+void healthStatus(int &playerHealth, int &playerMaxHealth, int &potion)
 //function to allow user to see their current health status and use a potion
 {																		///////////////////////////////////////
 	string tempAnswer;													/// FUNC CODED BY HANNAH AND TANNESS //
 
 	gameLoop = false;															 //prevents game from looping over again
 	system("CLS");																//clears console
-	cout << "You are currently at " << health << " out of " << playerMaxHealth << " ." << endl;		//tells player what their current health is	//
+	cout << "You are currently at " << playerHealth << " out of " << playerMaxHealth << " ." << endl;		//tells player what their current health is	//
 
 																				////////////////////////////////////////////
 	cout << "Do you want to use a potion? (yes/no) \n";							///// This block added by HS////////////////
@@ -1132,13 +1133,16 @@ void healthStatus(int health, int &playerMaxHealth, int &potion)
 	{
 		cout << "You cannot use potions since you don't have any.\n";
 		screenPseudoPause();
+		gameLoop = true;
 	}
 
 	if (potion > 0 && tempAnswer == "yes")
 	{
-		health = playerMaxHealth;												//restore player to max health
+		playerHealth = playerMaxHealth;												//restore player to max health
 		cout << "Your health has been restored to max capacity.\n";
+		potion--;
 		screenPseudoPause();
+		gameLoop = true;
 	}
 	else if (tempAnswer == "no")
 	{
@@ -1152,7 +1156,7 @@ void healthStatus(int health, int &playerMaxHealth, int &potion)
 		gameLoop = true;													
 	}
 	
-	gameLoop = true;														//////////////////////////////////
+															//////////////////////////////////
 }
 
 void exit() //function that allows user to exit (TH)
@@ -1546,7 +1550,7 @@ void admin(string password, int adminChoice, double coordinatelevel[], double co
 
 
 
-void mainGameMenu(int playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], string weapon[], int &weaponCounter, int &armorCounter, int adminChoice, string armor[], int &potion, int &playerMaxHealth )
+void mainGameMenu(int &playerHealth, string password, double coordinatelevel[], double coordinatelevel2[], double coordinatelevel3[], double coordinatelevel4[], double coordinatelevel5[], string person[], string floorCeiling, int levelSizes[], string weapon[], int &weaponCounter, int &armorCounter, int adminChoice, string armor[], int &potion, int &playerMaxHealth )
 									// the main menu that the game uses the most
 {
 
@@ -1966,7 +1970,7 @@ int main()
 	int cyberDemonHealth = 40;													// HS
 
 	int playerAttack = 5;														// The  attack variables were coded by TH
-	double slimeAttack = 2;												        //
+	int slimeAttack = 2;												        //
 	int goblinAttack = 5;                                                       //
 	int dkMagicianAttack = 10;                                                  //
 	int cyberDemonAttack = 35;													// HS
